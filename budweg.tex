@@ -39,7 +39,10 @@ TODO: Stichworte zu Ihrem Seminarthema.
 
 
 \section{Einleitung}
+Heutzutage sind drahtlose ad-hoc Netze sehr verbreitet. Beispielsweise wirft man Sensorknoten über einem Wald ab, um vor Waldbrand gewarnt zu werden. (Oder über einem radioaktivem Gebiet, um die Reststrahlung zu messen.) Die Nachricht muss von dem Knoten, der den Brand bemerkt hat, über andere Knoten zu einer Basisstation weitergeleitet werden. Um dieses Routing zu erleichtern werden Topologiekontrollen auf Graphen angewendet. Es ist jedoch erwünscht, dass alle Nachrichten, die gesendet werden, (nach einer bestimmten Zeit) ankommen. Garantierte Nachrichtenauslieferung ist ein verbreitetes Forschungsgebiet. Viele Algorithmen bieten dies für \textit{planare} Graphen.
 
+\subsection{Planarität}
+Ein Graph ist planar, wenn es keine zwei Kanten gibt, die sich schneiden.
 
 \subsection{Graphen}
 \subsubsection{Euklidischer Graph}
@@ -77,15 +80,16 @@ Gegeben ist ein Graph $G $. Für alle Knoten $A \in G $ wird folgender Algorithm
 %Dadurch entsteht Graph $G' $. 
 
 \subsection{Delaunay Triangulation}
-Die Delaunay Triangulation erzeugt aus einem beliebigen zusammenhängenden Graphen einen geometrischen (= euklidischen) Spanner mit dem Streckungsfaktor $c_{del} \approx 2.42 $ und einem beliebig hohen Ausgangsgrad eines Knotens.
+Die Delaunay Triangulation erzeugt aus einem beliebigen zusammenhängenden Graphen einen geometrischen (= euklidischen) Spanner mit dem Streckungsfaktor $c_{del} \approx 2.42 $ und einem beliebig hohen Ausgangsgrad eines Knotens. Dazu werden alle Dreiecke betrachtet. Wenn der Kreis durch alle Eckpunkte des Dreiecks keine weiteren Punkte des Graphen enthält, sind diese drei Kanten auch im Delaunay Graphen.
 
 \subsection{Lokale Algorithmen}
 \subsubsection{streng lokal}
 \subsubsection{title}
 
-\section{title}
 
+\section{was erreicht diese Arbeit} %bearbeiten
 
+\section{Geometrische Spanner}
 \section{Fazit}
 
 
