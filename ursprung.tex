@@ -1,0 +1,238 @@
+\documentclass[a4paper,twoside]{IEEEtran}
+
+\newcommand{\seminarteilnehmer}{TODO: Ihr Name}
+\newcommand{\seminartitel}{TODO: Der Titel Ihrer Seminararbeit}
+
+% Löschen oder kommentieren Sie die folgenden beiden Zeilen aus,
+% wenn Sie den Text in Englisch schreiben wollen.
+\usepackage{german}
+\usepackage[latin1]{inputenc}
+
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+
+\usepackage{amsmath}
+
+
+\begin{document}
+
+\title{\seminartitel}
+\author{\seminarteilnehmer}
+
+\markboth{Seminar Rechnernetze, Wintersemester 2012/2013}%
+{\seminarteilnehmer: \seminartitel}
+
+\maketitle
+
+\begin{abstract}
+TODO: Die Zusammenfassung zu Ihrer Seminarausarbeitung.
+\end{abstract}
+
+\begin{IEEEkeywords}
+TODO: Stichworte zu Ihrem Seminarthema.
+\end{IEEEkeywords}
+
+
+\section{Einleitung}
+TODO: Die Einleitung zu Ihrem Seminarthema. Hier sollten Sie das Thema vorstellen und dem Leser einen kurzen Überblick über die nachfolgenden Kapitel der Arbeit geben.
+
+Den restlichen Text Ihrer Seminararbeit gliedern Sie durch entsprechende weitere Kapitel, wie dies im Folgenden als Beispiel gezeigt ist.
+
+Achtung: Lesen Sie bitte die Beispiele und alle Hinweise in den nachfolgenden Kapiteln durch, bevor Sie mit dem Schreiben loslegen. 
+
+
+\section{Nützliche Hinweise zur Dokumentengliederung} 
+Texte innerhalb eines Kapitels gliedert man immer in einzelne Textabsätze. Textabsätze werden durch Leerzeilen im LaTeX-Source-Dokument gesetzt. Zum Beispiel wird folgender Satz als neuer Textabsatz -- erkennbar durch die Einrückung am Anfang des ersten Satzes -- gesetzt.
+
+Hier ist der neue Textabsatz. Beachten Sie zu Textabsätzen folgendes: Ein Textabsatz beschreibt \textbf{einen} Gedanken/Sachverhalt. Diesen teilen Sie dem Leser durch eine Folge von Sätzen mit. Die Folge von Sätzen muss zusammenhängend sein und aufeinander aufbauen. Das bedeutet, \textbf{jeder Satz bezieht sich auf das was in dem unmittelbar davor stehenden Satz} gesagt worden ist, greift dieses auf und führt dieses weiter. Sobald Sie einen Satz anhängen wollen, der sich nicht auf das vorherige bezieht, ist es Zeit für einen neuen Absatz.
+
+Zur Reihenfolge von Textabsätzen ist auch noch folgendes zu beachten: Vermeiden Sie soweit es geht Vorgriffe auf Sachverhalte, die erst in einem späteren Textabsatz erläutert werden. Wenn dies der Fall ist, denken Sie darüber nach, die Reihenfolge der Textabsätze zu tauschen.
+
+Wenn Ihr Text in einem Kapitel aus sehr vielen Textabsätzen besteht, ist es sinnvoll über eine Untergliederung des Kapitels in Unterkapitel nachzudenken. Im Folgenden sind drei Unterkapitel als Beispiel.
+
+\subsection{Beispiel eines Unterkapitels}
+Hier steht der Text des Unterkapitels.
+
+\subsection{Beispiel eines Unterkapitels}
+Hier steht der Text des Unterkapitels.
+
+\subsection{Beispiel eines Unterkapitels}
+Hier steht der Text des Unterkapitels. Längere Unterkapitel lassen sich auch noch in Unter-Unterkapitel gliedern. Im Folgenden drei  Unter-Unterkapitel als Beispiel.
+
+\subsubsection{Beispiel eines Unter-Unterkapitels}
+Hier steht der Text des Unter-Unterkapitels.
+\subsubsection{Beispiel eines Unter-Unterkapitels}
+Hier steht der Text des Unter-Unterkapitels.
+\subsubsection{Beispiel eines Unter-Unterkapitels}
+Hier steht der Text des Unter-Unterkapitels.
+
+
+\section{Nützliche Hinweise zur weiteren Textgestaltung} 
+
+Im Folgenden möchte ich Ihnen einige der an häufigsten vorkommenden LaTeX-Befehle kurz erläutern. Betrachten Sie die Erläuterungen als Starthilfe, um mit der Seminarausarbeitung zu beginnen. Im Verlauf der Ausarbeitung sollten Sie sich selbständig mit den vielen weitern Möglichkeiten der LaTeX-Textgestaltung befassen. Schauen Sie dazu auch einmal in die beiliegende PDF-Datei \texttt{IEEEtran\_HOWTO.pdf}.
+
+Wenn Sie konkrete Vorstellungen haben, aber einfach nicht herausfinden können, wie Sie diese mit LaTeX setzen können, setzen Sie sich mit Ihrem Betreuer in Verbindung, damit eine Lösung gefunden werden kann.
+
+
+\subsection{Textreferenzen}
+
+Wenn Sie sich in einem Textabsatz auf ein anderes Kapitel oder Unterkapitel beziehen wollen, dann müssen Sie die Kapitelnummer angeben. Die Kapitelnummer sollten Sie nicht "`händisch"' in Ihr Dokument schreiben. Bei nachfolgenden Änderungen der Dokumentenstruktur würde diese dann womöglich auf ein falsches Kapitel verweisen und müsste wieder angepasst werden; ein sehr fehleranfälliger Prozess.
+
+Verwenden Sie für Verweise innerhalb Ihres Dokuments immer das Label-Ref-Konstrukt von Latex! Betrachten sie das nachfolgende Unterkapitel. Am Ende der Kapitelüberschrift ist mit dem Label-Befehl ein Label gesetzt. Darauf kann man nun wie folgt verweisen: Wir verweisen hier auf Kapitel~\ref{mein_erstes_label}.
+
+Mit dem Label-Ref-Konstrukt können Sie nicht nur auf Kapitel verweisen, sondern z.B.\ auch auf die im Folgenden noch behandelten Abbildungen und Tabellen. Etwas lax formuliert: Sie können mit dem Konstrukt eigentlich auf fast alles in Ihrem Dokument referenzieren was in irgendeiner Form nummeriert ist. 
+
+
+\subsection{Zitate}\label{mein_erstes_label}
+
+Alles was Sie in Ihrer Arbeit aus fremden Quellen wörtlich oder in eigener Formulierung wieder geben, müssen Sie zitieren. Hierzu müssen Sie im Text eine entsprechende Markierung setzen, die auf eine Referenzliste am Ende Ihrer Ausarbeitung zeigt. In der Referenzliste stehen dann alle zitierten Arbeiten. Typische Angaben sind hierbei: Titel der Arbeit, Name der Autoren, Konferenz- oder Zeitschriftentitel, Jahr der Publikation.
+
+Zum Glück nimmt Ihnen LaTeX beim Zitieren sehr viel Arbeit ab. Sie müssen lediglich ein (oder auch mehrere) Bibliographie-Files pflegen, in denen die zu zitierenden Arbeiten stehen. Auf diese können Sie dann mit dem LaTeX-Befehl \texttt{cite} in Ihrem Text verweisen.
+
+\subsubsection{Bibliographie-Files}
+
+Öffnen Sie doch einmal die Datei \texttt{biblio.bib}. Der Inhalt ist eigentlich selbsterklärend. Jeder Eintrag ist von einem bestimmten Typ (hier: \texttt{article} und \texttt{inproceedings}). Jeder Eintrag hat eine Kennung (hier: \texttt{frey10face-tc} und \texttt{frey12curve-wowmom}). In jedem Eintrag steht eine Liste von Attributen (z.B. \texttt{author}, \texttt{title}, \texttt{year}). Für jeden Eintragstyp gibt es bestimmte Attribute die Sie immer angeben müssen, und einige, die optional angegeben werden können.
+
+Wenn Sie Ihre Bibliographie-Datei von Hand erstellen und pflegen wollen, müssen Sie wissen welche Eintragstypen es gibt und welche Attribute für die jeweiligen Eintragstypen angegeben werden müssen. Eine Übersicht zu den Eintragstypen finden Sie z.B.\ in dem Wikipedia-Artikel \texttt{http://en.wikipedia.org/wiki/BibTeX}.
+
+Verwenden Sie für Ihre Seminararbeit die oben genannte Datei \texttt{biblio.bib} und ergänzen Sie diese entsprechend mit den Arbeiten, die Sie zitieren (streichen Sie die der Ordnung halber die beiden Muster-Einträge wieder raus).
+
+Achtung: Ihre Arbeit wird unter anderem auch nach formalen Kriterien bewertet, d.h. es wird z.B.\ auch geprüft, ob in Ihrem Bibliographie-File in jedem Eintrag alle Pflichtattribute vorhanden sind und ordnungsgemäß ausgefüllt sind. Gehen Sie also mit Ihrem Bibliographie-File pfleglich um!
+
+\subsubsection{Zitate in den Text einfügen}
+
+Wenn Sie nun auf eine Arbeit in Ihrem Text verweisen wollen, müssen Sie lediglich mit dem LaTeX-Befehl auf die Kennung des Bibtex-Eintrags zugreifen. Ein Beispiel: "`wie in~\cite{frey10face-tc} gezeigt ist, wird \dots"'.
+
+Sie können auch gleichzeitig auf mehrere Literaturstellen verweisen. Dies sieht dann z.B. wie folgt aus: "`\dots hat sich in allen Fällen als sinnvoll erwiesen~\cite{frey10face-tc, frey12curve-wowmom}"'
+
+
+\subsubsection{Kompilieren mit Bibliographie-Files}
+
+Beim Kompilieren eines LaTeX-Dokuments mit Bibliographie-Files müssen Sie folgendes beachten. Bevor die Einträge in der Referenzliste Ihres Zieldokuments sichtbar werden, muss die Referenzliste zuerst automatisch erstellt werden. Dies geschieht mit dem \texttt{bibtex} Befehl. Bevor Sie diesen anwenden können muss LaTeX aber zuerst einmal das Dokument kompiliert haben, und damit eine sogenannte "`Aux-Datei"' erstellt haben. Erst dann können Sie \texttt{bibtex} aufrufen. Anschließend müssen Sie den LaTeX-Compiler nochmal aufrufen, damit das Dokument samt Referenzliste erstellt werden kann. Klingt kompliziert? Nun, in der Handhabung ist es ganz einfach. Für die Datei \texttt{nachname.tex} rufen Sie einfach folgende Befehlsreihenfolge auf:
+
+\begin{itemize}
+\item \texttt{latex nachname}
+\item \texttt{bibtex nachname}
+\item \texttt{latex nachname}
+\end{itemize}
+
+Randbemerkung: wenn Sie die Dateiendungen mit angeben wollen, dann müsste die Aufrufreihenfolge wie folgt aussehen:
+
+\begin{itemize}
+\item \texttt{latex nachname.tex}
+\item \texttt{bibtex nachname.aux}
+\item \texttt{latex nachname.tex}
+\end{itemize}
+ 
+
+\subsection{Item-Listen}
+
+Sie haben es im vorigen Kapitel ja schon gesehen. Sie können in LaTeX sogenannte Item-Listen setzen. Hier zwei Beispiele, eine nicht nummerierte und eine nummerierte Liste.
+
+ \begin{itemize}
+\item Hier steht dann der erste Text in der Auflistung.
+\item Hier steht dann der zweite Text in der Auflistung.
+\item Hier steht dann der dritte Text in der Auflistung.
+\end{itemize}
+
+ \begin{enumerate}
+\item Hier steht dann der erste Text in der Auflistung.
+\item Hier steht dann der zweite Text in der Auflistung.
+\item Hier steht dann der dritte Text in der Auflistung.
+\end{enumerate}
+
+Verwenden Sie solche Item-Listen allerdings sparsam. Verwenden Sie diese insbesondere nicht zur Standardtextgliederung. Dazu gibt es die Befehle, die in dem vorigen Kapitel zur Textgliederung schon genannt worden sind.
+ 
+
+\subsection{Bilder}
+
+Bilder können Sie in LaTeX mit der Umgebung \texttt{figure} einfügen. Das ganze am Beispiel sieht dann so aus:
+
+
+Hierbei verweist man mittels \texttt{includegraphics} auf die Bild-Datei \texttt{beispielbild}, welche sich im Unterverzeichnis \texttt{figures} befindet. In dieser Form eingebundene Dateien müssen im EPS-Format vorliegen.
+
+Speichern Sie in das Unterverzeichnis \texttt{figures} alle Bilder, die Sie in Ihre Arbeit einbauen. Legen Sie diese dort im eingebundenen Format (also wie hier z.B. EPS) und im Originalformat ab. Speichern Sie im Unterverzeichnis \texttt{figures} auch nur Dateien, die Sie in Ihre Arbeit eingebunden haben.
+
+Mit dem Befehl \texttt{caption} geben sie die Bildunterschrift an. Beachten Sie den zusätzlichen Befehl \texttt{label} am Ende. Sie können damit wie eben schon beschrieben auf das Bild verweisen. Zum Beispiel so: siehe Abbildung\ref{beispielbild}.
+
+Ein \textbf{gutes} Bild kann sehr hilfreich für das Textverständnis sein (ein Bild sagt mehr als 1000 Worte). Fügen Sie aber nur Bilder ein, auf die Sie sich im Text auch beziehen. Fügen Sie auch nur gute Bilder ein. Achten Sie auf die Lesbarkeit, falls sich Text im Bild befindet. Bevorzugen sie Vektor-Bilder gegenüber Pixel-Bilder. Beziehen Sie sich auf die Quelle, wenn Sie ein Bild aus einer anderen Arbeit in Ihre übernehmen! 
+
+Als weiterführendes zu Bildern empfehle ich Ihnen sich mit den Paketen \texttt{graphicx} zum einbinden von Bildern, \texttt{subfig} zum mehrspaltigen setzten von Bildern und \texttt{psfrag} zum Ersetzen von Textzeichen in Bildern mit LaTeX-Textfragmenten auseinander zu setzen. (Eine Google-Suche nach dem Wort latex \textbf{und} dem Paketnamen führt Sie schnell zu den passenden Informationen zu dem Paket)
+
+
+\subsection{Tabellen}
+
+Ähnlich wie Bilder werden auch Tabellen in eine separate Umgebung -- hier die \texttt{table} Umgebung --  eingefügt. Im Folgenden ein leicht abgewandeltes Beispiel aus \texttt{IEEEtran\_HOWTO.pdf}.
+
+\begin{table}
+\caption{A Simple Example Table}\label{Eine Beispieltabelle}
+\centering
+\begin{tabular}{c|c}
+\hline
+\bfseries  First  &  \bfseries  Next\\
+\hline\hline
+1.0  &  2.0\\
+\hline
+\end{tabular}
+\end{table}
+
+
+\subsection{Mathemodus}
+
+Latex erlaubt das Setzen von mathematischen Formeln, entweder direkt im Fließtext oder separat abgesetzt.
+
+Ein Fließtextbeispiel: "`\dots betrachten wir die Variablen $x$ und $y$, so fällt auf, dass stets $x \leq y$ gilt. Darüber hinaus ist $x \cdot y \geq (c+d)^{-1}$ immer erfüllt \dots"'
+
+Eine Abgesetzte mathematische Formel würde zum Beispiel wie folgt aussehen:
+\[
+a = b + c
+\]  
+
+Eine ganze Berechnung können Sie z.B. wie folgt setzen:
+\begin{align*}
+a &= b + c \\
+  &= 2 \pi \cdot e^2 \\
+  &= 42
+\end{align*}
+
+Die Beispiele in diesem Abschnitt zeigen nur den drei prinzipiellen Arten, wie sie mathematische Formeln in Ihren Text einbauen können. Weitere Details finden Sie in den vielen diversen Online-LaTeX-Referenzen.
+
+
+\subsection{Anmerkungen zum Textsatz}
+
+\subsubsection{Texthervorhebungen}
+
+Wenn Sie in Ihrem Text einen wichtigen Begriff einführen, dann können sie dies im Text durch eine Texthervorhebung kenntlich machen. Verwenden Sie hierzu den Latex Befehl \texttt{emph}. Hier ein Beispiel: "`Als \emph{Application-Layer-Multicast (ALM)} bezeichnen wir alle Multicast-Verfahren, welche \dots"'.
+
+Markieren Sie einen wichtigen Begriff aber nur einmal, wenn er eingeführt wird. Vermeiden Sie auch zu viele Markierungen. Dies macht das Schriftbild unruhig.
+
+Sie sollten insbesondere zur Texthervorhebung den Befehl \texttt{emph} verwenden und nicht den Text händisch kursiv setzen (dazu gibt es auch einen Befehl). Nach Möglichkeit sollten Sie in ihrem Text auch keinen (oder wenn unbedingt erforderlich nur sehr sparsam) Bold-Font händisch setzen (wie das geht sehen Sie ja oben im Dokument; sehen Sie es als schlechtes Beispiel). Dies macht das Schriftbild ebenfalls unruhig.
+
+Wenn Sie Dinge wie Programmvariablen, Kommandozeilen, Dateinamen oder dergleichen in Ihrem Text kenntlich machen wollen, können Sie dies recht einfach durch die Texthervorhebung \texttt{texttt} machen (Beispiele sehen Sie in dem bisherigen Text zu genüge). Auch hier gilt aber, dass das Schriftbild durch den Fontwechsel unruhiger wird.
+
+
+\subsubsection{Subtile Feinheiten}
+
+Wenn Sie einen Punkt setzen, der keinen Satz beendet, dann Teilen Sie das LaTeX in der Form "`Punkt-Backslash"' mit. Ein Beispiel wäre: "`\dots wie schon Frey et al.\ gezeigt haben \dots"'. LaTeX wird nun den Abstand zwischen dem Punkt und dem darauf folgenden Wort etwas kleiner gestalten, als es dies bei einem Satzende tun würde.
+
+Wenn Sie einen Textabschnitt in einem Satz durch einen Bindestrich absetzen wollen, so macht man das -- wie am Anfang des Dokuments und nun an dieser Stelle nochmal geschehen -- mit zwei aufeinander folgenden Minuszeichen.
+
+Durch eine Tilde zwischen zwei aufeinanderfolgenden Wörtern können Sie erzwingen, dass zwei aufeinanderfolgende Wörter durch einem Zeilenumbruch nie getrennt werden. Das ist z.B. sinnvoll, wenn ein Wort gefolgt von einer Zahl eine Einheit bilden. Ein Beispiel: "`wie wir schon in Kapitel~\ref{mein_erstes_label} gesehen haben"'. Eine Trennung des Wortes Kapitel und der darauffolgenden Zahl sähe unschön aus, da dann die folgende Textzeile mit einer Zahl beginnen würde (wohl gemerkt, wir sprechen hier schon von subtileren Feinheiten).
+
+Wie Sie im vorigen Text schon bemerkt haben sollten, in LaTeX setzt man in deutschen Texten Sätze in Anführungszeichen in dieser Form: "`das ist ein Beispieltext"'. Text mit den gewöhnlichen Anführungszeichen Ihrer Tastatur sollte zu Compiler-Fehlen führen.
+
+Wenn Sie englischen Text schreiben, dann setzten sie Sätze in Anführungsstriche in dieser Form: ``this is an englisch text''. Schauen Sie einfach auf das Ergebnis der LaTeX-Kompilation und Sie sollten den Unterschied zum dem vorigen Beispiel sehen.
+
+
+\section{Fazit}
+TODO: Das Fazit zu Ihrem Seminarthema.
+
+Das letzte Kapitel Ihrer Seminarausarbeitung ist ein Fazit zu dem Seminarthema. Sie haben sich ein Semester mit Ihrem Thema intensiv beschäftigt und sollten somit eine eigene Einschätzung der vorgestellten Inhalte haben. Achtung: dieses Kapitel ist keine Zusammenfassung dessen, was in der Arbeit steht. Die Zusammenfassung steht schon in Ihrem Text ganz vorne.
+
+Geben Sie nach Möglichkeit auch einen Ausblick, wie es mit der Thematik in Zukunft weiter gehen kann. Sie können in diesem Fall das Kapitel auch "`Fazit und Ausblick"' nennen.
+
+
+\bibliographystyle{IEEEtran}
+\bibliography{biblio}
+
+\end{document}

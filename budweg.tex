@@ -39,16 +39,22 @@ TODO: Stichworte zu Ihrem Seminarthema.
 
 
 \section{Einleitung}
-Heutzutage sind drahtlose ad-hoc Netze sehr verbreitet. Beispielsweise wirft man Sensorknoten über einem Wald ab, um vor Waldbrand gewarnt zu werden. (Oder über einem radioaktivem Gebiet, um die Reststrahlung zu messen.) Die Nachricht muss von dem Knoten, der den Brand bemerkt hat, über andere Knoten zu einer Basisstation weitergeleitet werden. Um dieses Routing zu erleichtern werden Topologiekontrollen auf Graphen angewendet. Es ist jedoch erwünscht, dass alle Nachrichten, die gesendet werden, (nach einer bestimmten Zeit) ankommen. Garantierte Nachrichtenauslieferung ist ein verbreitetes Forschungsgebiet. Viele Algorithmen bieten dies für \textit{planare} Graphen.
+Heutzutage sind drahtlose ad-hoc Netze sehr verbreitet. Beispielsweise werden Sensorknoten über einem Wald abgeworfen, um vor einem Waldbrand gewarnt zu werden. Die Nachricht muss von dem Knoten, der den Brand bemerkt hat, über andere Knoten zu einer Basisstation weitergeleitet werden. Um dieses Routing zu erleichtern werden Topologiekontrollen auf Graphen angewendet. Diese dünnen den Graph aus, indem Kanten entfernt werden. Die dadurch entstehenden Umwege können willkürlich lang werden. Deshalb gibt es Spanner, die die Länge eines Pfades.
 
 \subsection{Planarität}
 Ein Graph ist planar, wenn es keine zwei Kanten gibt, die sich schneiden.
 
 \subsection{Graphen}
 \subsubsection{Euklidischer Graph}
-Ein euklidischer Graph ist ein Graph, wo alle Knoten mit allen anderen Knoten verbunden sind (Clique) und die Kantengewichte der euklidischen Distanz beider Eckpunkte entsprechen.
+Ein euklidischer Graph ist ein Graph, wo alle Knoten mit allen anderen Knoten verbunden sind (Clique) und die Kantengewichte der euklidischen Distanz beider Eckpunkte entsprechen. Ein Beispiel finden Sie in Abbildung \ref{fig:Graph}.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.99\linewidth]{Graph.eps}
+\caption{}
+\label{fig:Graph}
+\end{figure}
 \subsubsection{Unit Disk Graph}
-Der Unit Disk Graph ist ein euklidischer Graph ohne alle Kanten, die länger als ein konstantes $c \in \mathds{R} $ sind.
+Der Unit Disk Graph ist ein euklidischer Graph ohne alle Kanten, die länger als ein konstantes $c \in \mathds{R} $ sind. In Abbildung \ref{fig:UnitGraph} sehen Sie den euklidischen Graph aus Abbildung \ref{fig:Graph} als Unit Disk Graph mit $c = 1 $.
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.99\linewidth]{UnitGraph.eps}
@@ -72,15 +78,15 @@ $c_G(A,B) \leq t \cdot c_H(A,B) $
 \subsection{Yao Step}
 Gegeben ist ein Graph $G $. Für alle Knoten $A \in G $ wird folgender Algorithmus ausgeführt:
 \begin{enumerate}
-\item Erzeuge k gleich große Kegel um $A $.
-\item Bestimme die kürzeste Kante in jedem Kegel.
+\item Erzeuge k gleich große Kegel um $A $. $k \in \mathds{N} > 6 $
+\item Bestimme die kürzeste Kante in jedem Kegel ausgehend von $A $.
 \item Lösche alle Kanten, die nicht von beiden Endpunkten ausgewählt wurden.
 
 \end{enumerate} 
 %Dadurch entsteht Graph $G' $. 
 
 \subsection{Delaunay Triangulation}
-Die Delaunay Triangulation erzeugt aus einem beliebigen zusammenhängenden Graphen einen geometrischen (= euklidischen) Spanner mit dem Streckungsfaktor $c_{del} \approx 2.42 $ und einem beliebig hohen Ausgangsgrad eines Knotens. Dazu werden alle Dreiecke betrachtet. Wenn der Kreis durch alle Eckpunkte des Dreiecks keine weiteren Punkte des Graphen enthält, sind diese drei Kanten auch im Delaunay Graphen.
+Die Delaunay Triangulation erzeugt aus einem beliebigen zusammenhängenden Graphen einen geometrischen (= euklidischen) Spanner mit dem Streckungsfaktor $c_{del} \approx 2.42 $ und einem beliebig hohen Ausgangsgrad eines Knotens. Dazu werden alle Dreiecke betrachtet. Wenn der Kreis durch alle Eckpunkte des Dreiecks keine weiteren Punkte des Graphen enthält, sind diese drei Kanten auch im Delaunay Graphen. 
 
 \subsection{Lokale Algorithmen}
 \subsubsection{streng lokal}
@@ -90,6 +96,10 @@ Die Delaunay Triangulation erzeugt aus einem beliebigen zusammenhängenden Graph
 \section{was erreicht diese Arbeit} %bearbeiten
 
 \section{Geometrische Spanner}
+\subsection{Der äußere Pfad}
+\subsection{Der innere Pfad}
+
+
 \section{Fazit}
 
 
