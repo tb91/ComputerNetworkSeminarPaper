@@ -39,10 +39,22 @@ TODO: Stichworte zu Ihrem Seminarthema.
 
 
 \section{Einleitung}
-Heutzutage sind drahtlose ad-hoc Netze sehr verbreitet. Beispielsweise werden Sensorknoten über einem Wald abgeworfen, um vor einem Waldbrand gewarnt zu werden. Die Nachricht muss von dem Knoten, der den Brand bemerkt hat, über andere Knoten zu einer Basisstation weitergeleitet werden. Um dieses Routing zu erleichtern werden Topologiekontrollen auf Graphen angewendet. Diese dünnen den Graph aus, indem Kanten entfernt werden. Die dadurch entstehenden Umwege können willkürlich lang werden. Deshalb gibt es Spanner, die die Länge eines Pfades.
+Es gibt viele Anwendungsbereiche für drahtlose Sensornetze. 
+Zum Beispiel können Waldbrände oder Tsunamis dadurch schneller erkannt werden. 
+Natürlich sollen abgesendete Nachrichten garantiert am Zielort ankommen. 
+Garantierte Nachrichtenauslieferung wird von mehreren Algorithmen bereits erreicht, jedoch müssen dafür bestimmte Voraussetzungen an das Sensornetz erfüllt sein. 
+Die wichtigste Voraussetzung ist die Planarität des Netzes, das heißt, dass keine Kantenschnitte existieren dürfen.
 
-\subsection{Planarität}
-Ein Graph ist planar, wenn es keine zwei Kanten gibt, die sich schneiden.
+Ein weiterer Punkt ist, dass diese Netze willkürlich groß werden können.
+Deshalb führt ein zentralisierter Algorithmus zu einer sehr langen Laufzeit mit hohem Energieverbrauch, weil willkürlich viele Nachrichten verschickt werden müssen. 
+Dieses Problem wird durch einen lokalen Algorithmus gelöst. 
+Ein lokaler Algorithmus sichert durch seine Definition, dass nur konstant viele Nachrichten gesendet werden. %siehe unten %konstant:sicher? 
+
+%Spanner?
+
+
+%\subsection{Planarität}
+%Ein Graph ist planar, wenn es keine zwei Kanten gibt, die sich schneiden.
 
 \subsection{Graphen}
 \subsubsection{Euklidischer Graph}
@@ -65,11 +77,13 @@ Der Unit Disk Graph ist ein euklidischer Graph ohne alle Kanten, die länger als
 
 
 \subsection{Spanner}
-Gegeben ist ein Graph $G $, welcher ein Subgraph vom euklidischen Graphen $E $ ist. $G $ enthält alle Knoten von $E $, aber nicht alle Kanten. Die Umwege, die durch das Löschen von Kanten entstehen, dürfen nur um einen konstanten Faktor ansteigen. 
+Gegeben ist ein Graph $G $, welcher ein Subgraph vom euklidischen Graphen $E $ ist. $G $ enthält alle Knoten von $E $, aber nicht alle Kanten. Die Umwege, die durch das Löschen von Kanten entstehen, dürfen nur um einen konstanten Faktor ansteigen. Formal bedeutet das:
+\begin{equation}
+	c_H(A, B) \leq p \cdot c_G(A, B)
+\end{equation}
+%\ref{DBLP:GeoSpan}
+Die Notation $c_{Graph}(A, B) $ bedeutet: der kürzeste Pfad zwischen A und B.
 
-\subsubsection{Hop Spanner}
-Die Pfadlänge wird in Hops gemessen. Ein Hop entspricht einen Übergang von Knoten A nach Knoten B, wenn diese in $G $ enthalten sind. Ein Beispiel dazu folgt:
-$include Hop_Beispiel $
 \subsubsection{Euklidischer Spanner}
 $G $ ist genau dann ein euklidischer Spanner von $H $, wenn die kürzesten Pfade zwischen allen Knoten, maximal um einen konstanten Faktor $t $ vergrößert werden:
 
@@ -105,6 +119,6 @@ Die Delaunay Triangulation erzeugt aus einem beliebigen zusammenhängenden Graph
 
 
 \bibliographystyle{IEEEtran}
-%\bibliography{biblio}
+\bibliography{biblio}
 
 \end{document}
