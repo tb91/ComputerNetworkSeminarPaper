@@ -40,15 +40,23 @@ TODO: Stichworte zu Ihrem Seminarthema.
 
 \section{Einleitung}
 Es gibt viele Anwendungsbereiche für drahtlose Sensornetze. 
-Zum Beispiel können Waldbrände oder Tsunamis dadurch schneller erkannt werden. 
-Natürlich sollen abgesendete Nachrichten garantiert am Zielort ankommen. 
-Garantierte Nachrichtenauslieferung wird von mehreren Algorithmen bereits erreicht, jedoch müssen dafür bestimmte Voraussetzungen an das Sensornetz erfüllt sein. 
-Die wichtigste Voraussetzung ist die Planarität des Netzes, das heißt, dass keine Kantenschnitte existieren dürfen.
+Zum Beispiel können Waldbrände oder Tsunamis durch ein Frühwarnsystem, welches durch ein Sensornetz realisiert wird, schneller erkannt werden. 
+Sowohl in diesem Beispiel als auch in anderen Anwendungsgebieten ist es gewünscht, dass alle gesendeten Nachrichten ankommen.
+Garantierte Nachrichtenauslieferung wird von mehreren Algorithmen bereits erreicht (z.B.: Face-Routing: siehe \cite{FaceRouting}).
+Jedoch müssen dafür bestimmte Voraussetzungen an das Sensornetz erfüllt sein. 
+Die wichtigste Voraussetzung ist die Planarität des Netzes, das heißt, dass keine Kantenschnitte existieren dürfen. 
+Diese Planarität zu erreichen ist ein wichtiges Ziel von \textit{Topologiekontrollen}.
 
 Ein weiterer Punkt ist, dass diese Netze willkürlich groß werden können.
-Deshalb führt ein zentralisierter Algorithmus zu einer sehr langen Laufzeit mit hohem Energieverbrauch, weil willkürlich viele Nachrichten verschickt werden müssen. 
-Dieses Problem wird durch einen lokalen Algorithmus gelöst. 
-Ein lokaler Algorithmus sichert durch seine Definition, dass nur konstant viele Nachrichten gesendet werden. %siehe unten %konstant:sicher? 
+Deshalb führt ein \textit{zentralisierter} Algorithmus zu einer sehr langen Laufzeit mit hohem Energieverbrauch, weil Nachrichten in Abhängigkeit von der globalen Netzgröße verschickt werden müssen. 
+Dieses Problem wird durch einen streng lokalen Algorithmus gelöst.
+Der hier behandelte Algorithmus ist sowohl streng lokal, als auch ein \textit{t-Spanner} des Ausgangsgraphen.
+\textit{t-Spanner} geben den größtmöglichen Umweg an, der entsteht, wenn man einen (speziellen) kantenlöschenden Algorithmus auf einen Graphen anwendet.
+Diese Thematik wird im Folgenden anhand des Artikel von \cite{kanj} erläutert.
+Dort wurde ein streng lokaler Algorithmus aufbauend auf den \textit{Delaunay Graphen} angewandt.
+Das Ergebnis ist ein Graph, welcher im Bezug zum euklidischen Graphen einen \textit{stretch-factor} von $t=3.54 $ und zusätzlich eine Beschränkung des Ausgangsgrad eines Knoten von $k=14 $ hat.
+
+
 
 %Spanner?
 
@@ -58,11 +66,11 @@ Ein lokaler Algorithmus sichert durch seine Definition, dass nur konstant viele 
 
 \subsection{Graphen}
 \subsubsection{Euklidischer Graph}
-Ein euklidischer Graph ist ein Graph, wo alle Knoten mit allen anderen Knoten verbunden sind (Clique) und die Kantengewichte der euklidischen Distanz beider Eckpunkte entsprechen. Ein Beispiel finden Sie in Abbildung \ref{fig:Graph}.
+Ein euklidischer Graph ist ein spezieller Graph. Alle Knoten sind mit allen anderen Knoten verbunden (Clique) und die Kantengewichte entsprechen der euklidischen Distanz beider Eckpunkte. Ein Beispiel finden Sie in Abbildung \ref{fig:Graph}.
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.99\linewidth]{Graph.eps}
-\caption{}
+\caption{Ein euklidischer Graph}
 \label{fig:Graph}
 \end{figure}
 \subsubsection{Unit Disk Graph}
@@ -70,24 +78,23 @@ Der Unit Disk Graph ist ein euklidischer Graph ohne alle Kanten, die länger als
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.99\linewidth]{UnitGraph.eps}
-\caption{}
+\caption{Der Unit-Disk-Graph zu Abbildung \ref{fig:Graph} mit $c = 1 $}
 \label{fig:UnitGraph}
 \end{figure}
 
 
 
 \subsection{Spanner}
-Gegeben ist ein Graph $G $, welcher ein Subgraph vom euklidischen Graphen $E $ ist. $G $ enthält alle Knoten von $E $, aber nicht alle Kanten. Die Umwege, die durch das Löschen von Kanten entstehen, dürfen nur um einen konstanten Faktor ansteigen. Formal bedeutet das:
+Gegeben ist ein Graph $G $, welcher ein Subgraph vom euklidischen Graphen $E $ ist. $G $ enthält alle Knoten von $E $, aber nicht alle Kanten. Die Umwege, die durch das Löschen von Kanten entstehen, dürfen nur um einen konstanten Faktor ansteigen. 
+
+\subsubsection{Euklidischer Spanner}
+$G $ ist genau dann ein euklidischer Spanner von $H $, wenn die kürzesten Pfade zwischen allen Knoten maximal um einen konstanten Faktor $t $ vergrößert werden.
+Die Notation $c_{G}(A, B) $ bedeutet: der kürzeste Pfad zwischen A und B im Graphen $G $.
+Formal bedeutet das:
 \begin{equation}
 	c_H(A, B) \leq p \cdot c_G(A, B)
 \end{equation}
-%\ref{DBLP:GeoSpan}
-Die Notation $c_{Graph}(A, B) $ bedeutet: der kürzeste Pfad zwischen A und B.
-
-\subsubsection{Euklidischer Spanner}
-$G $ ist genau dann ein euklidischer Spanner von $H $, wenn die kürzesten Pfade zwischen allen Knoten, maximal um einen konstanten Faktor $t $ vergrößert werden:
-
-$c_G(A,B) \leq t \cdot c_H(A,B) $
+{\footnotesize (Formel entnommen aus \cite{kanj})}
 
 \subsection{Yao Step}
 Gegeben ist ein Graph $G $. Für alle Knoten $A \in G $ wird folgender Algorithmus ausgeführt:
@@ -100,18 +107,40 @@ Gegeben ist ein Graph $G $. Für alle Knoten $A \in G $ wird folgender Algorithm
 %Dadurch entsteht Graph $G' $. 
 
 \subsection{Delaunay Triangulation}
-Die Delaunay Triangulation erzeugt aus einem beliebigen zusammenhängenden Graphen einen geometrischen (= euklidischen) Spanner mit dem Streckungsfaktor $c_{del} \approx 2.42 $ und einem beliebig hohen Ausgangsgrad eines Knotens. Dazu werden alle Dreiecke betrachtet. Wenn der Kreis durch alle Eckpunkte des Dreiecks keine weiteren Punkte des Graphen enthält, sind diese drei Kanten auch im Delaunay Graphen. 
+Die Delaunay Triangulation erzeugt aus einem beliebigen zusammenhängenden Graphen einen geometrischen (= euklidischen) Spanner mit dem Streckungsfaktor $c_{del} \approx 2.42 $ und einem beliebig hohen Ausgangsgrad eines Knotens. 
+Dazu werden alle Dreiecke betrachtet.
+Wenn der Kreis durch alle Eckpunkte des Dreiecks keine weiteren Punkte des Graphen enthält, sind diese drei Kanten auch im Delaunay Graphen. 
 
 \subsection{Lokale Algorithmen}
-\subsubsection{streng lokal}
+Ein Algorithmus ist lokal, genau dann, wenn jeder Knoten ausschließlich mit seiner \textit{k-Hop} Nachbarschaft kommuniziert. ($k \in \mathds{N}$)
+Formal reicht dies aus, um einen Algorithmus lokal zu nennen.
+Das Problem, dass der Algorithmus eine lange Laufzeit hat (siehe Einleitung), ist dadurch jedoch nicht gelöst.
+Es soll das \textit{Maximal Independent Set} (MIS) eines Graphen $G $ berechnet werden.
+Dazu betrachten Sie Abbildung \ref{fig:MIS}.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.99\linewidth]{MIS.eps}
+\caption{$\times $ sind Knoten im Maximal Independent Set, $\bullet $ sind keine Knoten des MIS, Die Kreise um die Knoten sind die jeweiligen Sendebereiche.}
+\label{fig:MIS}
+\end{figure}
+
+
+Zuerst werden
+
+
+
+
+\subsubsection{Strenge Lokalität}
+
 \subsubsection{title}
 
 
 \section{was erreicht diese Arbeit} %bearbeiten
 
 \section{Geometrische Spanner}
-\subsection{Der äußere Pfad}
-\subsection{Der innere Pfad}
+\subsection{Der outward Path}
+\subsection{Der inward Path}
 
 
 \section{Fazit}
@@ -120,5 +149,6 @@ Die Delaunay Triangulation erzeugt aus einem beliebigen zusammenhängenden Graph
 
 \bibliographystyle{IEEEtran}
 \bibliography{biblio}
+
 
 \end{document}
