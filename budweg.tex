@@ -113,11 +113,12 @@ Wenn der Kreis durch alle Eckpunkte des Dreiecks keine weiteren Punkte des Graph
 
 \subsubsection{Synchronität}
 
+%Algorithmus, definieren, dass es sich hier um Algorithmen auf Graphen handelt?
 \subsection{Lokale Algorithmen}
 Ein Algorithmus ist lokal, genau dann, wenn jeder Knoten ausschließlich mit seiner \textit{k-Hop} Nachbarschaft kommuniziert. ($k \in \mathds{N}$)
 Formal reicht dies aus, um einen Algorithmus lokal zu nennen.
 Das Problem, dass der Algorithmus eine lange Laufzeit hat (siehe Einleitung), ist dadurch jedoch nicht gelöst.
-Am Beispiel des \textit{Maximal Independent Set} Algorithmus lässt sich ein Beispiel konstruieren, welches dieses Problem veranschaulicht.
+Anhand des \textit{Maximal Independent Set} Algorithmus lässt sich ein Beispiel konstruieren, welches dieses Problem veranschaulicht.
 %Es soll das \textit{Maximal Independent Set} (MIS) eines Graphen $G $ berechnet werden.
 Betrachten Sie Abbildung \ref{fig:MIS}.
 
@@ -128,7 +129,7 @@ Betrachten Sie Abbildung \ref{fig:MIS}.
 \label{fig:MIS}
 \end{figure}
 
-%MIS algorithmus einfügen?
+
 \begin{enumerate}
 \item[Runde 1] Knoten 1 wird MIS-Knoten, da er von allen seinen Nachbarn, welche noch keine Rolle haben, derjenige mit der kleinsten ID ist. Knoten 2 und 3 warten, da es Knoten gibt, welche noch keine Rolle und eine kleinere ID haben.
 
@@ -138,8 +139,14 @@ Betrachten Sie Abbildung \ref{fig:MIS}.
 
 \end{enumerate}
 
-Diese Schritte lassen sich durch den gesamten Graphen sukzessiv durchführen. Der Algorithmus hat demnach eine Laufzeit von $\theta (dia(G)) $
+Diese Schritte lassen sich durch den gesamten Graphen sukzessiv durchführen. 
+Der Algorithmus hat demnach eine Laufzeit von 
+\begin{equation*}
+\theta (dia(G)) 
+\end{equation*}
+wobei $dia(G) $ für den Durchmesser (größter kürzester Pfad) des Graphen steht.
 
+Die Definition des lokalen Algorithmus trifft hier zu, weil jeder Knoten nur mit seinen unmittelbaren Nachbarn, der \textit{1-Hop-Nachbarschaft} kommuniziert.
 
 
 
