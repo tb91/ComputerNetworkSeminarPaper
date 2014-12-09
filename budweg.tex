@@ -49,9 +49,11 @@ Diese Planarität zu erreichen ist ein wichtiges Ziel von \textit{Topologiekontr
 
 Ein weiterer Punkt ist, dass diese Netze willkürlich groß werden können.
 Deshalb führt ein \textit{zentralisierter} Algorithmus zu einer sehr langen Laufzeit mit hohem Energieverbrauch, weil Nachrichten in Abhängigkeit von der globalen Netzgröße verschickt werden müssen. 
-Dieses Problem wird durch einen streng lokalen Algorithmus gelöst.
-Der hier behandelte Algorithmus ist sowohl streng lokal, als auch ein \textit{t-Spanner} des Ausgangsgraphen.
-\textit{t-Spanner} geben den größtmöglichen Umweg an, der entsteht, wenn man einen (speziellen) kantenlöschenden Algorithmus auf einen Graphen anwendet.
+
+Damit die Nachrichten nicht über beliebig lange Pfade geroutet werden müssen, wird eine Beschränkung der Pfadverlängerung gewünscht. Pfadverlängerungen entstehen, wenn (spezielle) kantenlöschende Algorithmen auf Graphen angewendet werden.
+Der hier behandelte Algorithmus ist streng lokal, was die Anzahl der gesendeten Nachrichten minimiert.
+Außerdem produziert dieser einen \textit{t-Spanner} des euklidischen Graphen.
+%\textit{t-Spanner} geben den größtmöglichen Umweg an, der entsteht, wenn man einen (speziellen) kantenlöschenden Algorithmus auf einen Graphen anwendet.
 Diese Thematik wird im Folgenden anhand des Artikel von \cite{kanj} erläutert.
 Dort wurde ein streng lokaler Algorithmus aufbauend auf den \textit{Delaunay Graphen} angewandt.
 Das Ergebnis ist ein Graph, welcher im Bezug zum euklidischen Graphen einen \textit{stretch-factor} von $t=3.54 $ und zusätzlich eine Beschränkung des Ausgangsgrad eines Knoten von $k=14 $ hat.
@@ -110,12 +112,22 @@ Gegeben ist ein Graph $G $. Für alle Knoten $A \in G $ wird folgender Algorithm
 Die Delaunay Triangulation erzeugt aus einem beliebigen zusammenhängenden Graphen einen geometrischen (= euklidischen) Spanner mit dem Streckungsfaktor $c_{del} \approx 2.42 $ und einem beliebig hohen Ausgangsgrad eines Knotens. 
 Dazu werden alle Dreiecke betrachtet.
 Wenn der Kreis durch alle Eckpunkte des Dreiecks keine weiteren Punkte des Graphen enthält, sind diese drei Kanten auch im Delaunay Graphen. 
+Um Fallunterscheidungen zu vermeiden wird angenommen, dass keine vier Punkte auf einem Kreis liegen. 
+
 
 \subsubsection{Synchronität}
+Bei einem synchronen Algorithmus ist die Arbeitsweise der Knoten in Runden und diese in Phasen eingeteilt. 
+Eine Runde sieht beispielsweise wie folgt aus:
+\begin{enumerate}
+\item Zuerst erhalten alle Knoten ihre Nachrichten, falls es welche gibt.
+\item Danach verarbeiten sie die Nachrichten und stellen ggf. weitere Berechnungen an.
+\item Am Ende der Runde werden Nachrichten an andere Knoten verschickt.
+\end{enumerate}
+Hier ist zu beachten, dass alle gesendeten Nachrichten \textbf{nur} zu Beginn der Folgerunde ankommen.
 
 %Algorithmus, definieren, dass es sich hier um Algorithmen auf Graphen handelt?
-\subsection{Lokale Algorithmen}
-Ein Algorithmus ist lokal, genau dann, wenn jeder Knoten ausschließlich mit seiner \textit{k-Hop} Nachbarschaft kommuniziert. ($k \in \mathds{N}$)
+\subsection{Lokale Algorithmen} \label{lokal}
+Ein Algorithmus ist genau dann lokal, wenn jeder Knoten ausschließlich mit seiner \textit{k-Hop} Nachbarschaft kommuniziert. ($k \in \mathds{N}$)
 Formal reicht dies aus, um einen Algorithmus lokal zu nennen.
 Das Problem, dass der Algorithmus eine lange Laufzeit hat (siehe Einleitung), ist dadurch jedoch nicht gelöst.
 Anhand des \textit{Maximal Independent Set} Algorithmus lässt sich ein Beispiel konstruieren, welches dieses Problem veranschaulicht.
@@ -125,7 +137,7 @@ Betrachten Sie Abbildung \ref{fig:MIS}.
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.99\linewidth]{MIS.eps}
-\caption{$\times $ sind Knoten im Maximal Independent Set, $\bullet $ sind keine Knoten des MIS, Die Kreise um die Knoten sind die jeweiligen Sendebereiche.}
+\caption{$\times $ sind Knoten im Maximal Independent Set (Fortan: MIS), $\bullet $ sind keine Knoten des MIS, Die Kreise um die Knoten sind die jeweiligen Sendebereiche.}
 \label{fig:MIS}
 \end{figure}
 
@@ -140,19 +152,22 @@ Betrachten Sie Abbildung \ref{fig:MIS}.
 \end{enumerate}
 
 Diese Schritte lassen sich durch den gesamten Graphen sukzessiv durchführen. 
-Der Algorithmus hat demnach eine Laufzeit von 
+Der Algorithmus hat demnach eine Laufzeit in der Größenordnung von 
 \begin{equation*}
 \theta (dia(G)) 
 \end{equation*}
 wobei $dia(G) $ für den Durchmesser (größter kürzester Pfad) des Graphen steht.
 
-Die Definition des lokalen Algorithmus trifft hier zu, weil jeder Knoten nur mit seinen unmittelbaren Nachbarn, der \textit{1-Hop-Nachbarschaft} kommuniziert.
+Die Definition des lokalen Algorithmus trifft hier zu, weil jeder Knoten nur mit seinen unmittelbaren Nachbarn, der \textit{1-Hop-Nachbarschaft}, kommuniziert.
 
 
 
 
 
-\subsubsection{Strenge Lokalität}
+\subsection{Strenge Lokalität}
+Wie im Abschnitt \ref{lokal} beschrieben, sind lokale Algorithmen noch nicht ausreichend, um die benötigte Nachrichtenanzahl zu minimieren.
+Ein Algorithmus ist genau dann streng lokal, wenn er unabhängig von der Netzgröße in konstanter Zeit terminiert (siehe \cite{strictlyLocal}).
+
 
 \subsubsection{title}
 
