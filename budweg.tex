@@ -16,6 +16,7 @@
 
 
 
+
 \usepackage{amsmath}
 
 
@@ -51,7 +52,8 @@ Diese Planarität zu erreichen ist ein wichtiges Ziel von \textit{Topologiekontr
 Ein weiterer Punkt ist, dass diese Netze willkürlich groß werden können.
 Deshalb führt ein \textit{zentralisierter} Algorithmus zu einer sehr langen Laufzeit mit hohem Energieverbrauch, weil Nachrichten in Abhängigkeit von der globalen Netzgröße verschickt werden müssen. 
 
-Damit die Nachrichten nicht über beliebig lange Pfade geroutet werden müssen, wird eine Beschränkung der Pfadverlängerung gewünscht. Pfadverlängerungen entstehen, wenn (spezielle) kantenlöschende Algorithmen auf Graphen angewendet werden.
+Damit die Nachrichten nicht über beliebig lange Pfade geroutet werden müssen, wird eine Beschränkung der Pfadverlängerung gewünscht. 
+Pfadverlängerungen entstehen, wenn (spezielle) kantenlöschende Algorithmen auf Graphen angewendet werden.
 Der hier behandelte Algorithmus ist streng lokal, was die Anzahl der gesendeten Nachrichten minimiert.
 Außerdem produziert dieser einen \textit{t-Spanner} des euklidischen Graphen.
 %\textit{t-Spanner} geben den größtmöglichen Umweg an, der entsteht, wenn man einen (speziellen) kantenlöschenden Algorithmus auf einen Graphen anwendet.
@@ -69,7 +71,9 @@ Das Ergebnis ist ein Graph, welcher im Bezug zum euklidischen Graphen einen \tex
 
 \subsection{Graphen}
 \subsubsection{Euklidischer Graph}
-Ein euklidischer Graph ist ein spezieller Graph. Alle Knoten sind mit allen anderen Knoten verbunden (Clique) und die Kantengewichte entsprechen der euklidischen Distanz beider Eckpunkte. Ein Beispiel finden Sie in Abbildung \ref{fig:Graph}.
+Ein euklidischer Graph ist ein spezieller Graph. 
+Alle Knoten sind mit allen anderen Knoten verbunden (Clique) und die Kantengewichte entsprechen der euklidischen Distanz beider Eckpunkte. 
+Ein Beispiel finden Sie in Abbildung \ref{fig:Graph}.
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.99\linewidth]{Graph.eps}
@@ -77,7 +81,8 @@ Ein euklidischer Graph ist ein spezieller Graph. Alle Knoten sind mit allen ande
 \label{fig:Graph}
 \end{figure}
 \subsubsection{Unit Disk Graph}
-Der Unit Disk Graph ist ein euklidischer Graph ohne alle Kanten, die länger als ein konstantes $c \in \mathds{R} $ sind. In Abbildung \ref{fig:UnitGraph} sehen Sie den euklidischen Graph aus Abbildung \ref{fig:Graph} als Unit Disk Graph mit $c = 1 $.
+Der Unit Disk Graph ist ein euklidischer Graph ohne alle Kanten, die länger als ein konstantes $c \in \mathds{R} $ sind.
+In Abbildung \ref{fig:UnitGraph} sehen Sie den euklidischen Graph aus Abbildung \ref{fig:Graph} als Unit Disk Graph mit $c = 1 $.
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.99\linewidth]{UnitGraph.eps}
@@ -88,7 +93,9 @@ Der Unit Disk Graph ist ein euklidischer Graph ohne alle Kanten, die länger als
 
 
 \subsection{Spanner}
-Gegeben ist ein Graph $G $, welcher ein Subgraph vom euklidischen Graphen $E $ ist. $G $ enthält alle Knoten von $E $, aber nicht alle Kanten. Die Umwege, die durch das Löschen von Kanten entstehen, dürfen nur um einen konstanten Faktor ansteigen. 
+Gegeben ist ein Graph $G $, welcher ein Subgraph vom euklidischen Graphen $E $ ist.
+$G $ enthält alle Knoten von $E $, aber nicht alle Kanten. 
+Die Umwege, die durch das Löschen von Kanten entstehen, dürfen nur um einen konstanten Faktor ansteigen. 
 
 \subsubsection{Euklidischer Spanner}
 $G $ ist genau dann ein euklidischer Spanner von $H $, wenn die kürzesten Pfade zwischen allen Knoten maximal um einen konstanten Faktor $t $ vergrößert werden.
@@ -110,10 +117,10 @@ Gegeben ist ein Graph $G $. Für alle Knoten $A \in G $ wird folgender Algorithm
 \centering
 \includegraphics[width=0.99\linewidth]{Yao_Step2.eps}
 \caption{Punkt A mit acht $45\degree $ großen Kegeln. Kürzeste Kante $AB $ wird ausgewählt}
-\label{fig:YaoStep1}
+\label{fig:YaoStep2}
 \end{figure}
 
-\end{enumerate} 
+\end{enumerate} T
 %Dadurch entsteht Graph $G' $. 
 
 \subsection{Delaunay Triangulation}
@@ -131,7 +138,7 @@ Eine Runde sieht beispielsweise wie folgt aus:
 \item Danach verarbeiten sie die Nachrichten und stellen ggf. weitere Berechnungen an.
 \item Am Ende der Runde werden Nachrichten an andere Knoten verschickt.
 \end{enumerate}
-Hier ist zu beachten, dass alle gesendeten Nachrichten \textbf{nur} zu Beginn der Folgerunde ankommen sind.
+Hier ist zu beachten, dass alle gesendeten Nachrichten \textbf{nur} zu Beginn der Folgerunde angekommen sind.
 
 %Algorithmus, definieren, dass es sich hier um Algorithmen auf Graphen handelt?
 \subsection{Lokale Algorithmen} \label{lokal}
@@ -184,6 +191,20 @@ Ein Algorithmus ist genau dann streng lokal, wenn er unabhängig von der Netzgr�
 
 \section{Geometrische Spanner}
 \subsection{Der outward Path}
+Gegeben sind zwei Kanten $CA $ und $CB $ ausgehend von einem gemeinsamen Punkt $C $.
+%$\bigcirc _{ABC}$ ist der Kreis durch die drei Punkte $A, B, C $
+$CA $ ist die kürzeste Kante.
+
+
+
+
+ (Abbildung \ref{fig:outward_path1}).
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.80\linewidth]{outward_path1.eps}
+\caption{}
+\label{fig:outward_path1}
+\end{figure}
 
 \subsection{Der inward Path}
 
