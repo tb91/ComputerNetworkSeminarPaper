@@ -11,6 +11,7 @@
 \usepackage{graphicx}
 \graphicspath{{figures/eps/}}
 \usepackage{ dsfont }
+\usepackage{ gensymb }
 
 
 
@@ -34,7 +35,7 @@ TODO: Die Zusammenfassung zu Ihrer Seminarausarbeitung.
 \end{abstract}
 
 \begin{IEEEkeywords}
-TODO: Stichworte zu Ihrem Seminarthema.
+Spanner, ad-hoc Netze, Delaunay Graph, Modified Yao-Step
 \end{IEEEkeywords}
 
 
@@ -105,6 +106,13 @@ Gegeben ist ein Graph $G $. Für alle Knoten $A \in G $ wird folgender Algorithm
 \item Bestimme die kürzeste Kante in jedem Kegel ausgehend von $A $.
 \item Lösche alle Kanten, die nicht von beiden Endpunkten ausgewählt wurden.
 
+\begin{figure}
+\centering
+\includegraphics[width=0.99\linewidth]{Yao_Step2.eps}
+\caption{Punkt A mit acht $45\degree $ großen Kegeln. Kürzeste Kante $AB $ wird ausgewählt}
+\label{fig:YaoStep1}
+\end{figure}
+
 \end{enumerate} 
 %Dadurch entsteht Graph $G' $. 
 
@@ -123,7 +131,7 @@ Eine Runde sieht beispielsweise wie folgt aus:
 \item Danach verarbeiten sie die Nachrichten und stellen ggf. weitere Berechnungen an.
 \item Am Ende der Runde werden Nachrichten an andere Knoten verschickt.
 \end{enumerate}
-Hier ist zu beachten, dass alle gesendeten Nachrichten \textbf{nur} zu Beginn der Folgerunde ankommen.
+Hier ist zu beachten, dass alle gesendeten Nachrichten \textbf{nur} zu Beginn der Folgerunde ankommen sind.
 
 %Algorithmus, definieren, dass es sich hier um Algorithmen auf Graphen handelt?
 \subsection{Lokale Algorithmen} \label{lokal}
@@ -176,6 +184,7 @@ Ein Algorithmus ist genau dann streng lokal, wenn er unabhängig von der Netzgr�
 
 \section{Geometrische Spanner}
 \subsection{Der outward Path}
+
 \subsection{Der inward Path}
 
 
