@@ -116,7 +116,7 @@ Gegeben ist ein Graph $G $. Für alle Knoten $A \in G $ wird folgender Algorithm
 \begin{figure}
 \centering
 \includegraphics[width=0.99\linewidth]{Yao_Step2.eps}
-\caption{Punkt A mit acht $45\degree $ großen Kegeln. Kürzeste Kante $AB $ wird ausgewählt}
+\caption{Punkt A mit acht $45\degree $ großen Kegeln. Kürzeste Kante $AC $ wird ausgewählt}
 \label{fig:YaoStep2}
 \end{figure}
 
@@ -191,9 +191,13 @@ Ein Algorithmus ist genau dann streng lokal, wenn er unabhängig von der Netzgr�
 
 \section{Geometrische Spanner}
 \subsection{Der outward Path}
-Gegeben sind zwei Kanten $CA $ und $CB $ ausgehend von einem gemeinsamen Punkt $C $.
+Gegeben sind zwei Kanten $CA $ und $CB $ im Delaunay-Graph $G $ vom Euklidischen Graph $E $.
 %$\bigcirc _{ABC}$ ist der Kreis durch die drei Punkte $A, B, C $
 $CA $ ist die kürzeste Kante.
+Nun benutzen die Autoren von \cite{kanj} eine rekursive Definition um den Pfad von A nach B zu definieren.
+Wenn dieser Pfad nicht existiert, ist der Graph nicht mehr verbunden.
+Die Rekursion endet, wenn $AB \in G$.
+In diesem Fall
 
 
 
@@ -201,8 +205,8 @@ $CA $ ist die kürzeste Kante.
  (Abbildung \ref{fig:outward_path1}).
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.80\linewidth]{outward_path1.eps}
-\caption{}
+\includegraphics[width=1\linewidth]{outward_path1.eps}
+\caption{Der }
 \label{fig:outward_path1}
 \end{figure}
 
