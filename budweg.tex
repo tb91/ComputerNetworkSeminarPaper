@@ -42,7 +42,7 @@ Spanner, ad-hoc Netze, Delaunay Graph, Modified Yao-Step
 
 \section{Einleitung}
 Es gibt viele Anwendungsbereiche für drahtlose Sensornetze. 
-Zum Beispiel können Waldbrände oder Tsunamis durch ein Frühwarnsystem, welches durch ein Sensornetz realisiert wird, schneller erkannt werden. 
+Zum Beispiel können Waldbrände oder Tsunamis durch ein Sensornetz-Frühwarnsystem schneller erkannt werden. 
 Sowohl in diesem Beispiel als auch in anderen Anwendungsgebieten ist es gewünscht, dass alle gesendeten Nachrichten ankommen.
 Garantierte Nachrichtenauslieferung wird von mehreren Algorithmen bereits erreicht (z.B.: Face-Routing: siehe \cite{FaceRouting}).
 Jedoch müssen dafür bestimmte Voraussetzungen an das Sensornetz erfüllt sein. 
@@ -184,6 +184,7 @@ Wie im Abschnitt \ref{lokal} beschrieben, sind lokale Algorithmen noch nicht aus
 Strenge Lokalität ist gegeben, wenn der Algorithmus unabhängig von der Netzgröße in konstanter Zeit terminiert (siehe \cite{strictlyLocal}).
 
 
+
 \subsubsection{title}
 
 
@@ -193,16 +194,25 @@ Strenge Lokalität ist gegeben, wenn der Algorithmus unabhängig von der Netzgr�
 \subsection{Der outward Path}
 Gegeben sind zwei Kanten $CA $ und $CB $ im Delaunay-Graph $G $ vom Euklidischen Graph $E $.
 %$\bigcirc _{ABC}$ ist der Kreis durch die drei Punkte $A, B, C $
-$CA $ ist die kürzeste Kante.
+Ohne Beschränkung der Allgemeinheit sei $CA $ die kürzeste Kante.
 Nun benutzen die Autoren von \cite{kanj} eine rekursive Definition um den Pfad von A nach B zu definieren.
-Wenn dieser Pfad nicht existiert, ist der Graph nicht mehr verbunden.
-Die Rekursion endet, wenn $AB \in G$.
-In diesem Fall
+Es gilt zu beweisen, dass dieser Pfad in jedem Fall existiert, weil anderenfalls der Graph nicht unbedingt verbunden ist.
+Dieser Fall darf nicht eintreten.
+
+\begin{enumerate}[\IEEEsetlabelwidth{12}]
+\item[Basisfall] Die Rekursion endet, wenn $AB \in G$. (siehe Abbildung \ref{fig:outward_path1})
+\item[Rekursionsfall] Aufgrund der Delaunay-Eigenschaft, dass eine Kante nur dann nicht in $G $ enthalten ist, wenn im Kreis $\bigcirc {ABC} $
+ein weiterer Punkt liegt, muss deshalb ein weiterer Punkt in  $\bigcirc {ABC} $ liegen.
+\end{enumerate}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1\linewidth]{outward_path_kreise.eps}
+\caption{ $(O_1) $ und $(O_2) $ sind vollständig innerhalb von (O)}
+\label{fig:outward_path_kreise}
+\end{figure}
 
 
-
-
- (Abbildung \ref{fig:outward_path1}).
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1\linewidth]{outward_path1.eps}
