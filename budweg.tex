@@ -185,9 +185,6 @@ Strenge Lokalit채t ist gegeben, wenn der Algorithmus unabh채ngig von der Netzgr�
 
 
 
-\subsubsection{title}
-
-
 \section{was erreicht diese Arbeit} %bearbeiten
 
 \section{Geometrische Spanner}
@@ -200,22 +197,29 @@ Es gilt zu beweisen, dass dieser Pfad in jedem Fall existiert, weil anderenfalls
 Dieser Fall darf nicht eintreten.
 
 \begin{enumerate}[\IEEEsetlabelwidth{12}]
-\item[Basisfall] Die Rekursion endet, wenn $AB \in G$. (siehe Abbildung \ref{fig:outward_path1})
-\item[Rekursionsfall] Aufgrund der Delaunay-Eigenschaft, dass eine Kante nur dann nicht in $G $ enthalten ist, wenn im Kreis $\bigcirc {ABC} $
-ein weiterer Punkt liegt, muss deshalb ein weiterer Punkt in  $\bigcirc {ABC} $ liegen.
+\item[Basisfall] Die Rekursion endet, wenn $AB \in G $. (vgl. Abbildung \ref{fig:YaoStep2})
+\item[Rekursionsfall] $AB \notin G $
 \end{enumerate}
+Aufgrund der Delaunay-Eigenschaft, dass eine Kante nur dann nicht in $G $ enthalten ist, wenn im Kreis $\bigcirc {ABC} $
+ein weiterer Punkt liegt, muss deshalb ein weiterer Punkt in  $\bigcirc {ABC} $ liegen.
+In diesem Rekursionsfall gelten immer folgende Eigenschaften:
+\begin{enumerate}
+\item $(O_1) $ und $(O_2) $ sind vollst채ndig innerhalb von $(O) $ (vgl. Abbildung \ref{fig:outward_path_kreise})
+\item $\alpha $ und $\beta $ sind beide kleiner als der Winkel $\angle {AOB} $ (vgl. Abbildung \ref{fig:outward_path_winkel})
+\end{enumerate}
+
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1\linewidth]{outward_path_kreise.eps}
-\caption{ $(O_1) $ und $(O_2) $ sind vollst채ndig innerhalb von (O)}
+\caption{ $(O_1) $ und $(O_2) $ sind vollst채ndig innerhalb von (O), $(O_1) $ ist der Kreis durch A und T mit Mittelpunkt auf dem Segment $AO $, $(O_2) $ verl채uft durch B und T und der Mittelpunkt liegt auf dem Segment $BO $} 
 \label{fig:outward_path_kreise}
 \end{figure}
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1\linewidth]{outward_path_winkel.eps}
-\caption{ $\alpha $ und $\beta $ sind beide kleiner als $ AOB $}
+\caption{ $\alpha $ und $\beta $ sind beide kleiner als $ AOB $, gleiche Konstruktion wie in Abbildung \ref{fig:outward_path_kreise}}
 \label{fig:outward_path_winkel}
 \end{figure}
 
