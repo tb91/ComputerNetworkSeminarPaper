@@ -1,7 +1,7 @@
 \documentclass[a4paper,twoside]{IEEEtran}
 
 \newcommand{\seminarteilnehmer}{Tim Budweg}
-\newcommand{\seminartitel}{Analyse des modified Yao-Steps angewandt auf den Delaunay Graphen}
+\newcommand{\seminartitel}{Erklärung zum modified Yao-Steps angewandt auf den Delaunay Graphen}
 
 % Löschen oder kommentieren Sie die folgenden beiden Zeilen aus,
 % wenn Sie den Text in Englisch schreiben wollen.
@@ -217,7 +217,7 @@ Dieser Fall darf nicht eintreten.
 \item[Rekursionsfall] $AB \notin G $
 \end{enumerate}
 Aufgrund der Delaunay-Eigenschaft, dass eine Kante nur dann nicht in $G $ enthalten ist, wenn im Kreis $\bigcirc {ABC} $ ein weiterer Punkt liegt, muss deshalb ein weiterer Punkt in  $\bigcirc {ABC} $ liegen.
-Um den Pfad von A nach B zu erhalten, wird ein Pfad von A zum intermediate Point T und von diesem zu B erstellt und konkateniert.
+Um den Pfad von A nach B zu erhalten, wird ein Pfad von A zum intermediate Point T (siehe Abbildung \ref{fig:intermediate}) und von diesem zu B erstellt und konkateniert.
 Dieser Rekursionsfall kann öfter eintreten, da es bezüglich A und T oder B und T einen weiteren intermediate Point $T' $ geben kann und dazwischen rekursiv fortführend bis der Basisfall eintritt.
 Der Rekursionsfall bewahrt immer folgende Eigenschaften:
 \begin{enumerate}
@@ -226,6 +226,12 @@ Der Rekursionsfall bewahrt immer folgende Eigenschaften:
 \item Alle drei Winkel sind kleiner als $\frac{4\pi}{k} $
 \end{enumerate}
 
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1\linewidth]{outward_path1.eps}
+\caption{T wird intermediate Point genannt.}
+\label{fig:intermediate}
+\end{figure}
 
 \begin{figure}[h!]
 \centering
@@ -241,25 +247,29 @@ Der Rekursionsfall bewahrt immer folgende Eigenschaften:
 \label{fig:outward_path_winkel}
 \end{figure}
 
-\begin{figure}[h!]
-\centering
-\includegraphics[width=0.8\linewidth]{outward_path_empty.eps}
-\caption{Die grünen Bereiche enthalten keine Punkte des Graphen.}
-\label{fig:outward_path_empty}
-\end{figure}
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[width=0.8\linewidth]{outward_path_empty.eps}
+%\caption{Die grünen Bereiche enthalten keine Punkte des Graphen.}
+%\label{fig:outward_path_empty}
+%\end{figure}
 
 
-\begin{figure}[h!]
-\centering
-\includegraphics[width=1\linewidth]{outward_path1.eps}
-\caption{T wird intermediate Point genannt.}
-\label{fig:intermediate}
-\end{figure}
+
 
 
 
 \subsection{Der inward Path}
+Die Menge S besteht aus allen Punkten innerhalb von $\triangle {ABC} $, Punkt A und Punkt B.
 
+%$CH(S) $ ist die konvexe Hülle von S.
+%$CH(S) $ enthält somit alle 
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1\linewidth]{inward_path1.eps}
+\caption{Beispiel eines inward Path von A nach B}
+\label{fig:inward_path1}
+\end{figure}
 
 \section{Fazit}
 
