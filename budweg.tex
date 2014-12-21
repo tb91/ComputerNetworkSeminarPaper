@@ -1,7 +1,7 @@
 \documentclass[a4paper,twoside]{IEEEtran}
 
 \newcommand{\seminarteilnehmer}{Tim Budweg}
-\newcommand{\seminartitel}{TODO: Der Titel Ihrer Seminararbeit}
+\newcommand{\seminartitel}{Analyse des modified Yao-Steps angewandt auf den Delaunay Graphen}
 
 % Löschen oder kommentieren Sie die folgenden beiden Zeilen aus,
 % wenn Sie den Text in Englisch schreiben wollen.
@@ -32,7 +32,7 @@
 \maketitle
 
 \begin{abstract}
-TODO: Die Zusammenfassung zu Ihrer Seminarausarbeitung.
+Diese Arbeit erläutert die Spannerbildung mithilfe der Delaunay-Triangulation mit einem modified Yao-Step aus \cite{kanj}. Der \textit{stretch-factor} liegt bei 3.54 in Bezug zum Euklidischen Graphen und beschränkt den Ausgangsgrad der Knoten auf 14.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -110,7 +110,7 @@ Formal bedeutet das:
 Gegeben ist ein Graph $G $. Für alle Knoten $A \in G $ wird folgender Algorithmus ausgeführt:
 \begin{enumerate}
 \item Erzeuge k gleich große Kegel um $A $. $k \in \mathds{N} > 6 $
-\item Bestimme die kürzeste Kante in jedem Kegel ausgehend von $A $.
+\item Bestimme die kürzeste Kante in jedem Kegel ausgehend von $C $.
 \item Lösche alle Kanten, die nicht von beiden Endpunkten ausgewählt wurden.
 
 \begin{figure}
@@ -128,9 +128,15 @@ Die Delaunay Triangulation erzeugt aus einem beliebigen zusammenhängenden Graph
 Dazu werden alle Dreiecke betrachtet.
 Wenn der Kreis durch alle Eckpunkte des Dreiecks keine weiteren Punkte des Graphen enthält, sind diese drei Kanten auch im Delaunay Graphen. 
 Um Fallunterscheidungen zu vermeiden wird angenommen, dass keine vier Punkte auf einem Kreis liegen. 
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1\linewidth]{2-3.eps}
+\caption{Die grünen Bereiche dürfen keine Punkte enthalten. Da der gesamte Kreis laut Delaunay-Eigenschaft leer sein muss, ist dies trivialerweise erfüllt.}
+\label{fig:2-3}
+\end{figure}
 
 
-\subsubsection{Synchronität}
+\subsection{Synchronität}
 Bei einem synchronen Algorithmus ist die Arbeitsweise der Knoten in Runden und diese in Phasen eingeteilt. 
 Eine Runde sieht beispielsweise wie folgt aus:
 \begin{enumerate}
@@ -145,14 +151,14 @@ Hier ist zu beachten, dass alle gesendeten Nachrichten zu Beginn der Folgerunde 
 Ein Algorithmus ist genau dann lokal, wenn jeder Knoten ausschließlich mit seiner \textit{k-Hop} Nachbarschaft kommuniziert. ($k \in \mathds{N}$)
 Formal reicht dies aus, um einen Algorithmus lokal zu nennen.
 Das Problem, dass der Algorithmus eine lange Laufzeit hat (siehe Einleitung), ist dadurch jedoch nicht gelöst.
-Anhand des \textit{Maximal Independent Set} Algorithmus lässt sich ein Beispiel konstruieren, welches dieses Problem veranschaulicht.
+Anhand des \textit{Maximal Independent Set (Fortan: MIS)} Algorithmus lässt sich ein Beispiel konstruieren, welches dieses Problem veranschaulicht.
 %Es soll das \textit{Maximal Independent Set} (MIS) eines Graphen $G $ berechnet werden.
 Betrachten Sie Abbildung \ref{fig:MIS}.
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.99\linewidth]{MIS.eps}
-\caption{$\times $ sind Knoten im Maximal Independent Set (Fortan: MIS), $\bullet $ sind keine Knoten des MIS, Die Kreise um die Knoten sind die jeweiligen Sendebereiche.}
+\caption{$\times $ sind Knoten im Maximal Independent Set, $\bullet $ sind keine Knoten des MIS, Die Kreise um die Knoten sind die jeweiligen Sendebereiche.}
 \label{fig:MIS}
 \end{figure}
 
@@ -163,7 +169,6 @@ Betrachten Sie Abbildung \ref{fig:MIS}.
 \item[Runde 2] Knoten 2 entscheidet, dass er kein MIS-Knoten ist, da er in seiner Nachbarschaft Knoten 1 kennt, der schon MIS-Knoten ist. Knoten 3 wartet.
 
 \item[Runde 3] Knoten 3 wird MIS-Knoten, da Knoten 2 kein MIS-Knoten ist und somit 3 die kleinste ID hat. 
-
 \end{enumerate}
 
 Diese Schritte lassen sich durch den gesamten Graphen sukzessiv durchführen. 
@@ -171,7 +176,7 @@ Der Algorithmus hat demnach eine Laufzeit in der Größenordnung von
 \begin{equation*}
 \theta (dia(G)) 
 \end{equation*}
-wobei $dia(G) $ für den Durchmesser (größter kürzester Pfad) des Graphen steht.
+wobei $dia(G) $ für den Durchmesser (längster kürzester Pfad) des Graphen steht.
 
 Die Definition des lokalen Algorithmus trifft hier zu, weil jeder Knoten nur mit seinen unmittelbaren Nachbarn, der \textit{1-Hop-Nachbarschaft}, kommuniziert.
 
@@ -181,31 +186,36 @@ Die Definition des lokalen Algorithmus trifft hier zu, weil jeder Knoten nur mit
 
 \subsection{Strenge Lokalität}
 Wie im Abschnitt \ref{lokal} beschrieben, sind lokale Algorithmen noch nicht ausreichend, um die benötigte Nachrichtenanzahl zu minimieren.
-Strenge Lokalität ist gegeben, wenn der Algorithmus unabhängig von der Netzgröße in konstanter Zeit terminiert (siehe \cite{strictlyLocal}).
+Strenge Lokalität ist gegeben, wenn ein \textit{synchroner} Algorithmus unabhängig von der Netzgröße in konstanter Zeit terminiert (siehe \cite{strictlyLocal}).
 
 
 
 \section{was erreicht diese Arbeit} %bearbeiten
 
 \section{Geometrische Spanner}
+
+\subsection{•}
+
 \subsection{Der outward Path}
 Gegeben sind zwei Kanten $CA $ und $CB $ im Delaunay-Graph $G $ vom Euklidischen Graph $E $.
 %$\bigcirc _{ABC}$ ist der Kreis durch die drei Punkte $A, B, C $
 Ohne Beschränkung der Allgemeinheit sei $CA $ die kürzeste Kante.
 Nun benutzen die Autoren von \cite{kanj} eine rekursive Definition um den Pfad von A nach B zu definieren.
-Es gilt zu beweisen, dass dieser Pfad in jedem Fall existiert, weil anderenfalls der Graph nicht unbedingt verbunden ist.
+Es gilt zu beweisen, dass dieser Pfad in jedem Fall existiert, weil anderenfalls der Graph nicht zwingend verbunden ist.
 Dieser Fall darf nicht eintreten.
 
 \begin{enumerate}[\IEEEsetlabelwidth{12}]
-\item[Basisfall] Die Rekursion endet, wenn $AB \in G $. (vgl. Abbildung \ref{fig:YaoStep2})
+\item[Basisfall] Die Rekursion endet, wenn $AB \in G $. (vgl. Abbildung \ref{fig:YaoStep2}: AB müssen verbunden sein, weil B der einzige Knoten in einem Kegel von A ist.)
 \item[Rekursionsfall] $AB \notin G $
 \end{enumerate}
-Aufgrund der Delaunay-Eigenschaft, dass eine Kante nur dann nicht in $G $ enthalten ist, wenn im Kreis $\bigcirc {ABC} $
-ein weiterer Punkt liegt, muss deshalb ein weiterer Punkt in  $\bigcirc {ABC} $ liegen.
-In diesem Rekursionsfall gelten immer folgende Eigenschaften:
+Aufgrund der Delaunay-Eigenschaft, dass eine Kante nur dann nicht in $G $ enthalten ist, wenn im Kreis $\bigcirc {ABC} $ ein weiterer Punkt liegt, muss deshalb ein weiterer Punkt in  $\bigcirc {ABC} $ liegen.
+Um den Pfad von A nach B zu erhalten, wird ein Pfad von A zum intermediate Point T und von diesem zu B erstellt und konkateniert.
+Dieser Rekursionsfall kann öfter eintreten, da es bezüglich A und T oder B und T einen weiteren intermediate Point $T' $ geben kann und dazwischen rekursiv fortführend bis der Basisfall eintritt.
+Der Rekursionsfall bewahrt immer folgende Eigenschaften:
 \begin{enumerate}
 \item $(O_1) $ und $(O_2) $ sind vollständig innerhalb von $(O) $ (vgl. Abbildung \ref{fig:outward_path_kreise})
-\item $\alpha $ und $\beta $ sind beide kleiner als der Winkel $\angle {AOB} $ (vgl. Abbildung \ref{fig:outward_path_winkel})
+\item $\alpha $ und $\beta $ sind beide kleiner als der Winkel $\angle {AOB} $ (vgl. Abbildung \ref{fig:outward_path_winkel}) 
+\item Alle drei Winkel sind kleiner als $\frac{4\pi}{k} $
 \end{enumerate}
 
 
@@ -219,17 +229,26 @@ In diesem Rekursionsfall gelten immer folgende Eigenschaften:
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1\linewidth]{outward_path_winkel.eps}
-\caption{ $\alpha $ und $\beta $ sind beide kleiner als $ AOB $, gleiche Konstruktion wie in Abbildung \ref{fig:outward_path_kreise}}
+\caption{ $\alpha $ und $\beta $ sind beide kleiner als $ AOB $, gleiche Konstruktion wie in Abbildung \ref{fig:outward_path_kreise}, A und B liegen im selben Kegel ausgehend von C.}
 \label{fig:outward_path_winkel}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1\linewidth]{outward_path_empty.eps}
+\caption{Die grünen Bereiche enthalten keine Punkte des Graphen.}
+\label{fig:outward_path_empty}
 \end{figure}
 
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1\linewidth]{outward_path1.eps}
-\caption{Der }
-\label{fig:outward_path1}
+\caption{T wird intermediate Point genannt.}
+\label{fig:intermediate}
 \end{figure}
+
+
 
 \subsection{Der inward Path}
 
