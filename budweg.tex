@@ -198,14 +198,17 @@ Strenge Lokalität ist gegeben, wenn ein \textit{synchroner} Algorithmus unabhä
 Es gilt folgendes Lemma zu beweisen:
 
 \begin{boundedSpannerTheorem}
-Für jedes $k \geq 14 $ existiert ein subgraph $G' $ vom Delaunay-Graph $G $, sodass jeder Knoten aus $G' $ einen maximalen Ausgangsgrad von k und einen stretch-factor von $1+2\pi(k \cos{\frac{\pi}{k}})^{-1} $ hat.
+Für jedes $k \geq 14 $ existiert ein Subgraph $G' $ vom Delaunay-Graph $G $, sodass $G' $ einen maximalen Ausgangsgrad von k und einen stretch-factor von maximal $1+2\pi(k \cos{\frac{\pi}{k}})^{-1} $ hat.
 \end{boundedSpannerTheorem}
-
-\subsection{Der outward Path}
 Gegeben sind zwei Kanten $CA $ und $CB $ im Delaunay-Graph $G $ vom Euklidischen Graph $E $.
 %$\bigcirc _{ABC}$ ist der Kreis durch die drei Punkte $A, B, C $
 Ohne Beschränkung der Allgemeinheit sei $CA $ die kürzeste Kante.
-Nun benutzen die Autoren von \cite{kanj} eine rekursive Definition um den Pfad von A nach B zu definieren.
+Die Autoren von \cite{kanj} beweisen dieses Theorem mithilfe des \textit{outward} und des \textit{inward} Path. %, welche in 10 stehen...
+Der outward Path kann gebildet werden, wenn kein Knoten von $G $ innerhalb von $\triangle {ABC} $ liegt.
+Der inward Path verbindet die Knoten A und B, wenn Knoten innerhalb von $\triangle {ABC} $ liegen.
+
+\subsection{Der outward Path}
+Die Autoren von \cite{kanj} benutzen eine rekursive Definition um den Pfad von A nach B zu definieren.
 Es gilt zu beweisen, dass dieser Pfad in jedem Fall existiert, weil anderenfalls der Graph nicht zwingend verbunden ist.
 Dieser Fall darf nicht eintreten.
 
@@ -226,21 +229,21 @@ Der Rekursionsfall bewahrt immer folgende Eigenschaften:
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=1\linewidth]{outward_path_kreise.eps}
+\includegraphics[width=0.8\linewidth]{outward_path_kreise.eps}
 \caption{ $(O_1) $ und $(O_2) $ sind vollständig innerhalb von (O), $(O_1) $ ist der Kreis durch A und T mit Mittelpunkt auf dem Segment $AO $, $(O_2) $ verläuft durch B und T und der Mittelpunkt liegt auf dem Segment $BO $} 
 \label{fig:outward_path_kreise}
 \end{figure}
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=1\linewidth]{outward_path_winkel.eps}
+\includegraphics[width=0.8\linewidth]{outward_path_winkel.eps}
 \caption{ $\alpha $ und $\beta $ sind beide kleiner als $ AOB $, gleiche Konstruktion wie in Abbildung \ref{fig:outward_path_kreise}, A und B liegen im selben Kegel ausgehend von C.}
 \label{fig:outward_path_winkel}
 \end{figure}
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=1\linewidth]{outward_path_empty.eps}
+\includegraphics[width=0.8\linewidth]{outward_path_empty.eps}
 \caption{Die grünen Bereiche enthalten keine Punkte des Graphen.}
 \label{fig:outward_path_empty}
 \end{figure}
