@@ -12,9 +12,10 @@
 \graphicspath{{figures/eps/}}
 \usepackage{ dsfont }
 \usepackage{ gensymb }
+\usepackage{amsthm}
 
 
-
+\newtheorem{boundedSpannerTheorem}{Theorem}[section]
 
 
 \usepackage{amsmath}
@@ -194,7 +195,11 @@ Strenge Lokalität ist gegeben, wenn ein \textit{synchroner} Algorithmus unabhä
 
 \section{Geometrische Spanner}
 
-\subsection{•}
+Es gilt folgendes Lemma zu beweisen:
+
+\begin{boundedSpannerTheorem}
+Für jedes $k \geq 14 $ existiert ein subgraph $G' $ vom Delaunay-Graph $G $, sodass jeder Knoten aus $G' $ einen maximalen Ausgangsgrad von k und einen stretch-factor von $1+2\pi(k \cos{\frac{\pi}{k}})^{-1} $ hat.
+\end{boundedSpannerTheorem}
 
 \subsection{Der outward Path}
 Gegeben sind zwei Kanten $CA $ und $CB $ im Delaunay-Graph $G $ vom Euklidischen Graph $E $.
