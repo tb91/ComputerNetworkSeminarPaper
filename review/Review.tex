@@ -37,7 +37,32 @@ Diese Review bezieht sich auf das Paper von Carl Rainer Brenk zum Thema \glqq Lo
 mit variabler Übertragungsreichweite\grqq
 \end{abstract}
 
+\section{Zusammenfassung}
+Das Paper handelt von einer Spannerkonstruktion mithilfe eines zentralen Algorithmus und wie man dies zu einem lokalen Algorithmus erweitern kann.
 
+Zu Beginn werden einige Grundlagen und fortgeschrittenes Wissen vermittelt.
+Danach wird der Algorithmus anhand eines Beispiels erläutert.
+Dazu werden einige Parameter erklärt und kontinuierlich der nächste Schritt erläutert.
+Zuerst teilt man anhand der Kantenlänge die Kanten in verschiedene Hierarchie-Ebenen auf.
+Der Algorithmus betrachtet alle Ebenen beginnend mit der kleinsten Ebene, welche die kürzesten Kanten beinhaltet. 
+Es gibt zwei Möglichkeiten wie mit der aktuellen Kante verfahren wird.
+
+Im Anschluss legt der Autor den Dehnungsfaktor fest und beweist diesen.
+Die Beweisidee ist die einer vollständigen Induktion.
+
+Als nächster Teil der Arbeit wird dieser zentralisierte Algorithmus auf einen verteilten, lokalen Algorithmus erweitert.
+Dabei wird angenommen, dass jeder Knoten seine 1-Hop-Nachbarschaft kennt und die Knoten synchron Nachrichten austauschen.
+Das Prinzip des Algorithmus bleibt gleich. 
+Die Bestimmung der Kantenlänge wird weiterhin zentralisiert von den Pivot-Knoten erfüllt.
+
+Zum Schluss wird der Algorithmus auf UDG-Graphen erweitert.
+
+
+
+
+\section{Kritik}
+
+\section{Sonstiges}
 
 
 

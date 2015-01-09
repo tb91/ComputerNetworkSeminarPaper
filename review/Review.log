@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=latex 2014.11.21)  9 JAN 2015 15:48
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=latex 2014.11.21)  9 JAN 2015 16:30
 entering extended mode
 **Review.tex
 (C:\Users\Tim\rechnernetzeseminar\review\Review.tex
@@ -452,12 +452,12 @@ Package gensymb Warning: Not defining \micro.
 
 ] (C:\Users\Tim\rechnernetzeseminar\review\Review.aux) ) 
 Here is how much of TeX's memory you used:
- 2122 strings out of 493922
- 31387 string characters out of 3144904
- 85324 words of memory out of 3000000
- 5449 multiletter control sequences out of 15000+200000
- 24710 words of font info for 54 fonts, out of 3000000 for 9000
+ 2125 strings out of 493922
+ 31415 string characters out of 3144904
+ 87324 words of memory out of 3000000
+ 5451 multiletter control sequences out of 15000+200000
+ 25356 words of font info for 55 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  27i,5n,20p,202b,164s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on Review.dvi (1 page, 884 bytes).
+Output written on Review.dvi (1 page, 2656 bytes).
