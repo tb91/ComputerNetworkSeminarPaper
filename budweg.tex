@@ -111,10 +111,11 @@ Formal bedeutet das:
 
 \subsection{Yao Step}
 Gegeben ist ein Graph $G $. Für alle Knoten $A \in G $ wird folgender Algorithmus ausgeführt:
-\begin{enumerate}
+\begin{itemize}
 \item Erzeuge k gleich große Kegel um $A $. $k \in \mathds{N} > 6 $
 \item Bestimme die kürzeste Kante in jedem Kegel ausgehend von $C $.
 \item Lösche alle Kanten, die nicht von beiden Endpunkten ausgewählt wurden.
+\end{itemize}
 
 \begin{figure}
 \centering
@@ -123,7 +124,7 @@ Gegeben ist ein Graph $G $. Für alle Knoten $A \in G $ wird folgender Algorithm
 \label{fig:YaoStep2}
 \end{figure}
 
-\end{enumerate} T
+
 %Dadurch entsteht Graph $G' $. 
 
 \subsection{Delaunay Triangulation}
@@ -214,19 +215,19 @@ Die Autoren von \cite{kanj} benutzen eine rekursive Definition um den Pfad von A
 Es gilt zu beweisen, dass dieser Pfad in jedem Fall existiert, weil anderenfalls der Graph nicht zwingend verbunden ist.
 Dieser Fall darf nicht eintreten.
 
-\begin{enumerate}[\IEEEsetlabelwidth{12}]
+\begin{itemize}
 \item[Basisfall] Die Rekursion endet, wenn $AB \in G $. (vgl. Abbildung \ref{fig:YaoStep2}: AB müssen verbunden sein, weil B der einzige Knoten in einem Kegel von A ist.)
 \item[Rekursionsfall] $AB \notin G $
-\end{enumerate}
+\end{itemize}
 Aufgrund der Delaunay-Eigenschaft, dass eine Kante nur dann nicht in $G $ enthalten ist, wenn im Kreis $\bigcirc {ABC} $ ein weiterer Punkt liegt, muss deshalb ein weiterer Punkt in  $\bigcirc {ABC} $ liegen.
 Um den Pfad von A nach B zu erhalten, wird ein Pfad von A zum intermediate Point T (siehe Abbildung \ref{fig:intermediate}) und von diesem zu B erstellt und konkateniert.
 Dieser Rekursionsfall kann öfter eintreten, da es bezüglich A und T oder B und T einen weiteren intermediate Point $T' $ geben kann und dazwischen rekursiv fortführend bis der Basisfall eintritt.
 Der Rekursionsfall bewahrt immer folgende Eigenschaften:
-\begin{enumerate}
+\begin{itemize}
 \item $(O_1) $ und $(O_2) $ sind vollständig innerhalb von $(O) $ (vgl. Abbildung \ref{fig:outward_path_kreise})
 \item $\alpha $ und $\beta $ sind beide kleiner als der Winkel $\angle {AOB} $ (vgl. Abbildung \ref{fig:outward_path_winkel}) 
 \item Alle drei Winkel sind kleiner als $\frac{4\pi}{k} $
-\end{enumerate}
+\end{itemize}
 
 \begin{figure}[h!]
 \centering
