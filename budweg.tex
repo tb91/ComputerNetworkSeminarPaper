@@ -35,7 +35,7 @@
 \maketitle
 
 \begin{abstract}
-Diese Arbeit erläutert die Spannerbildung mithilfe der Delaunay-Triangulation mit einem modified Yao-Step aus \cite{kanj}. Der \textit{stretch-factor} liegt bei 3.54 in Bezug zum Euklidischen Graphen und beschränkt den Ausgangsgrad der Knoten auf 14.
+Diese Arbeit erläutert die Spannerbildung mithilfe der Delaunay-Triangulation mit einem modified Yao-Step aus \cite{kanj}. Der \emph{stretch-factor} liegt bei 3.54 in Bezug zum Euklidischen Graphen und beschränkt den Ausgangsgrad der Knoten auf 14.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -50,19 +50,19 @@ Sowohl in diesem Beispiel als auch in anderen Anwendungsgebieten ist es gewünsc
 Garantierte Nachrichtenauslieferung wird von mehreren Algorithmen bereits erreicht (z.B.: Face-Routing: siehe \cite{FaceRouting}).
 Jedoch müssen dafür bestimmte Voraussetzungen an das Sensornetz erfüllt sein. 
 Die wichtigste Voraussetzung ist die Planarität des Netzes, das heißt, dass keine Kantenschnitte existieren dürfen. 
-Diese Planarität zu erreichen ist ein wichtiges Ziel von \textit{Topologiekontrollen}.
+Diese Planarität zu erreichen ist ein wichtiges Ziel von \emph{Topologiekontrollen}.
 
 Ein weiterer Punkt ist, dass diese Netze willkürlich groß werden können.
-Deshalb führt ein \textit{zentralisierter} Algorithmus zu einer sehr langen Laufzeit mit hohem Energieverbrauch, weil Nachrichten in Abhängigkeit von der globalen Netzgröße verschickt werden müssen. 
+Deshalb führt ein \emph{zentralisierter} Algorithmus zu einer sehr langen Laufzeit mit hohem Energieverbrauch, weil Nachrichten in Abhängigkeit von der globalen Netzgröße verschickt werden müssen. 
 
 Damit die Nachrichten nicht über beliebig lange Pfade geroutet werden müssen, wird eine Beschränkung der Pfadverlängerung gewünscht. 
 Pfadverlängerungen entstehen, wenn (spezielle) kantenlöschende Algorithmen auf Graphen angewendet werden.
 Der hier behandelte Algorithmus ist streng lokal, was die Anzahl der gesendeten Nachrichten minimiert.
-Außerdem produziert dieser einen \textit{t-Spanner} des euklidischen Graphen.
+Außerdem produziert dieser einen \emph{t-Spanner} des euklidischen Graphen.
 %\textit{t-Spanner} geben den größtmöglichen Umweg an, der entsteht, wenn man einen (speziellen) kantenlöschenden Algorithmus auf einen Graphen anwendet.
 Diese Thematik wird im Folgenden anhand des Artikel von \cite{kanj} erläutert.
-Dort wurde ein streng lokaler Algorithmus aufbauend auf den \textit{Delaunay Graphen} angewandt.
-Das Ergebnis ist ein Graph, welcher im Bezug zum euklidischen Graphen einen \textit{stretch-factor} von $t=3.54 $ und zusätzlich eine Beschränkung des Ausgangsgrad eines Knoten von $k=14 $ hat.
+Dort wurde ein streng lokaler Algorithmus aufbauend auf den \emph{Delaunay Graphen} angewandt.
+Das Ergebnis ist ein Graph, welcher im Bezug zum euklidischen Graphen einen stretch-factor von $t=3.54 $ und zusätzlich eine Beschränkung des Ausgangsgrad eines Knoten von $k=14 $ hat.
 
 
 
@@ -105,28 +105,7 @@ $G $ ist genau dann ein euklidischer Spanner von $H $, wenn die kürzesten Pfade
 Die Notation $c_{G}(A, B) $ bedeutet: der kürzeste Pfad zwischen A und B im Graphen $G $.
 Formal bedeutet das:
 \begin{equation}
-	c_H(A, B) \leq p 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	\cdot c_G(A, B)
+	c_H(A, B) \leq p \cdot c_G(A, B)
 \end{equation}
 {\footnotesize (Formel entnommen aus \cite{kanj})}
 
@@ -172,10 +151,10 @@ Hier ist zu beachten, dass alle gesendeten Nachrichten zu Beginn der Folgerunde 
 
 %Algorithmus, definieren, dass es sich hier um Algorithmen auf Graphen handelt?
 \subsection{Lokale Algorithmen} \label{lokal}
-Ein Algorithmus ist genau dann lokal, wenn jeder Knoten ausschließlich mit seiner \textit{k-Hop} Nachbarschaft kommuniziert. ($k \in \mathds{N}$)
+Ein Algorithmus ist genau dann lokal, wenn jeder Knoten ausschließlich mit seiner \emph{k-Hop} Nachbarschaft kommuniziert. ($k \in \mathds{N}$)
 Formal reicht dies aus, um einen Algorithmus lokal zu nennen.
 Das Problem, dass der Algorithmus eine lange Laufzeit hat (siehe Einleitung), ist dadurch jedoch nicht gelöst.
-Anhand des \textit{Maximal Independent Set (Fortan: MIS)} Algorithmus lässt sich ein Beispiel konstruieren, welches dieses Problem veranschaulicht.
+Anhand des \emph{Maximal Independent Set (Fortan: MIS)} Algorithmus lässt sich ein Beispiel konstruieren, welches dieses Problem veranschaulicht.
 %Es soll das \textit{Maximal Independent Set} (MIS) eines Graphen $G $ berechnet werden.
 Betrachten Sie Abbildung \ref{fig:MIS}.
 
@@ -202,7 +181,7 @@ Der Algorithmus hat demnach eine Laufzeit in der Größenordnung von
 \end{equation*}
 wobei $dia(G) $ für den Durchmesser (längster kürzester Pfad) des Graphen steht.
 
-Die Definition des lokalen Algorithmus trifft hier zu, weil jeder Knoten nur mit seinen unmittelbaren Nachbarn, der \textit{1-Hop-Nachbarschaft}, kommuniziert.
+Die Definition des lokalen Algorithmus trifft hier zu, weil jeder Knoten nur mit seinen unmittelbaren Nachbarn, der 1-Hop-Nachbarschaft, kommuniziert.
 
 
 
@@ -210,7 +189,7 @@ Die Definition des lokalen Algorithmus trifft hier zu, weil jeder Knoten nur mit
 
 \subsection{Strenge Lokalität}
 Wie im Abschnitt \ref{lokal} beschrieben, sind lokale Algorithmen noch nicht ausreichend, um die benötigte Nachrichtenanzahl zu minimieren.
-Strenge Lokalität ist gegeben, wenn ein \textit{synchroner} Algorithmus unabhängig von der Netzgröße in konstanter Zeit terminiert (siehe \cite{strictlyLocal}).
+Strenge Lokalität ist gegeben, wenn ein \emph{synchroner} Algorithmus unabhängig von der Netzgröße in konstanter Zeit terminiert (siehe \cite{strictlyLocal}).
 
 
 
@@ -226,7 +205,7 @@ Für jedes $k \geq 14 $ existiert ein Subgraph $G' $ vom Delaunay-Graph $G $, so
 Gegeben sind zwei Kanten $CA $ und $CB $ im Delaunay-Graph $G $ vom Euklidischen Graph $E $.
 %$\bigcirc _{ABC}$ ist der Kreis durch die drei Punkte $A, B, C $
 Ohne Beschränkung der Allgemeinheit sei $CA $ die kürzeste Kante.
-Die Autoren von \cite{kanj} beweisen dieses Theorem mithilfe des \textit{outward} und des \textit{inward} Path. %, welche in 10 stehen...
+Die Autoren von \cite{kanj} beweisen dieses Theorem mithilfe des \emph{outward} und des \emph{inward} Path. %, welche in 10 stehen...
 Der outward Path kann gebildet werden, wenn kein Knoten von $G $ innerhalb von $\triangle {ABC} $ liegt.
 Der inward Path verbindet die Knoten A und B, wenn Knoten innerhalb von $\triangle {ABC} $ liegen.
 
