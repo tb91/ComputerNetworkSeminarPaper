@@ -135,7 +135,7 @@ Um Fallunterscheidungen zu vermeiden wird angenommen, dass keine vier Punkte auf
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1\linewidth]{2-3.eps}
-\caption{Die grünen Bereiche dürfen keine Punkte enthalten. Da der gesamte Kreis laut Delaunay-Eigenschaft leer sein muss, ist dies trivialerweise erfüllt.}
+\caption{Die grünen Bereiche dürfen keine Punkte enthalten. Wenn doch, werden diese Punkte ausgewählt und die \glqq alten\grqq \space Knoten liegen außerhalb der neuen grünen Gebiete}
 \label{fig:2-3}
 \end{figure}
 
@@ -143,11 +143,11 @@ Um Fallunterscheidungen zu vermeiden wird angenommen, dass keine vier Punkte auf
 \subsection{Synchronität}
 Bei einem synchronen Algorithmus ist die Arbeitsweise der Knoten in Runden und diese in Phasen eingeteilt. 
 Eine Runde sieht beispielsweise wie folgt aus:
-\begin{enumerate}
+\begin{itemize}
 \item Zuerst erhalten alle Knoten ihre Nachrichten, falls es welche gibt.
 \item Danach verarbeiten sie die Nachrichten und stellen ggf. weitere Berechnungen an.
 \item Am Ende der Runde werden Nachrichten an andere Knoten verschickt.
-\end{enumerate}
+\end{itemize}
 Hier ist zu beachten, dass alle gesendeten Nachrichten zu Beginn der Folgerunde angekommen sind.
 
 %Algorithmus, definieren, dass es sich hier um Algorithmen auf Graphen handelt?
@@ -167,13 +167,13 @@ Betrachten Sie Abbildung \ref{fig:MIS}.
 \end{figure}
 
 
-\begin{enumerate}
-\item[Runde 1] Knoten 1 wird MIS-Knoten, da er von allen seinen Nachbarn, welche noch keine Rolle haben, derjenige mit der kleinsten ID ist. Knoten 2 und 3 warten, da es Knoten gibt, welche noch keine Rolle und eine kleinere ID haben.
+\begin{itemize}
+\item \textbf{Runde 1}: Knoten 1 wird MIS-Knoten, da er von allen seinen Nachbarn, welche noch keine Rolle haben, derjenige mit der kleinsten ID ist. Knoten 2 und 3 warten, da es Knoten gibt, welche noch keine Rolle und eine kleinere ID haben.
 
-\item[Runde 2] Knoten 2 entscheidet, dass er kein MIS-Knoten ist, da er in seiner Nachbarschaft Knoten 1 kennt, der schon MIS-Knoten ist. Knoten 3 wartet.
+\item \textbf{Runde 2}: Knoten 2 entscheidet, dass er kein MIS-Knoten ist, da er in seiner Nachbarschaft Knoten 1 kennt, der schon MIS-Knoten ist. Knoten 3 wartet.
 
-\item[Runde 3] Knoten 3 wird MIS-Knoten, da Knoten 2 kein MIS-Knoten ist und somit 3 die kleinste ID hat. 
-\end{enumerate}
+\item \textbf{Runde 3}: Knoten 3 wird MIS-Knoten, da Knoten 2 kein MIS-Knoten ist und somit 3 die kleinste ID hat. 
+\end{itemize}
 
 Diese Schritte lassen sich durch den gesamten Graphen sukzessiv durchführen. 
 Der Algorithmus hat demnach eine Laufzeit in der Größenordnung von 
@@ -216,9 +216,10 @@ Es gilt zu beweisen, dass dieser Pfad in jedem Fall existiert, weil anderenfalls
 Dieser Fall darf nicht eintreten.
 
 \begin{itemize}
-\item[Basisfall] Die Rekursion endet, wenn $AB \in G $. (vgl. Abbildung \ref{fig:YaoStep2}: AB müssen verbunden sein, weil B der einzige Knoten in einem Kegel von A ist.)
-\item[Rekursionsfall] $AB \notin G $
+\item \textbf{Basisfall}: Die Rekursion endet, wenn $AB \in G $. (vgl. Abbildung \ref{fig:YaoStep2}: AB müssen verbunden sein, weil B der einzige Knoten in einem Kegel von A ist.)
+\item \textbf{Rekursionsfall}: $AB \notin G $
 \end{itemize}
+
 Aufgrund der Delaunay-Eigenschaft, dass eine Kante nur dann nicht in $G $ enthalten ist, wenn im Kreis $\bigcirc {ABC} $ ein weiterer Punkt liegt, muss deshalb ein weiterer Punkt in  $\bigcirc {ABC} $ liegen.
 Um den Pfad von A nach B zu erhalten, wird ein Pfad von A zum intermediate Point T (siehe Abbildung \ref{fig:intermediate}) und von diesem zu B erstellt und konkateniert.
 Dieser Rekursionsfall kann öfter eintreten, da es bezüglich A und T oder B und T einen weiteren intermediate Point $T' $ geben kann und dazwischen rekursiv fortführend bis der Basisfall eintritt.
