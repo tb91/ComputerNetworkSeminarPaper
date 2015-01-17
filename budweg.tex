@@ -223,7 +223,7 @@ Dieser Fall darf nicht eintreten.
 \end{itemize}
 
 Aufgrund der Delaunay-Eigenschaft, dass eine Kante nur dann nicht in $G $ enthalten ist, wenn im Kreis $\bigcirc {ABC} $ ein weiterer Punkt liegt, muss deshalb ein weiterer Punkt in  $\bigcirc {ABC} $ liegen.
-Um den Pfad von A nach B zu erhalten, wird ein Pfad von A zum intermediate Point T (für Konstruktion siehe Abbildung \ref{fig:intermediate}) und von diesem zu B erstellt und konkateniert.
+Um den Pfad von A nach B zu erhalten, wird ein Pfad von A zum \emph{intermediate Point T} und von diesem zu B erstellt und konkateniert. (für Konstruktion siehe Abbildung \ref{fig:intermediate})
 Dieser Rekursionsfall kann öfter eintreten, da es bezüglich A und T oder B und T einen weiteren intermediate Point $T' $ geben kann und dazwischen rekursiv fortführend bis der Basisfall eintritt.
 Der Rekursionsfall bewahrt immer folgende Eigenschaften:
 \begin{itemize}
@@ -235,7 +235,7 @@ Der Rekursionsfall bewahrt immer folgende Eigenschaften:
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1\linewidth]{outward_path1.eps}
-\caption{T wird intermediate Point genannt.}
+\caption{T $\in G $ ist ein Knoten. Dieser Knoten wird intermediate Point mit Bezug zu $A und B $ genannt.}
 \label{fig:intermediate}
 \end{figure}
 
