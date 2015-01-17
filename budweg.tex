@@ -21,7 +21,7 @@
 
 
 \newcommand{\seminarteilnehmer}{Tim Budweg}
-\newcommand{\seminartitel}{Erklärung zum modified Yao-Steps angewandt auf den Delaunay Graphen}
+\newcommand{\seminartitel}{Erklärung zum modified Yao-Step angewandt auf den Delaunay Graphen}
 
 \begin{document}
 
@@ -49,11 +49,11 @@ Zum Beispiel können Waldbrände oder Tsunamis durch ein Sensornetz-Frühwarnsys
 Sowohl in diesem Beispiel als auch in anderen Anwendungsgebieten ist es gewünscht, dass alle gesendeten Nachrichten ankommen.
 Garantierte Nachrichtenauslieferung wird von mehreren Algorithmen bereits erreicht (z.B.: Face-Routing: siehe \cite{FaceRouting}).
 Jedoch müssen dafür bestimmte Voraussetzungen an das Sensornetz erfüllt sein. 
-Die wichtigste Voraussetzung ist die Planarität des Netzes, das heißt, dass keine Kantenschnitte existieren dürfen. 
+Die wichtigste Voraussetzung ist die Planarität des Netzes, das heißt, dass keine \emph{Kantenschnitte} existieren dürfen. 
 Diese Planarität zu erreichen ist ein wichtiges Ziel von \emph{Topologiekontrollen}.
 
 Ein weiterer Punkt ist, dass diese Netze willkürlich groß werden können.
-Deshalb führt ein \emph{zentralisierter} Algorithmus zu einer sehr langen Laufzeit mit hohem Energieverbrauch, weil Nachrichten in Abhängigkeit von der globalen Netzgröße verschickt werden müssen. 
+Deshalb führt ein \emph{zentralisierter} Algorithmus zu einer sehr langen Laufzeit mit hohem Energieverbrauch, weil die Menge der versendeten Nachrichten in Abhängigkeit zu der globalen Netzgröße steht.
 
 Damit die Nachrichten nicht über beliebig lange Pfade geroutet werden müssen, wird eine Beschränkung der Pfadverlängerung gewünscht. 
 Pfadverlängerungen entstehen, wenn (spezielle) kantenlöschende Algorithmen auf Graphen angewendet werden.
@@ -101,13 +101,13 @@ $G $ enthält alle Knoten von $E $, aber nicht alle Kanten.
 Die Umwege, die durch das Löschen von Kanten entstehen, dürfen nur um einen konstanten Faktor ansteigen. 
 
 \subsubsection{Euklidischer Spanner}
-$G $ ist genau dann ein euklidischer Spanner von $H $, wenn die kürzesten Pfade zwischen allen Knoten maximal um einen konstanten Faktor $t $ vergrößert werden.
+$H $ ist genau dann ein euklidischer Spanner von $G $, wenn die kürzesten Pfade zwischen allen Knoten maximal um einen konstanten Faktor $t $ vergrößert werden.
 Die Notation $c_{G}(A, B) $ bedeutet: der kürzeste Pfad zwischen A und B im Graphen $G $.
 Formal bedeutet das:
 \begin{equation}
-	c_H(A, B) \leq p \cdot c_G(A, B)
+	c_H(A, B) \leq t \cdot c_G(A, B)
 \end{equation}
-{\footnotesize (Formel entnommen aus \cite{kanj})}
+{\footnotesize (Formel entnommen aus \cite{kanj} und angepasst)}
 
 \subsection{Yao Step}
 Gegeben ist ein Graph $G $. Für alle Knoten $A \in G $ wird folgender Algorithmus ausgeführt:
@@ -120,7 +120,7 @@ Gegeben ist ein Graph $G $. Für alle Knoten $A \in G $ wird folgender Algorithm
 \begin{figure}
 \centering
 \includegraphics[width=0.99\linewidth]{Yao_Step2.eps}
-\caption{Punkt A mit acht $45\degree $ großen Kegeln. Kürzeste Kante $AC $ wird ausgewählt}
+\caption{Punkt C mit acht $45\degree $ großen Kegeln. Kürzeste Kante $AC $ wird ausgewählt}
 \label{fig:YaoStep2}
 \end{figure}
 
