@@ -49,7 +49,7 @@ Zum Beispiel können Waldbrände oder Tsunamis durch ein Sensornetz-Frühwarnsys
 Sowohl in diesem Beispiel als auch in anderen Anwendungsgebieten ist es gewünscht, dass alle gesendeten Nachrichten ankommen.
 Garantierte Nachrichtenauslieferung wird von mehreren Algorithmen bereits erreicht (z.B.: Face-Routing: siehe \cite{FaceRouting}).
 Jedoch müssen dafür bestimmte Voraussetzungen an das Sensornetz erfüllt sein. 
-Die wichtigste Voraussetzung ist die Planarität des Netzes, das heißt, dass keine \emph{Kantenschnitte} existieren dürfen. 
+Die wichtigste Voraussetzung ist die Planarität des Netzes, das heißt, dass keine \emph{Kantenschnitte} (siehe \ref{Kantenschnitt}) existieren dürfen. 
 Diese Planarität zu erreichen ist ein wichtiges Ziel von \emph{Topologiekontrollen}.
 
 Ein weiterer Punkt ist, dass diese Netze willkürlich groß werden können.
@@ -64,6 +64,8 @@ Diese Thematik wird im Folgenden anhand des Artikel von \cite{kanj} erläutert.
 Dort wurde ein streng lokaler Algorithmus aufbauend auf den \emph{Delaunay Graphen} angewandt.
 Das Ergebnis ist ein Graph, welcher im Bezug zum euklidischen Graphen einen stretch-factor von $t=3.54 $ und zusätzlich eine Beschränkung des Ausgangsgrad eines Knoten von $k=14 $ hat.
 
+\subsection{Kantenschnitte} \label{Kantenschnitt}
+Ein Kantenschnitt ist ein Punkt, in dem sich zwei oder mehr Kanten desselben Graphen schneiden.
 
 
 %Spanner?
@@ -221,7 +223,7 @@ Dieser Fall darf nicht eintreten.
 \end{itemize}
 
 Aufgrund der Delaunay-Eigenschaft, dass eine Kante nur dann nicht in $G $ enthalten ist, wenn im Kreis $\bigcirc {ABC} $ ein weiterer Punkt liegt, muss deshalb ein weiterer Punkt in  $\bigcirc {ABC} $ liegen.
-Um den Pfad von A nach B zu erhalten, wird ein Pfad von A zum intermediate Point T (siehe Abbildung \ref{fig:intermediate}) und von diesem zu B erstellt und konkateniert.
+Um den Pfad von A nach B zu erhalten, wird ein Pfad von A zum intermediate Point T (für Konstruktion siehe Abbildung \ref{fig:intermediate}) und von diesem zu B erstellt und konkateniert.
 Dieser Rekursionsfall kann öfter eintreten, da es bezüglich A und T oder B und T einen weiteren intermediate Point $T' $ geben kann und dazwischen rekursiv fortführend bis der Basisfall eintritt.
 Der Rekursionsfall bewahrt immer folgende Eigenschaften:
 \begin{itemize}
