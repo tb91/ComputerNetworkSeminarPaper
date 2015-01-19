@@ -36,7 +36,7 @@
 \maketitle
 
 \begin{abstract}
-Diese Arbeit erläutert die Spannerbildung mithilfe der Delaunay-Triangulation mit einem modified Yao-Step aus \cite{kanj}. Der \emph{stretch-factor} liegt bei 3.54 in Bezug zum Euklidischen Graphen und beschränkt den Ausgangsgrad der Knoten auf 14.
+Diese Arbeit erläutert die Spannerbildung mithilfe der Delaunay-Triangulation und dem modified Yao-Step aus \cite{kanj}. Der \emph{stretch-factor} liegt bei 3.54 in Bezug zum Euklidischen Graphen und beschränkt den Ausgangsgrad der Knoten auf 14.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -196,10 +196,10 @@ Strenge Lokalität ist gegeben, wenn ein \emph{synchroner} Algorithmus unabhäng
 
 \section{Geometrische Spanner}
 
-Es gilt folgendes Lemma zu beweisen:
+Es gilt folgendes Theorem zu beweisen:
 
 \begin{boundedSpannerTheorem}
-Für jedes $k \geq 14 $ existiert ein Subgraph $G' $ vom Delaunay-Graph $G $, sodass $G' $ einen maximalen Ausgangsgrad von k und einen stretch-factor von maximal $1+2\pi(k \cos{\frac{\pi}{k}})^{-1} $ hat.
+Für jedes $k \geq 14 $ existiert ein Subgraph $G' $ vom Delaunay-Graph $G $, sodass $G' $ einen maximalen Ausgangsgrad von k und einen stretch-factor von $1+2\pi(k \cos{\frac{\pi}{k}})^{-1} $ hat.
 \end{boundedSpannerTheorem}
 Gegeben sind zwei Kanten $CA $ und $CB $ im Delaunay-Graph $G $ vom Euklidischen Graph $E $.
 %$\bigcirc _{ABC}$ ist der Kreis durch die drei Punkte $A, B, C $
@@ -212,6 +212,8 @@ Der inward Path verbindet die Knoten A und B, wenn Knoten innerhalb von $\triang
 Die Autoren von \cite{kanj} benutzen eine rekursive Definition um den Pfad von A nach B zu definieren.
 Es gilt zu beweisen, dass dieser Pfad in jedem Fall existiert, weil anderenfalls der Graph nicht zwingend verbunden ist.
 Dieser Fall darf nicht eintreten.
+Außerdem muss nachgewiesen werden, dass die Länge dieses Pfades maximal
+$1+2\pi(k \cos{\frac{\pi}{k}})^{-1} $ länger ist als der vorherige Pfad von A nach B.
 
 
 \begin{itemize}
@@ -260,6 +262,9 @@ Abbildung \ref{fig:outward_path_fertig} zeigt ein Beispiel eines kompletten outw
 \label{fig:outward_path_fertig}
 \end{figure}
 
+\subsubsection{Beweis}
+
+
 %\begin{figure}[h!]
 %\centering
 %\includegraphics[width=0.8\linewidth]{outward_path_empty.eps}
@@ -301,6 +306,10 @@ Diese gesamte Konstruktion, der Pfad von A nach B, wird inward Path genannt.
 \caption{Voraussetzungen für den inward Path und Beispiel eines inward Path $N_0N_1N_2N_3N_4 $}
 \label{fig:inward_path_prop}
 \end{figure}
+
+
+\subsubsection{Beweis}
+
 
 
 %$CH(S) $ ist die konvexe Hülle von S.
