@@ -135,12 +135,7 @@ Die Delaunay Triangulation erzeugt aus einem beliebigen zusammenhängenden Graph
 Dazu werden alle Dreiecke betrachtet.
 Wenn der Kreis durch alle Eckpunkte des Dreiecks keine weiteren Punkte des Graphen enthält, sind diese drei Kanten auch im Delaunay Graphen. 
 Um Fallunterscheidungen zu vermeiden wird angenommen, dass keine vier Punkte auf einem Kreis liegen. 
-\begin{figure}[h!]
-\centering
-\includegraphics[width=1\linewidth]{2-3.eps}
-\caption{Die grünen Bereiche dürfen keine Punkte enthalten. Wenn doch, werden diese Punkte ausgewählt und die \glqq alten\grqq \space Knoten liegen außerhalb der neuen grünen Gebiete}
-\label{fig:2-3}
-\end{figure}
+
 
 
 \subsection{Synchronität}
@@ -218,13 +213,15 @@ Die Autoren von \cite{kanj} benutzen eine rekursive Definition um den Pfad von A
 Es gilt zu beweisen, dass dieser Pfad in jedem Fall existiert, weil anderenfalls der Graph nicht zwingend verbunden ist.
 Dieser Fall darf nicht eintreten.
 
+
 \begin{itemize}
 \item \textbf{Basisfall}: Die Rekursion endet, wenn $AB \in G $. (vgl. Abbildung \ref{fig:YaoStep2}: AB müssen verbunden sein, weil B der einzige Knoten in einem Kegel von A ist.)
 \item \textbf{Rekursionsfall}: $AB \notin G $
 \end{itemize}
 
 Aufgrund der Delaunay-Eigenschaft, dass eine Kante nur dann nicht in $G $ enthalten ist, wenn im Kreis $\bigcirc {ABC} $ ein weiterer Punkt liegt, muss deshalb ein weiterer Punkt in  $\bigcirc {ABC} $ liegen.
-Um den Pfad von A nach B zu erhalten, wird ein Pfad von A zum \emph{intermediate Point T} und von diesem zu B erstellt und konkateniert. (für Konstruktion siehe Abbildung \ref{fig:intermediate})
+Diesen Punkt nennen die Autoren von \cite{kanj} einen \emph{intermediate Point}.
+Um den Pfad von A nach B zu erhalten, wird ein Pfad von A zum intermediate Point T und von diesem zu B erstellt und konkateniert (siehe Abbildung \ref{fig:intermediate}).
 Dieser Rekursionsfall kann öfter eintreten, da es bezüglich A und T oder B und T einen weiteren intermediate Point $T' $ geben kann und dazwischen rekursiv fortführend bis der Basisfall eintritt.
 Der Rekursionsfall bewahrt immer folgende Eigenschaften:
 \begin{itemize}
@@ -233,10 +230,12 @@ Der Rekursionsfall bewahrt immer folgende Eigenschaften:
 \item Alle drei Winkel sind kleiner als $\frac{4\pi}{k} $
 \end{itemize}
 
+Abbildung \ref{fig:outward_path_fertig} zeigt ein Beispiel eines kompletten outward Path.
+
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1\linewidth]{outward_path1.eps}
-\caption{T $\in G $ ist ein Knoten. Dieser Knoten wird intermediate Point mit Bezug zu $A und B $ genannt.}
+\caption{T $\in G $ ist ein Knoten. Dieser Knoten wird intermediate Point mit Bezug zu $A $ und $B $ genannt.}
 \label{fig:intermediate}
 \end{figure}
 
@@ -254,6 +253,13 @@ Der Rekursionsfall bewahrt immer folgende Eigenschaften:
 \label{fig:outward_path_winkel}
 \end{figure}
 
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1\linewidth]{outward_path_fertig.eps}
+\caption{Zwischen $A $ und $B $ ist ein fertiger Outward Path mit den Intermediate Points $M_1 $ und $M_2 $}
+\label{fig:outward_path_fertig}
+\end{figure}
+
 %\begin{figure}[h!]
 %\centering
 %\includegraphics[width=0.8\linewidth]{outward_path_empty.eps}
@@ -268,9 +274,9 @@ Der Rekursionsfall bewahrt immer folgende Eigenschaften:
 
 \subsection{Der inward Path}
 Die Menge S besteht aus allen Punkten innerhalb von $\triangle {ABC} $, Punkt A und Punkt B.
-In Abbildung \ref{fig:inward_path1} ist ein Beispiel eines Inward Path.
+In Abbildung \ref{fig:inward_path_prop} ist ein Beispiel eines Inward Path.
 $CH(S) $ sind alle Punkte der Konvexen Hülle von S. %erklärung der konvexen hülle
-Folgende drei Punkte gelten:
+Folgende drei Voraussetzungen gelten:
 \begin{inwardPathProposition}
 \begin{itemize} %TODO: funktioniert nicht.. erste zeile frei
 	\item $CN_i \in G$
@@ -279,17 +285,20 @@ Folgende drei Punkte gelten:
 \end{itemize} 
 \end{inwardPathProposition}
 
-Abbildung \ref{fig:inward_path_prop} zeigt, dass jede Kante $CN_i $ kürzer ist als $CN_{i+1}$. 
-Außerdem sind alle Winkel $\angle{N_{i-1}N_iN_{i+1}} $ größer als $\pi $.
+Abbildung \ref{fig:inward_path_prop} zeigt, dass alle Winkel $\angle{N_{i-1}N_iN_{i+1}} $ größer als $\pi $ sind.
+Außerdem ist jede Kante $CN_i $ kürzer als $CN_{i+1}$. 
 Da CA ($= CN_0 $) die kürzeste Kante in diesem Kegel ist, muss $CN_1 $ länger sein. 
 Für $CN_1 $ gilt dieselbe Bedingung. 
-Folglich muss $CN_2 $ länger sein.
-
+Folglich muss $CN_2 $ länger sein, etc.
+Hinzu kommt die Voraussetzung $\angle{N_iCN_{i+1}} \leq \angle{BCA} $.
+Dies sind genau die Bedingungen, welche im Voraus bewiesen wurden, um einen outward Path zu konstruieren. 
+Zwischen jedem Paar $N_iN_{i+1} $ gibt es einen outward Path, der dieses Paar verbindet.
+Diese gesamte Konstruktion, der Pfad von A nach B, wird inward Path genannt.
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1\linewidth]{inward_path_prop.eps}
-\caption{$AN_1N_2B $ ist der inward Path von A nach B}
+\caption{Voraussetzungen für den inward Path und Beispiel eines inward Path $N_0N_1N_2N_3N_4 $}
 \label{fig:inward_path_prop}
 \end{figure}
 
