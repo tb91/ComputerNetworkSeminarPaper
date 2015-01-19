@@ -16,6 +16,7 @@
 \usepackage{amsmath}
 
 \newtheorem{boundedSpannerTheorem}{Theorem}[section]
+\newtheorem{inwardPathProposition}{Proposition}
 
 
 
@@ -268,16 +269,39 @@ Der Rekursionsfall bewahrt immer folgende Eigenschaften:
 \subsection{Der inward Path}
 Die Menge S besteht aus allen Punkten innerhalb von $\triangle {ABC} $, Punkt A und Punkt B.
 In Abbildung \ref{fig:inward_path1} ist ein Beispiel eines Inward Path.
+$CH(S) $ sind alle Punkte der Konvexen Hülle von S. %erklärung der konvexen hülle
+Folgende drei Punkte gelten:
+\begin{inwardPathProposition}
+\begin{itemize} %TODO: funktioniert nicht.. erste zeile frei
+	\item $CN_i \in G$
+	\item $|CN_i| \leq |CN_{i+1}| $
+	\item $\angle{N_{i-1}N_iN_{i+1}} \geq \pi $ (Winkel Richtung C)
+\end{itemize} 
+\end{inwardPathProposition}
+
+Abbildung \ref{fig:inward_path_prop} zeigt, dass jede Kante $CN_i $ kürzer ist als $CN_{i+1}$. 
+Außerdem sind alle Winkel $\angle{N_{i-1}N_iN_{i+1}} $ größer als $\pi $.
+Da CA ($= CN_0 $) die kürzeste Kante in diesem Kegel ist, muss $CN_1 $ länger sein. 
+Für $CN_1 $ gilt dieselbe Bedingung. 
+Folglich muss $CN_2 $ länger sein.
+
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1\linewidth]{inward_path_prop.eps}
+\caption{$AN_1N_2B $ ist der inward Path von A nach B}
+\label{fig:inward_path_prop}
+\end{figure}
 
 
 %$CH(S) $ ist die konvexe Hülle von S.
 %$CH(S) $ enthält somit alle 
-\begin{figure}[h!]
-\centering
-\includegraphics[width=1\linewidth]{inward_path1.eps}
-\caption{$AN_1N_2B $ ist der inward Path von A nach B}
-\label{fig:inward_path1}
-\end{figure}
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[width=1\linewidth]{inward_path1.eps}
+%\caption{$AN_1N_2B $ ist der inward Path von A nach B}
+%\label{fig:inward_path1}
+%\end{figure}
 
 %\section{Fazit}
 
