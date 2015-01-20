@@ -36,11 +36,11 @@
 \maketitle
 
 \begin{abstract}
-Diese Arbeit erläutert die Spannerbildung mithilfe der Delaunay-Triangulation und dem modified Yao-Step aus \cite{kanj}. Der \emph{stretch-factor} liegt bei 3.54 in Bezug zum Euklidischen Graphen und beschränkt den Ausgangsgrad der Knoten auf 14.
+\space Diese Arbeit erläutert die Spannerbildung mithilfe der Delaunay-Triangulation und dem modified Yao-Step aus \cite{kanj}. Der \emph{stretch-factor} liegt bei 3.54 in Bezug zum Euklidischen Graphen und beschränkt den Ausgangsgrad der Knoten auf 14.
 \end{abstract}
 
 \begin{IEEEkeywords}
-Spanner, ad-hoc Netze, Delaunay Graph, Modified Yao-Step
+\space Spanner, ad-hoc Netze, Delaunay Graph, Modified Yao-Step
 \end{IEEEkeywords}
 
 
@@ -263,7 +263,11 @@ Abbildung \ref{fig:outward_path_fertig} zeigt ein Beispiel eines kompletten outw
 \end{figure}
 
 \subsubsection{Beweis}
-
+Es wird behauptet, dass von A nach B ein Pfad $p $ existiert, sodass:
+\begin{equation}
+|CA| + |p| \leq (1+2\pi(\cos{\frac{\pi}{k}})^{-1})|CB|
+\end{equation}
+In Worten: Die Länge des Pfades $p $ plus den Wert $|CA| $ darf nicht größer sein als eine Konstante $t $ multipliziert mit der Länge der Kante $CB $.
 
 %\begin{figure}[h!]
 %\centering
