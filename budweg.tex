@@ -15,6 +15,8 @@
 \usepackage{amsthm}
 \usepackage{amsmath}
 
+
+
 \newtheorem{boundedSpannerTheorem}{Theorem}[section]
 \newtheorem{inwardPathProposition}{Proposition}
 
@@ -262,13 +264,27 @@ Abbildung \ref{fig:outward_path_fertig} zeigt ein Beispiel eines kompletten outw
 \label{fig:outward_path_fertig}
 \end{figure}
 
-\subsubsection{Beweis}
+\subsection{Beweis}
 Es wird behauptet, dass von A nach B ein Pfad $p $ existiert, sodass:
 \begin{equation}
 |CA| + |p| \leq (1+2\pi(\cos{\frac{\pi}{k}})^{-1})|CB|
 \end{equation}
 In Worten: Die Länge des Pfades $p $ plus den Wert $|CA| $ darf nicht größer sein als eine Konstante ($t \approx 1.45 $ für $k=14 $) multipliziert mit der Länge der Kante $CB $.
 %Diese Konstante ist die maximale Länge des Teilstücks des Kreises $\bigcirc{ABC} $ von A nach B.
+Es gelten folgende Bedingungen und Formeln:
+\begin{itemize}
+\item $|AB| = 2\cdot \angle{BCA} \cdot |OA| $ mit $O $ als Mittelpunkt des Kreises $\bigcirc{ABC} $ (siehe Abbildung \ref{fig:winkel_mal_strecke} für ein Beispiel)
+\item $\sin{\theta}=\frac{|AB|}{2|OA|} $ %TODO: arc symbol über AB
+\item $|CA|=|CB| $ Denn dadurch ist $|CA| + |AB| $ maximal%TODO: arc symbol über AB
+\end{itemize}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1\linewidth]{bogen_gleich_winkel_mal_strecke.eps}
+\caption{$|AB| = 2\cdot 0.6248 \cdot 2.7738 \approx 3.4661 $} %TODO: Zeichen über AB
+\label{fig:winkel_mal_strecke}
+\end{figure}
+
 
 %\begin{figure}[h!]
 %\centering
@@ -300,6 +316,7 @@ Außerdem ist jede Kante $CN_i $ kürzer als $CN_{i+1}$.
 Da CA ($= CN_0 $) die kürzeste Kante in diesem Kegel ist, muss $CN_1 $ länger sein. 
 Für $CN_1 $ gilt dieselbe Bedingung. 
 Folglich muss $CN_2 $ länger sein, etc.
+
 Hinzu kommt die Voraussetzung $\angle{N_iCN_{i+1}} \leq \angle{BCA} $.
 Dies sind genau die Bedingungen, welche im Voraus bewiesen wurden, um einen outward Path zu konstruieren. 
 Zwischen jedem Paar $N_iN_{i+1} $ gibt es einen outward Path, der dieses Paar verbindet.
