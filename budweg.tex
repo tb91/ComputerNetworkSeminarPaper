@@ -65,11 +65,10 @@ Außerdem produziert dieser einen \emph{t-Spanner} des euklidischen Graphen.
 %\textit{t-Spanner} geben den größtmöglichen Umweg an, der entsteht, wenn man einen (speziellen) kantenlöschenden Algorithmus auf einen Graphen anwendet.
 Diese Thematik wird im Folgenden anhand des Artikel von \cite{kanj} erläutert.
 Dort wurde ein streng lokaler Algorithmus aufbauend auf den \emph{Delaunay Graphen} angewandt.
-Das Ergebnis ist ein Graph, welcher im Bezug zum euklidischen Graphen einen stretch-factor von $t=3.54 $ und zusätzlich eine Beschränkung des Ausgangsgrad eines Knoten von $k=14 $ hat.
+Das Ergebnis ist ein Graph, welcher im Bezug zum euklidischen Graphen einen stretch-factor von $t=3.54 $ und zusätzlich eine Beschränkung des Ausgangsgrad eines Knoten von $k=14 $ hat. % TODO: HIER MUSS NOCH REIN WIE DAS PAPER AUFGEBAUT IST
 
-\subsection{Kantenschnitte} \label{Kantenschnitt}
-Ein Kantenschnitt ist ein Punkt, in dem sich zwei oder mehr Kanten desselben Graphen schneiden.
-
+\section{Begriffe und Notationen}
+Im Folgenden werden die zum Verständnis der Arbeit nötigen Grundbegriffe und abkürzende Notationen erklärt.
 
 %Spanner?
 
@@ -98,6 +97,8 @@ In Abbildung \ref{fig:UnitGraph} sehen Sie den euklidischen Graph aus Abbildung 
 \label{fig:UnitGraph}
 \end{figure}
 
+\subsection{Kantenschnitte} \label{Kantenschnitt}
+Ein Kantenschnitt ist ein Punkt, in dem sich zwei oder mehr Kanten desselben Graphen schneiden.
 
 
 \subsection{Spanner}
@@ -140,7 +141,7 @@ Um Fallunterscheidungen zu vermeiden wird angenommen, dass keine vier Punkte auf
 
 
 
-\subsection{Synchronität}
+\subsection{Synchronizität}
 Bei einem synchronen Algorithmus ist die Arbeitsweise der Knoten in Runden und diese in Phasen eingeteilt. 
 Eine Runde sieht beispielsweise wie folgt aus:
 \begin{itemize}
@@ -195,6 +196,12 @@ Strenge Lokalität ist gegeben, wenn ein \emph{synchroner} Algorithmus unabhäng
 
 
 %\section{was erreicht diese Arbeit} %bearbeiten
+\section{Modified Yao Step}
+Im Folgenden wird der Algorithmus anhand eines Beispiels verfolgt.
+Der Beispiel Graph $E $, welchen wir für dieses Beispiel verwenden, ist in Abbildung \ref zu sehen.
+Daraus wird zuerst der Delaunay Graph gebildet.
+Durch die Eckpunkte aller Dreiecke wird zunächst ein Kreis gebildet.
+Genau dann, wenn in einem Umkreis kein Punkt des Graphen enthalten ist, sind diese drei Kanten auch im Delaunay Graphen.
 
 \section{Geometrische Spanner}
 
