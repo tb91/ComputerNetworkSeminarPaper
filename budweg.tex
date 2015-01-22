@@ -198,10 +198,29 @@ Strenge Lokalität ist gegeben, wenn ein \emph{synchroner} Algorithmus unabhäng
 %\section{was erreicht diese Arbeit} %bearbeiten
 \section{Modified Yao Step}
 Im Folgenden wird der Algorithmus anhand eines Beispiels verfolgt.
-Der Beispiel Graph $E $, welchen wir für dieses Beispiel verwenden, ist in Abbildung \ref zu sehen.
+Der Graph $E $, welchen wir für dieses Beispiel verwenden, ist in Abbildung \ref{fig:beispielgraph} zu sehen.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.6\linewidth]{beispielgraph.eps}
+\caption{Ein euklidischer Graph, welchen wir als Beispiel nutzen.}
+\label{fig:beispielgraph}
+\end{figure}
+
 Daraus wird zuerst der Delaunay Graph gebildet.
-Durch die Eckpunkte aller Dreiecke wird zunächst ein Kreis gebildet.
-Genau dann, wenn in einem Umkreis kein Punkt des Graphen enthalten ist, sind diese drei Kanten auch im Delaunay Graphen.
+Durch die Eckpunkte aller Dreiecke wird ein Kreis gebildet.
+Genau dann, wenn in einem Umkreis kein Punkt des Graphen enthalten ist, sind diese drei Kanten im Delaunay Graphen vorhanden.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\linewidth]{Delaunay_Graph.eps}
+\caption{Ein Delaunaygraph mit den Umkreisen, welche keinen weiteren Punkt beinhalten.}
+\label{fig:delaunay}
+\end{figure}
+
+Der Umkreis durch $\triangle{ABC} $ beinhaltet beispielsweise den Punkt $D $ und deshalb werden die drei Kanten $AB, BC $ und $AC $ vorerst nicht in den Delaunay-Graphen übernommen.
+Für die Kanten $AB $ und $BC $ gibt es jedoch einen anderen Umkreis, der keine weiteren Punkte enthält und deshalb sind diese Kanten im Delaunay-Graphen enthalten (Umkreis durch die drei Punkte $BCD $ für die Kante $BC $ und  $\bigcirc{ABD} $ für die Kante $AB $.)
+
 
 \section{Geometrische Spanner}
 
