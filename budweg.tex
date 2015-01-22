@@ -207,9 +207,9 @@ Der Graph $E $, welchen wir für dieses Beispiel verwenden, ist in Abbildung \re
 \label{fig:beispielgraph}
 \end{figure}
 
-Daraus wird zuerst der Delaunay Graph gebildet.
-Durch die Eckpunkte aller Dreiecke wird ein Kreis gebildet.
-Genau dann, wenn in einem Umkreis kein Punkt des Graphen enthalten ist, sind diese drei Kanten im Delaunay Graphen vorhanden.
+Daraus wird zuerst der Delaunay Graph gebildet, indem durch die Eckpunkte aller Dreiecke ein Kreis gebildet wird.
+Genau dann, wenn in einem Umkreis $\bigcirc{KLM} $ kein Punkt des Graphen enthalten ist, sind die drei Kanten, welche $KLM $ verbinden, im Delaunay Graphen vorhanden.
+Das Ergebnis ist in Abbildung \ref{fig:delaunay} zu sehen.
 
 \begin{figure}[h!]
 \centering
@@ -220,6 +220,26 @@ Genau dann, wenn in einem Umkreis kein Punkt des Graphen enthalten ist, sind die
 
 Der Umkreis durch $\triangle{ABC} $ beinhaltet beispielsweise den Punkt $D $ und deshalb werden die drei Kanten $AB, BC $ und $AC $ vorerst nicht in den Delaunay-Graphen übernommen.
 Für die Kanten $AB $ und $BC $ gibt es jedoch einen anderen Umkreis, der keine weiteren Punkte enthält und deshalb sind diese Kanten im Delaunay-Graphen enthalten (Umkreis durch die drei Punkte $BCD $ für die Kante $BC $ und  $\bigcirc{ABD} $ für die Kante $AB $.)
+
+Des Weiteren legen wir einen Integer Parameter $k=8 $ fest.
+Um die Spannereigenschaften zu gewährleisten, muss $k \geq 14 $ gelten, aber wir ignorieren diese Bedingung, da sie für das Verständnis des Algorithmus keine Rolle spielt.
+Der Vorteil, den wir durch diese Vereinfachung erhalten, ist, dass die Übersichtlichkeit der Abbildungen verbessert wird.
+
+Wir betrachten Punkt $A $.
+Um diesen Punkt müssen $k $ Strahlen gebildet werden, die von $A $ ausgehen.
+Die Winkel zwischen zwei aufeinander folgenden Strahlen müssen alle gleich groß sein.
+Durch diesen Vorgang bilden sich $k $ gleich große Kegel, deren Spitzen in $A $ beginnen.
+Abbildung \ref{fig:cones} zeigt diesen Vorgang.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1\linewidth]{cones.eps}
+\caption{$k $ gleich große Kegel um $A $.}
+\label{fig:cones}
+\end{figure}
+
+Jedes 
+
 
 
 \section{Geometrische Spanner}
