@@ -190,7 +190,7 @@ Die Definition des lokalen Algorithmus trifft hier zu, weil jeder Knoten nur mit
 
 
 \subsection{Strenge Lokalität}
-Wie im Abschnitt \ref{lokal} beschrieben, sind lokale Algorithmen noch nicht ausreichend, um die benötigte Nachrichtenanzahl zu minimieren.
+Wie im Abschnitt \ref{lokal} beschrieben, sind lokale Algorithmen noch nicht ausreichend, um den Nachrichtenaufwand zu verringern.
 Strenge Lokalität ist gegeben, wenn ein \emph{synchroner} Algorithmus unabhängig von der Netzgröße in konstanter Zeit terminiert (siehe \cite{strictlyLocal}).
 
 
@@ -240,12 +240,14 @@ Abbildung \ref{fig:cones} zeigt diesen Vorgang.
 \end{figure}
 
 Als Nächstes wählen wir in jedem - nicht leeren - Kegel die von $A $ ausgehende, kürzeste Kante aus.
-Das sind in diesem Beispiel die Kanten $AB $, $AD $ und $AF $ (vgl. Abbildung \ref{fig:shortestedge}).
+Das sind in diesem Beispiel die Kanten $AB $, $AD $ und $AF $ (vgl. Abbildung \ref{fig:shortestedge}). 
+Die Nummerierung in der Abbildung bezieht sich sowohl auf die am nächsten stehende Kante als auch auf den Kegel, in welchem die Zahl enthalten ist.
+Kante $1 $ und Kegel $1 $ sind somit eindeutig durch die 1 definiert.
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1\linewidth]{shortest_edge.eps}
-\caption{Auswahl der Kanten $AB $, $AD $ und $AF $.}
+\caption{Auswahl der Kanten $AB $, $AD $ und $AF $ und Nummerierung der Kanten und Kegel.}
 \label{fig:shortestedge}
 \end{figure}
 
