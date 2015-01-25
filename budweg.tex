@@ -240,24 +240,25 @@ Abbildung \ref{fig:cones} zeigt diesen Vorgang.
 \end{figure}
 
 Als Nächstes wählen wir in jedem - nicht leeren - Kegel die von $A $ ausgehende, kürzeste Kante aus.
-Das sind in diesem Beispiel die Kanten $AB $, $AD $ und $AF $ (vgl. Abbildung \ref{fig:shortestedge}). 
+Das sind in diesem Beispiel die Kanten $AB $, $AG $, $AH $, $AI $ und $AK $ (vgl. Abbildung \ref{fig:shortestedge}). 
 Die Nummerierung in der Abbildung bezieht sich sowohl auf die am nächsten stehende Kante als auch auf den Kegel, in welchem die Zahl enthalten ist.
 Kante $1 $ und Kegel $1 $ sind somit eindeutig durch die 1 definiert.
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.7\linewidth]{shortest_edge.eps}
-\caption{Auswahl der Kanten $AB $, $AD $ und $AF $ und Nummerierung der Kanten und Kegel.}
+\caption{Auswahl der Kanten $AB $, $AG $, $AH $, $AI $ und $AK $ und Nummerierung der Kanten und Kegel.}
 \label{fig:shortestedge}
 \end{figure}
 
 Im nächsten Schritt iteriert der Algorithmus über alle Kegel, welche keinen Knoten enthalten.
 Zwei oder mehr aufeinander folgende leere Kegel, werden nur einmal behandelt.
-Kegel $4 $ ist beginnend von $1 $ der erste leere Kegel.
-Da zwischen $4 $ und $8 $ keine Kegel existieren, welche einen Knoten enthalten, werden dieses zusammengefasst und als ein Iterationsschritt interpretiert.
+Kegel 1 und 8 sind leer.
+Da beide Kegel aneinander liegen, werden diese zusammengefasst und als ein Iterationsschritt interpretiert.
 Für die Anzahl der aufeinander folgenden leeren Kegel werden zwei unterschiedliche Fälle unterschieden:
 Fall 1 wird behandelt, wenn $l>1 $ und sonst Fall 2 ($l=1 $).
-Da momentan $l=5 $ ist (von 4 bis 8), wird Fall 1 ausgeführt.
+Da momentan $l=2 $ ist (Kegel 1 und 8), wird Fall 1 ausgeführt.
+In diesem Fall 
 
 
 
