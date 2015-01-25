@@ -258,7 +258,21 @@ Da beide Kegel aneinander liegen, werden diese zusammengefasst und als ein Itera
 Für die Anzahl der aufeinander folgenden leeren Kegel werden zwei unterschiedliche Fälle unterschieden:
 Fall 1 wird behandelt, wenn $l>1 $ und sonst Fall 2 ($l=1 $).
 Da momentan $l=2 $ ist (Kegel 1 und 8), wird Fall 1 ausgeführt.
-In diesem Fall 
+Jetzt werden diejenigen Kanten betrachtet, welche von $A $ ausgehen und noch nicht ausgewählt wurden.
+Das sind die Kanten $AD $, $AE$ und $AJ $ (, denn die anderen von $A $ ausgehenden Kanten, wurde bereits im Schritt zuvor ausgewählt.)
+Von dem durch Kegel 1 und Kegel 2 bestimmten Segment wählt der Algorithmus die im Uhrzeigersinn ersten $\frac{l}{2} $, noch nicht selektierten Kanten ausgehend von $A $ aus.
+In diesem Fall wird \emph{eine} nächste Kante ausgewählt (, da $\frac{l}{2} = 1$ ist).
+Dies ist die Kante $AD $ (,da $AB $ bereits ausgewählt wurde).
+
+Dieser Vorgang wird ebenfalls gegen den Uhrzeigersinn ausgeführt.
+Dort wird die Kante $AJ $ ausgewählt. (vgl.: Abbildung \ref{fig:twoempty})
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.6\linewidth]{twoempty_cone.eps}
+\caption{Auswahl der Kanten $AJ $ und $AD $.}
+\label{fig:twoempty}
+\end{figure}
 
 
 
