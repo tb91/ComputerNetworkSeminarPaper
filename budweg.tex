@@ -274,7 +274,49 @@ Dort wird die Kante $AJ $ ausgewählt. (vgl.: Abbildung \ref{fig:twoempty})
 \label{fig:twoempty}
 \end{figure}
 
+Der darauf folgende leere Kegel $3 $ wird als Nächstes behandelt.
+In diesem Fall ist $l=1 $, weil genau ein leerer Kegel zwischen zwei nicht leeren liegt.
+Hier greift der oben erwähnte Fall 2.
+Es werden die nächste Kante im Uhrzeigersinn ($AE $) und die nächste Kante gegen den Uhrzeigersinn ($AD $) betrachtet.
+Es gibt eine weitere Fallunterscheidung:
+\begin{itemize}
+\item Wenn keine der Kanten $AE $ und $AD $ ausgewählt sind, dann wähle die kürzere Kante aus.
+\item Wenn mindestens eine der beiden Kanten bereits ausgewählt ist, dann wird auch die andere ausgewählt.
+\end{itemize}
+Da $AD $ bereits ausgewählt ist, wähle dem obigen System folgend, $AE $ aus.
 
+Die fertige Auswahl von Knoten $A $ lautet:
+\begin{equation*}
+\{AB, AD, AE, AG, AH, AI, AJ, AK\}
+\end{equation*}
+(vgl.: Abbildung \ref{fig:finished_a})
+
+
+Der oben beschriebene Vorgang wird parallel von jedem anderen Knoten durchgeführt.
+Es sind bereits alle Fälle abgedeckt bzw. genannt worden und deshalb wird dieser Vorgang abgekürzt.
+Zum Nachvollziehen befinden sich die fertigen Auswahlbilder im Anhang. %TODO: ja?
+Hier ist die Liste aller anderen Punkte mit ihrer Auswahlliste:
+\begin{itemize}
+\item Punkt B $\{BA, BC, BD, BK\}$
+\item Punkt C $\{CB, CD\}$
+\item Punkt D $\{DA, DB, DC, DE\}$
+\item Punkt E $\{EA, ED, EF, EG\}$
+\item Punkt F $\{FE, FG\}$
+\item Punkt G $\{GA, GE, GF, GH\}$
+\item Punkt H $\{HA, HG, HI\}$
+\item Punkt I $\{IA, IH, IJ\}$
+\item Punkt J $\{JA, JI, JK\}$
+\item Punkt K $\{KA, KB, KJ\}$
+\end{itemize}
+
+Der fertige Graph enthält alle Kanten, welche von beiden Endpunkten gewählt wurden.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.6\linewidth]{finished_A.eps}
+\caption{Die fertige Auswahl aller Kanten von Punkt A sind in rot markiert.}
+\label{fig:finished_a}
+\end{figure}
 
 \section{Geometrische Spanner}
 
