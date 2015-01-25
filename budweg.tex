@@ -251,7 +251,13 @@ Kante $1 $ und Kegel $1 $ sind somit eindeutig durch die 1 definiert.
 \label{fig:shortestedge}
 \end{figure}
 
-
+Im nächsten Schritt iteriert der Algorithmus über alle Kegel, welche keinen Knoten enthalten.
+Zwei oder mehr aufeinander folgende leere Kegel, werden nur einmal behandelt.
+Kegel $4 $ ist beginnend von $1 $ der erste leere Kegel.
+Da zwischen $4 $ und $8 $ keine Kegel existieren, welche einen Knoten enthalten, werden dieses zusammengefasst und als ein Iterationsschritt interpretiert.
+Für die Anzahl der aufeinander folgenden leeren Kegel werden zwei unterschiedliche Fälle unterschieden:
+Fall 1 wird behandelt, wenn $l>1 $ und sonst Fall 2 ($l=1 $).
+Da momentan $l=5 $ ist (von 4 bis 8), wird Fall 1 ausgeführt.
 
 
 
