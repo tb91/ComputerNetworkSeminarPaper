@@ -121,6 +121,7 @@ Gegeben ist ein Graph $G $. Für alle Knoten $A \in G $ wird folgender Algorithm
 \item Bestimme die kürzeste Kante in jedem Kegel ausgehend von $C $.
 \item Lösche alle Kanten, die nicht von beiden Endpunkten ausgewählt wurden.
 \end{itemize}
+Ein Beispiel ist in Abbildung \ref{fig:YaoStep2} gegeben.
 
 \begin{figure}
 \centering
@@ -136,7 +137,7 @@ Gegeben ist ein Graph $G $. Für alle Knoten $A \in G $ wird folgender Algorithm
 Die Delaunay Triangulation erzeugt aus einem beliebigen zusammenhängenden Graphen einen geometrischen (= euklidischen) Spanner mit dem Streckungsfaktor $c_{del} \approx 2.42 $ und einem beliebig hohen Ausgangsgrad eines Knotens. 
 Dazu werden alle Dreiecke betrachtet.
 Wenn der Kreis durch alle Eckpunkte des Dreiecks keine weiteren Punkte des Graphen enthält, sind diese drei Kanten auch im Delaunay Graphen. 
-Um Fallunterscheidungen zu vermeiden wird angenommen, dass keine vier Punkte auf einem Kreis liegen. 
+Um Fallunterscheidungen zu vermeiden, wird angenommen, dass keine vier Punkte auf einem Kreis liegen. 
 
 
 
@@ -148,7 +149,7 @@ Eine Runde sieht beispielsweise wie folgt aus:
 \item Danach verarbeiten sie die Nachrichten und stellen ggf. weitere Berechnungen an.
 \item Am Ende der Runde werden Nachrichten an andere Knoten verschickt.
 \end{itemize}
-Hier ist zu beachten, dass alle gesendeten Nachrichten zu Beginn der Folgerunde angekommen sind.
+Hier ist zu beachten, dass alle gesendeten Nachrichten zu Beginn der Folgerunde bereits angekommen sind.
 
 %Algorithmus, definieren, dass es sich hier um Algorithmen auf Graphen handelt?
 \subsection{Lokale Algorithmen} \label{lokal}
@@ -156,8 +157,10 @@ Ein Algorithmus ist genau dann lokal, wenn jeder Knoten ausschließlich mit sein
 Formal reicht dies aus, um einen Algorithmus lokal zu nennen.
 Das Problem, dass der Algorithmus eine lange Laufzeit hat (siehe Einleitung), ist dadurch jedoch nicht gelöst.
 Anhand des \emph{Maximal Independent Set (Fortan: MIS)} Algorithmus lässt sich ein Beispiel konstruieren, welches dieses Problem veranschaulicht.
-%Es soll das \textit{Maximal Independent Set} (MIS) eines Graphen $G $ berechnet werden.
-Betrachten Sie Abbildung \ref{fig:MIS}.
+Ein Independent Set, ist eine Menge $K $ von Knoten über einem Graphen $G $, sodass keine zwei Knoten nebeneinander liegen, bzw. keine Kante zwei Knoten von $K $ verbindet.
+$K $ ist genau dann ein Maximal Independent Set, wenn kein Knoten zu $K $ hinzugefügt werden kann ohne die Independent Set Eigenschaft zu verletzen.
+Dieser Vorgang wird jetzt exemplarisch erläutert.
+Betrachten Sie dazu Abbildung \ref{fig:MIS}.
 
 \begin{figure}[h!]
 \centering
@@ -255,7 +258,7 @@ Im nächsten Schritt iteriert der Algorithmus über alle Kegel, welche keinen Kn
 Zwei oder mehr aufeinander folgende leere Kegel, werden nur einmal behandelt.
 Kegel 1 und 8 sind leer.
 Da beide Kegel aneinander liegen, werden diese zusammengefasst und als ein Iterationsschritt interpretiert.
-Für die Anzahl der aufeinander folgenden leeren Kegel werden zwei unterschiedliche Fälle unterschieden:
+Für die Anzahl der aufeinander folgenden leeren Kegel $l $ werden zwei unterschiedliche Fälle unterschieden:
 Fall 1 wird behandelt, wenn $l>1 $ und sonst Fall 2 ($l=1 $).
 Da momentan $l=2 $ ist (Kegel 1 und 8), wird Fall 1 ausgeführt.
 Jetzt werden diejenigen Kanten betrachtet, welche von $A $ ausgehen und noch nicht ausgewählt wurden.
@@ -283,7 +286,7 @@ Es gibt eine weitere Fallunterscheidung:
 \item Wenn keine der Kanten $AE $ und $AD $ ausgewählt sind, dann wähle die kürzere Kante aus.
 \item Wenn mindestens eine der beiden Kanten bereits ausgewählt ist, dann wird auch die andere ausgewählt.
 \end{itemize}
-Da $AD $ bereits ausgewählt ist, wähle dem obigen System folgend, $AE $ aus.
+Da $AD $ bereits ausgewählt ist, wähle - dem obigen System folgend - $AE $ aus.
 
 Die fertige Auswahl von Knoten $A $ lautet:
 \begin{equation*}
