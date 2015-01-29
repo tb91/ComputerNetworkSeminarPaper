@@ -297,7 +297,6 @@ Die fertige Auswahl von Knoten $A $ lautet:
 
 Der oben beschriebene Vorgang wird parallel von jedem anderen Knoten durchgeführt.
 Es sind bereits alle Fälle abgedeckt bzw. genannt worden und deshalb wird dieser Vorgang abgekürzt.
-Zum Nachvollziehen befinden sich die fertigen Auswahlbilder im Anhang. %TODO: ja?
 Hier ist die Liste aller anderen Punkte mit ihrer Auswahlliste:
 \begin{itemize}
 \item Punkt B $\{BA, BC, BD, BK\}$
@@ -326,12 +325,23 @@ Der fertige Graph enthält alle Kanten, welche von beiden Endpunkten gewählt wu
 Es gilt folgendes Theorem zu beweisen:
 
 \begin{boundedSpannerTheorem}
-Für jedes $k \geq 14 $ existiert ein Subgraph $G' $ vom Delaunay-Graph $G $, sodass $G' $ einen maximalen Ausgangsgrad von k und einen stretch-factor von $1+2\pi(k \cos{\frac{\pi}{k}})^{-1} $ hat.
+Für jedes $k \geq 14 $ existiert ein Subgraph $G' $ vom Delaunay-Graph $G $, sodass $G' $ einen maximalen Ausgangsgrad von k und einen stretch-factor $t $ von $1+2\pi(k \cos{\frac{\pi}{k}})^{-1} $ hat.
 \end{boundedSpannerTheorem}
 Gegeben sind zwei Kanten $CA $ und $CB $ im Delaunay-Graph $G $ vom Euklidischen Graph $E $.
 %$\bigcirc _{ABC}$ ist der Kreis durch die drei Punkte $A, B, C $
 Ohne Beschränkung der Allgemeinheit sei $CA $ die kürzeste Kante.
-Die Autoren von \cite{kanj} beweisen dieses Theorem mithilfe des \emph{outward} und des \emph{inward} Path. %, welche in 10 stehen...
+Der Aufbau ist wie in Abbildung \ref{fig:YaoStep2}.
+Wir befinden uns in dem Fall, dass ausgehend von einem Dreieck $\triangle{ABC} $ die längste Kante des Dreiecks eingespart werden soll.
+Dies entspricht der Kante $CB $ in o. g. Abbildung.
+Es muss bewiesen werden, dass die Knoten $C $ und $B $ über einen Pfad $p $ dennoch verbunden sind.
+Des Weiteren muss folgende Bedingung für $p $ gelten:
+\begin{equation*}
+ t \cdot |p| \leq	|CB| 
+\end{equation*}
+
+
+
+Die Autoren von \cite{kanj} beweisen dieses beiden Eigenschaften mithilfe des \emph{outward} und des \emph{inward} Path. %, welche in 10 stehen...
 Der outward Path kann gebildet werden, wenn kein Knoten von $G $ innerhalb von $\triangle {ABC} $ liegt.
 Der inward Path verbindet die Knoten A und B, wenn Knoten innerhalb von $\triangle {ABC} $ liegen.
 
