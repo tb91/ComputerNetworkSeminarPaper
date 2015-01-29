@@ -21,28 +21,17 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
-\bibitem{FaceRouting}
-\BIBentryALTinterwordspacing
-H.~Frey and I.~Stojmenovic, ``On delivery guarantees of face and combined
-  greedy-face routing in ad hoc and sensor networks,'' in \emph{Proceedings of
-  the 12th Annual International Conference on Mobile Computing and Networking},
-  ser. MobiCom '06.\hskip 1em plus 0.5em minus 0.4em\relax New York, NY, USA:
-  ACM, 2006, pp. 390--401. [Online]. Available:
-  \url{http://doi.acm.org/10.1145/1161089.1161133}
-\BIBentrySTDinterwordspacing
-
 \bibitem{kanj}
-\BIBentryALTinterwordspacing
 I.~A. Kanj and L.~Perkovic, ``On geometric spanners of euclidean and unit disk
-  graphs,'' \emph{CoRR}, vol. abs/0802.2864, 2008. [Online]. Available:
-  \url{http://arxiv.org/abs/0802.2864}
-\BIBentrySTDinterwordspacing
+  graphs,'' \emph{CoRR}, 2008.
+
+\bibitem{FaceRouting}
+H.~Frey and I.~Stojmenovic, ``On delivery guarantees of face and combined
+  greedy-face routing in ad hoc and sensor networks,'' \emph{MobiCom 2006}, pp.
+  390--401.
 
 \bibitem{strictlyLocal}
-\BIBentryALTinterwordspacing
-J.~Suomela, ``Survey of local algorithms,'' \emph{ACM Comput. Surv.}, vol.~45,
-  no.~2, pp. 24:1--24:40, Mar. 2013. [Online]. Available:
-  \url{http://doi.acm.org/10.1145/2431211.2431223}
-\BIBentrySTDinterwordspacing
+J.~Suomela, ``Survey of local algorithms,'' \emph{ACM Comput. Surv., 2013}, pp.
+  24:1--24:40.
 
 \end{thebibliography}
