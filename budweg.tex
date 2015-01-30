@@ -230,10 +230,10 @@ Der Vorteil, den wir durch diese Vereinfachung erhalten, ist, dass die Übersich
 
 Wir betrachten Punkt $A $.
 Um diesen Punkt müssen $k $ Strahlen gebildet werden, die von $A $ ausgehen.
-Dabei spielt es keine Rolle, wie der erste Strahl angeordnet wird. (Im Beispiel verläuft er horizontal nach rechts.)
+Dabei ist es nicht von Bedeutung, wie der erste Strahl angeordnet wird. (Im Beispiel verläuft er horizontal nach rechts.)
 Die Winkel zwischen zwei aufeinander folgenden Strahlen müssen alle gleich groß sein.
 Durch diesen Vorgang bilden sich $k $ gleich große Kegel, deren Spitzen in $A $ liegen.
-Abbildung \ref{fig:cones} zeigt diesen Vorgang.
+Abbildung \ref{fig:cones} zeigt das Ergebnis dieses Vorgangs.
 
 \begin{figure}[h!]
 \centering
@@ -256,6 +256,7 @@ Kante $1 $ und Kegel $1 $ sind somit eindeutig durch die 1 definiert.
 
 Im nächsten Schritt iteriert der Algorithmus über alle Kegel, welche keinen Knoten enthalten.
 Zwei oder mehr aufeinander folgende leere Kegel, werden nur einmal behandelt.
+
 Kegel 1 und 8 sind leer.
 Da beide Kegel aneinander liegen, werden diese zusammengefasst und als ein Iterationsschritt interpretiert.
 Für die Anzahl der aufeinander folgenden leeren Kegel $l $ werden zwei unterschiedliche Fälle unterschieden:
@@ -312,6 +313,8 @@ Hier ist die Liste aller anderen Punkte mit ihrer Auswahlliste:
 \end{itemize}
 
 Der fertige Graph enthält alle Kanten, welche von beiden Endpunkten gewählt wurden.
+Hier in diesem Beispiel sind der Delaunay Graph und der Graph nach Ausführung des Modified Yao Steps identisch, weil zu wenige Kanten um $A $ oder andere Punkte existieren.
+Dies wurde bewusst vermieden, weil die Übersichtlichkeit stark abnimmt, je mehr Kanten existieren.
 
 \begin{figure}[h!]
 \centering
