@@ -62,7 +62,7 @@ Pfadverlängerungen entstehen, wenn (spezielle) kantenlöschende Algorithmen auf
 Der hier behandelte Algorithmus ist streng lokal, was die Anzahl der gesendeten Nachrichten minimiert.
 Außerdem produziert dieser einen \emph{t-Spanner} des euklidischen Graphen.
 %\textit{t-Spanner} geben den größtmöglichen Umweg an, der entsteht, wenn man einen (speziellen) kantenlöschenden Algorithmus auf einen Graphen anwendet.
-Diese Thematik wird im Folgenden anhand des Artikel von \cite{kanj} erläutert.
+Diese Thematik wird im Folgenden anhand des Artikels von \cite{kanj} erläutert.
 Dort wurde ein streng lokaler Algorithmus aufbauend auf den \emph{Delaunay Graphen} angewandt.
 Das Ergebnis ist ein Graph, welcher im Bezug zum euklidischen Graphen einen stretch-factor von $t=3.54 $ und zusätzlich eine Beschränkung des Ausgangsgrad eines Knoten von $k=14 $ hat. % TODO: HIER MUSS NOCH REIN WIE DAS PAPER AUFGEBAUT IST
 
@@ -72,8 +72,6 @@ Im Folgenden werden die zum Verständnis der Arbeit nötigen Grundbegriffe und a
 %Spanner?
 
 
-%\subsection{Planarität}
-%Ein Graph ist planar, wenn es keine zwei Kanten gibt, die sich schneiden.
 
 \subsection{Graphen}
 \subsubsection{Euklidischer Graph}
@@ -99,6 +97,9 @@ In Abbildung \ref{fig:UnitGraph} sehen Sie den euklidischen Graph aus Abbildung 
 \subsection{Kantenschnitte} \label{Kantenschnitt}
 Ein Kantenschnitt ist ein Punkt, in dem sich zwei oder mehr Kanten desselben Graphen schneiden.
 
+\subsection{Planarität}
+Ein Graph ist planar, wenn es keine zwei Kanten gibt, die sich schneiden.
+
 
 \subsection{Spanner}
 Gegeben ist ein Graph $G $, welcher ein Subgraph vom euklidischen Graphen $E $ ist.
@@ -107,12 +108,12 @@ Die Umwege, die durch das Löschen von Kanten entstehen, dürfen nur um einen ko
 
 \subsubsection{Euklidischer Spanner}
 $H $ ist genau dann ein euklidischer Spanner von $G $, wenn die kürzesten Pfade zwischen allen Knoten maximal um einen konstanten Faktor $t $ vergrößert werden.
-Die Notation $c_{G}(A, B) $ bedeutet: der kürzeste Pfad zwischen A und B im Graphen $G $.
 Formal bedeutet das:
 \begin{equation}
 	c_H(A, B) \leq t \cdot c_G(A, B)
 \end{equation}
 {\footnotesize (Formel entnommen aus \cite{kanj} und angepasst)}
+Die Notation $c_{G}(A, B) $ bedeutet: der kürzeste Pfad zwischen A und B im Graphen $G $.
 
 \subsection{Yao Step}
 Gegeben ist ein Graph $G $. Für alle Knoten $A \in G $ wird folgender Algorithmus ausgeführt:
@@ -206,7 +207,7 @@ Der Graph $E $, welchen wir für dieses Beispiel verwenden, ist in Abbildung \re
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.6\linewidth]{beispielgraph.eps}
-\caption{Ein euklidischer Graph, welchen wir als Beispiel nutzen.}
+\caption{Ein euklidischer Graph (Clique), welchen wir als Beispiel nutzen.}
 \label{fig:beispielgraph}
 \end{figure}
 
@@ -313,7 +314,7 @@ Hier ist die Liste aller anderen Punkte mit ihrer Auswahlliste:
 \end{itemize}
 
 Der fertige Graph enthält alle Kanten, welche von beiden Endpunkten gewählt wurden.
-Hier in diesem Beispiel sind der Delaunay Graph und der Graph nach Ausführung des Modified Yao Steps identisch, weil zu wenige Kanten um $A $ oder andere Punkte existieren.
+Hier in diesem Beispiel sind der Delaunay Graph und der Graph nach Ausführung des Modified Yao Steps identisch, weil zu wenige Kanten um $A $ oder um andere Knoten existieren.
 Dies wurde bewusst vermieden, weil die Übersichtlichkeit stark abnimmt, je mehr Kanten existieren.
 
 \begin{figure}[h!]
@@ -341,38 +342,21 @@ Des Weiteren muss folgende Bedingung für $p $ gelten:
 \begin{equation*}
  t \cdot |p| \leq	|CB| 
 \end{equation*}
+Außerdem darf der Ausgangsgrad eines jeden Knotens nicht größer als $k $ sein.
 
-
-
-Die Autoren von \cite{kanj} beweisen dieses beiden Eigenschaften mithilfe des \emph{outward} und des \emph{inward} Path. %, welche in 10 stehen...
+Die Autoren von \cite{kanj} beweisen diese Eigenschaften mithilfe des \emph{outward} und des \emph{inward} Path. %, welche in 10 stehen...
 Der outward Path kann gebildet werden, wenn kein Knoten von $G $ innerhalb von $\triangle {ABC} $ liegt.
 Der inward Path verbindet die Knoten A und B, wenn Knoten innerhalb von $\triangle {ABC} $ liegen.
+Im Folgenden wird auf diese beiden Pfade eingegangen.
 
 \subsection{Der outward Path}
-Die Autoren von \cite{kanj} benutzen eine rekursive Definition um den Pfad von A nach B zu definieren.
-Es gilt zu beweisen, dass dieser Pfad in jedem Fall existiert, weil anderenfalls der Graph nicht zwingend verbunden ist.
-Dieser Fall darf nicht eintreten.
-Außerdem muss nachgewiesen werden, dass die Länge dieses Pfades maximal
-$1+2\pi(k \cos{\frac{\pi}{k}})^{-1} $ länger ist als der vorherige Pfad von A nach B.
-
+Die Autoren von \cite{kanj} benutzen eine rekursive Definition um den Pfad von A nach B zu definieren. 
+Diese Definition lautet:
 
 \begin{itemize}
-\item \textbf{Basisfall}: Die Rekursion endet, wenn $AB \in G $. (vgl. Abbildung \ref{fig:YaoStep2}: AB müssen verbunden sein, weil B der einzige Knoten in einem Kegel von A ist.)
+\item \textbf{Basisfall}: Die Rekursion endet, wenn $AB \in G $. (vgl. Abbildung \ref{fig:YaoStep2}: AB müssen verbunden sein, weil B der einzige Knoten in einem Kegel von A  und A der einzige Knoten in einem Kegel von B ist.)
 \item \textbf{Rekursionsfall}: $AB \notin G $
 \end{itemize}
-
-Aufgrund der Delaunay-Eigenschaft, dass eine Kante nur dann nicht in $G $ enthalten ist, wenn im Kreis $\bigcirc {ABC} $ ein weiterer Punkt liegt, muss deshalb ein weiterer Punkt in  $\bigcirc {ABC} $ liegen.
-Diesen Punkt nennen die Autoren von \cite{kanj} einen \emph{intermediate Point}.
-Um den Pfad von A nach B zu erhalten, wird ein Pfad von A zum intermediate Point T und von diesem zu B erstellt und konkateniert (siehe Abbildung \ref{fig:intermediate}).
-Dieser Rekursionsfall kann öfter eintreten, da es bezüglich A und T oder B und T einen weiteren intermediate Point $T' $ geben kann und dazwischen rekursiv fortführend bis der Basisfall eintritt.
-Der Rekursionsfall bewahrt immer folgende Eigenschaften:
-\begin{itemize}
-\item $(O_1) $ und $(O_2) $ sind vollständig innerhalb von $(O) $ (vgl. Abbildung \ref{fig:outward_path_kreise})
-\item $\alpha $ und $\beta $ sind beide kleiner als der Winkel $\angle {AOB} $ (vgl. Abbildung \ref{fig:outward_path_winkel}) 
-\item Alle drei Winkel sind kleiner als $\frac{4\pi}{k} $
-\end{itemize}
-
-Abbildung \ref{fig:outward_path_fertig} zeigt ein Beispiel eines kompletten outward Path.
 
 \begin{figure}[h!]
 \centering
@@ -381,10 +365,30 @@ Abbildung \ref{fig:outward_path_fertig} zeigt ein Beispiel eines kompletten outw
 \label{fig:intermediate}
 \end{figure}
 
+Aufgrund der Delaunay-Eigenschaft, dass eine Kante nur dann nicht in $G $ enthalten ist, wenn im Kreis $\bigcirc {ABC} $ ein weiterer Punkt liegt, muss deshalb ein weiterer Punkt in  $\bigcirc {ABC} $ liegen.
+Diesen Punkt nennen die Autoren von \cite{kanj} einen \emph{intermediate Point}.
+Um den Pfad von A nach B zu erhalten, wird ein Pfad von A zum intermediate Point T und von diesem zu B erstellt und konkateniert (siehe Abbildung \ref{fig:intermediate}).
+Dieser Rekursionsfall kann öfter eintreten, da es bezüglich A und T oder B und T einen weiteren intermediate Point $T' $ geben kann und dazwischen rekursiv fortführend bis der Basisfall eintritt (vgl.: Abbildung \ref{fig:rekursion}).
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\linewidth]{rekursion.eps}
+\caption{Rekursionsidee des Outward Path. Punkt $T' $ liegt zwischen A und T.}
+\label{fig:rekursion}
+\end{figure}
+Der Rekursionsfall bewahrt immer folgende Eigenschaften:
+\begin{itemize}
+\item $(O_A) $ und $(O_B) $ sind vollständig innerhalb von $(O) $ (vgl. Abbildung \ref{fig:outward_path_kreise})
+\item $\alpha $ und $\beta $ sind beide kleiner als der Winkel $\angle {AOB} $ (vgl. Abbildung \ref{fig:outward_path_winkel}) 
+\item Alle drei Winkel sind kleiner als $\frac{4\pi}{k} $
+\end{itemize}
+$O_A $ und $O_B $ erhält man, indem man den Kreis durch A (bzw. B) und T zieht, sodass der Mittelpunkt dieses Kreises auf der Strecke $AO $ bzw. $BO $ liegt.
+Zum Abschluss zeigt Abbildung \ref{fig:outward_path_fertig} ein Beispiel eines kompletten Outward Path.
+
+
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.8\linewidth]{outward_path_kreise.eps}
-\caption{ $(O_1) $ und $(O_2) $ sind vollständig innerhalb von (O), $(O_1) $ ist der Kreis durch A und T mit Mittelpunkt auf dem Segment $AO $, $(O_2) $ verläuft durch B und T und der Mittelpunkt liegt auf dem Segment $BO $} 
+\caption{ $(O_A) $ und $(O_B) $ sind vollständig innerhalb von (O), $(O_A) $ ist der Kreis durch A und T mit Mittelpunkt auf dem Segment $AO $, $(O_B) $ verläuft durch B und T und der Mittelpunkt liegt auf dem Segment $BO $} 
 \label{fig:outward_path_kreise}
 \end{figure}
 
@@ -402,26 +406,26 @@ Abbildung \ref{fig:outward_path_fertig} zeigt ein Beispiel eines kompletten outw
 \label{fig:outward_path_fertig}
 \end{figure}
 
-\subsection{Beweis}
-Es wird behauptet, dass von A nach B ein Pfad $p $ existiert, sodass:
-\begin{equation}
-|CA| + |p| \leq (1+2\pi(\cos{\frac{\pi}{k}})^{-1})|CB|
-\end{equation} \label{SpannerFormel}
-In Worten: Die Länge des Pfades $p $ plus den Wert $|CA| $ darf nicht größer sein als eine Konstante ($t \approx 1.45 $ für $k=14 $) multipliziert mit der Länge der Kante $CB $.
-%Diese Konstante ist die maximale Länge des Teilstücks des Kreises $\bigcirc{ABC} $ von A nach B.
-Es gelten folgende Bedingungen und Formeln:
-\begin{itemize}
-\item $|AB| = 2\cdot \angle{BCA} \cdot |OA| $ mit $O $ als Mittelpunkt des Kreises $\bigcirc{ABC} $ (siehe Abbildung \ref{fig:winkel_mal_strecke} für ein Beispiel)
-\item $\sin{\theta}=\frac{|AB|}{2|OA|} $ %TODO: arc symbol über AB
-\item $|CA|=|CB| $ Denn dadurch ist $|CA| + |AB| $ maximal%TODO: arc symbol über AB
-\end{itemize}
+%\subsection{Beweis}
+%Es wird behauptet, dass von A nach B ein Pfad $p $ existiert, sodass:
+%\begin{equation}
+%|CA| + |p| \leq (1+2\pi(\cos{\frac{\pi}{k}})^{-1})|CB|
+%\end{equation} \label{SpannerFormel}
+%In Worten: Die Länge des Pfades $p $ plus den Wert $|CA| $ darf nicht größer sein als eine Konstante ($t \approx 1.45 $ für $k=14 $) multipliziert mit der Länge der Kante $CB $.
+%%Diese Konstante ist die maximale Länge des Teilstücks des Kreises $\bigcirc{ABC} $ von A nach B.
+%Es gelten folgende Bedingungen und Formeln:
+%\begin{itemize}
+%\item $|AB| = 2\cdot \angle{BCA} \cdot |OA| $ mit $O $ als Mittelpunkt des Kreises $\bigcirc{ABC} $ (siehe Abbildung \ref{fig:winkel_mal_strecke} für ein Beispiel)
+%\item $\sin{\theta}=\frac{|AB|}{2|OA|} $ %TODO: arc symbol über AB
+%\item $|CA|=|CB| $ Denn dadurch ist $|CA| + |AB| $ maximal%TODO: arc symbol über AB
+%\end{itemize}
 
-\begin{figure}[h!]
-\centering
-\includegraphics[width=1\linewidth]{bogen_gleich_winkel_mal_strecke.eps}
-\caption{Beispiel zu Formel \ref{SpannerFormel}: $|AB| = 2\cdot 0.6248 \cdot 2.7738 \approx 3.4661 $} %TODO: Zeichen über AB
-\label{fig:winkel_mal_strecke}
-\end{figure}
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[width=1\linewidth]{bogen_gleich_winkel_mal_strecke.eps}
+%\caption{Beispiel zu Formel \ref{SpannerFormel}: $|AB| = 2\cdot 0.6248 \cdot 2.7738 \approx 3.4661 $} %TODO: Zeichen über AB
+%\label{fig:winkel_mal_strecke}
+%\end{figure}
 
 
 %\begin{figure}[h!]
@@ -437,17 +441,17 @@ Es gelten folgende Bedingungen und Formeln:
 
 
 \subsection{Der inward Path}
+Wenn innerhalb des Dreiecks $\triangle{ABC} $ Punkte liegen, dann wird der Inward Path gebildet.
 Die Menge S besteht aus allen Punkten innerhalb von $\triangle {ABC} $, Punkt A und Punkt B.
-In Abbildung \ref{fig:inward_path_prop} ist ein Beispiel eines Inward Path.
-$CH(S) $ sind alle Punkte der Konvexen Hülle von S. %erklärung der konvexen hülle
+$CH(S) $ sind alle Punkte der konvexen Hülle von S. %erklärung der konvexen hülle
 Folgende drei Voraussetzungen gelten:
-\begin{inwardPathProposition}
+
 \begin{itemize} %TODO: funktioniert nicht.. erste zeile frei
 	\item $CN_i \in G$
 	\item $|CN_i| \leq |CN_{i+1}| $
 	\item $\angle{N_{i-1}N_iN_{i+1}} \geq \pi $ (Winkel Richtung C)
 \end{itemize} 
-\end{inwardPathProposition}
+
 
 Abbildung \ref{fig:inward_path_prop} zeigt, dass alle Winkel $\angle{N_{i-1}N_iN_{i+1}} $ größer als $\pi $ sind.
 Außerdem ist jede Kante $CN_i $ kürzer als $CN_{i+1}$. 
@@ -456,7 +460,6 @@ Für $CN_1 $ gilt dieselbe Bedingung.
 Folglich muss $CN_2 $ länger sein, etc.
 
 Hinzu kommt die Voraussetzung $\angle{N_iCN_{i+1}} \leq \angle{BCA} $.
-Dies sind genau die Bedingungen, welche im Voraus bewiesen wurden, um einen outward Path zu konstruieren. 
 Zwischen jedem Paar $N_iN_{i+1} $ gibt es einen outward Path, der dieses Paar verbindet.
 Diese gesamte Konstruktion, der Pfad von A nach B, wird inward Path genannt.
 
@@ -467,8 +470,28 @@ Diese gesamte Konstruktion, der Pfad von A nach B, wird inward Path genannt.
 \label{fig:inward_path_prop}
 \end{figure}
 
+In Abbildung \ref{fig:inward_path_prop} ist ein Beispiel eines Inward Path zu sehen.
 
-\subsubsection{Beweis}
+\section{Folgerung}
+Die Knoten $A $ und $B $ sind durch einen Pfad $p $ verbunden, welcher durch den Inward Path definiert ist.
+Dieser Inward Path enthält beliebig viele Outward Paths.
+Abbildung \ref{fig:complete} zeigt einen Beispielgraphen, welcher nach dem Inward und Outward Path Prinzip verbunden ist.
+Die Knoten $A $ ,$N_1 $ $N_2 $ und $N_3 $ sind jeweils direkt durch ein Kante aus dem Ausgangsgraphen verbunden.
+$N_3 $ und $B $ sind durch einen Outward Path über die beiden Intermediate Points $M_1 $ und $M_2 $ verbunden.
+Der gesamte Pfad von $A $ nach $B $ folgt dem Prinzip des Inward Path'.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1\linewidth]{complete_path.eps}
+\caption{Fertiger Pfad zwischen A und B. Dieser Pfad folgt den Eigenschaften des Inward und Outward Path'.}
+\label{fig:complete}
+\end{figure}
+
+
+\section{Fazit}
+Der Modified Yao Step - Algorithmus ist durch seine geringe Spanning-Ratio von $t\approx 2.42$ bei gleichzeitiger Beschränkung des Ausgangsgrad der Knoten gut geeignet, um als Topologie Kontrolle für ad-hoc Netze zu fungieren.
+Des Weiteren sorgt die strenge Lokalität dafür, dass er auf einem beliebig großen Graphen oder nur auf Subgraphen davon konstruiert werden kann.
+
 
 
 %$CH(S) $ ist die konvexe Hülle von S.
