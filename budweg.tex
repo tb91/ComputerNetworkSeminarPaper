@@ -65,6 +65,7 @@ Außerdem produziert dieser einen \emph{t-Spanner} des euklidischen Graphen.
 Diese Thematik wird im Folgenden anhand des Artikels von \cite{kanj} erläutert.
 Dort wurde ein streng lokaler Algorithmus aufbauend auf den \emph{Delaunay-Graphen} angewandt.
 Das Ergebnis ist ein Graph, welcher im Bezug zum euklidischen Graphen einen stretch-factor von $t=3.54 $ und zusätzlich eine Beschränkung des Ausgangsgrad eines Knoten von $k=14 $ hat.
+
 In diesem Paper werden zunächst Grundlagen geklärt.
 Im Anschluss wird der Algorithmus anhand eines Beispiels beleuchtet.
 Danach folgen zwei zentrale Prinzipien, welche im Beweis für die Korrektheit der o. g. Eigenschaften benötigt werden.
@@ -123,7 +124,7 @@ Formal bedeutet das:
 {\footnotesize (Formel entnommen aus \cite{kanj} und angepasst)}
 Die Notation $c_{G}(A, B) $ bedeutet: der kürzeste Pfad zwischen A und B im Graphen $G $.
 
-\subsection{Yao Step}
+\subsection{Yao-Step}
 Gegeben ist ein Graph $G $. Für alle Knoten $A \in G $ wird folgender Algorithmus ausgeführt:
 \begin{itemize}
 \item Erzeuge k gleich große Kegel um $A $. $k \in \mathds{N} > 6 $
@@ -396,14 +397,14 @@ Zum Abschluss zeigt Abbildung \ref{fig:outward_path_fertig} ein Beispiel eines k
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.8\linewidth]{outward_path_kreise.eps}
+\includegraphics[width=0.7\linewidth]{outward_path_kreise.eps}
 \caption{ $(O_A) $ und $(O_B) $ sind vollständig innerhalb von (O), $(O_A) $ ist der Kreis durch A und T mit Mittelpunkt auf dem Segment $AO $, $(O_B) $ verläuft durch B und T und der Mittelpunkt liegt auf dem Segment $BO $} 
 \label{fig:outward_path_kreise}
 \end{figure}
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.8\linewidth]{outward_path_winkel.eps}
+\includegraphics[width=0.7\linewidth]{outward_path_winkel.eps}
 \caption{ $\alpha $ und $\beta $ sind beide kleiner als $ AOB $, gleiche Konstruktion wie in Abbildung \ref{fig:outward_path_kreise}, A und B liegen im selben Kegel ausgehend von C.}
 \label{fig:outward_path_winkel}
 \end{figure}
@@ -456,7 +457,7 @@ $CH(S) $ sind alle Punkte der konvexen Hülle von $S $. %erklärung der konvexen
 Die konvexe Hülle wird hier verwendet, damit in $S $ die Punkte enthalten sind, welche den geringsten euklidischen Abstand zu $C $ haben.
 Folgende drei Voraussetzungen gelten:
 
-\begin{itemize} %TODO: funktioniert nicht.. erste zeile frei
+\begin{itemize} 
 	\item $CN_i \in G$
 	\item $|CN_i| \leq |CN_{i+1}| $
 	\item $\angle{N_{i-1}N_iN_{i+1}} \geq \pi $ (Winkel Richtung C)
