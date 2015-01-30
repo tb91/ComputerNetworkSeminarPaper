@@ -23,7 +23,7 @@
 
 
 \newcommand{\seminarteilnehmer}{Tim Budweg}
-\newcommand{\seminartitel}{Erklärung zum modified Yao-Step angewandt auf den Delaunay Graphen}
+\newcommand{\seminartitel}{Erklärung zum Modified Yao Step angewandt auf den Delaunay Graphen}
 
 \begin{document}
 
@@ -195,6 +195,7 @@ Die Definition des lokalen Algorithmus trifft hier zu, weil jeder Knoten nur mit
 
 \subsection{Strenge Lokalität}
 Wie im Abschnitt \ref{lokal} beschrieben, sind lokale Algorithmen noch nicht ausreichend, um den Nachrichtenaufwand zu verringern.
+In \cite{strictlyLocal} wird Lokalität definiert als:
 Strenge Lokalität ist gegeben, wenn ein \emph{synchroner} Algorithmus unabhängig von der Netzgröße in konstanter Zeit terminiert.
 
 
@@ -443,7 +444,8 @@ Zum Abschluss zeigt Abbildung \ref{fig:outward_path_fertig} ein Beispiel eines k
 \subsection{Der inward Path}
 Wenn innerhalb des Dreiecks $\triangle{ABC} $ Punkte liegen, dann wird der Inward Path gebildet.
 Die Menge S besteht aus allen Punkten innerhalb von $\triangle {ABC} $, Punkt A und Punkt B.
-$CH(S) $ sind alle Punkte der konvexen Hülle von S. %erklärung der konvexen hülle
+$CH(S) $ sind alle Punkte der konvexen Hülle von $S $. %erklärung der konvexen hülle
+Die konvexe Hülle wird hier verwendet, damit in $S $ die Punkte enthalten sind, welche den geringsten euklidischen Abstand zu $C $ haben.
 Folgende drei Voraussetzungen gelten:
 
 \begin{itemize} %TODO: funktioniert nicht.. erste zeile frei
@@ -478,19 +480,39 @@ Dieser Inward Path enthält beliebig viele Outward Paths.
 Abbildung \ref{fig:complete} zeigt einen Beispielgraphen, welcher nach dem Inward und Outward Path Prinzip verbunden ist.
 Die Knoten $A $ ,$N_1 $ $N_2 $ und $N_3 $ sind jeweils direkt durch ein Kante aus dem Ausgangsgraphen verbunden.
 $N_3 $ und $B $ sind durch einen Outward Path über die beiden Intermediate Points $M_1 $ und $M_2 $ verbunden.
-Der gesamte Pfad von $A $ nach $B $ folgt dem Prinzip des Inward Path'.
+Der gesamte Pfad von $A $ nach $B $ folgt dem Prinzip des Inward Paths.
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=1\linewidth]{complete_path.eps}
-\caption{Fertiger Pfad zwischen A und B. Dieser Pfad folgt den Eigenschaften des Inward und Outward Path'.}
+\includegraphics[width=1.0\linewidth]{complete_path.eps}
+\caption{Fertiger Pfad zwischen A und B. Dieser Pfad folgt den Eigenschaften des Inward und Outward Paths.}
 \label{fig:complete}
 \end{figure}
 
+\section{Modified Yao Step im UDG}
+Bisher wurde der Algorithmus ausschließlich im euklidischen Graphen Modell betrachtet.
+Dieses Modell findet in der Wirklichkeit jedoch keine Anwendung, da Knoten nicht beliebig weit kommunizieren können und es zusätzlich Hindernisse geben kann, welche die Sendereichweite weiter einschränken.
+Das Unit Disk Modell findet eher eine Anwendung in der Wirklichkeit.
+Die Autoren von \cite{kanj} erweitern ihre Ausarbeitung um den Beweis, dass der Algorithmus den Forderungen dieses Modells ebenfalls standhält.
+Bisher kann der Delaunay Graph nicht streng lokal berechnet werden, was ihn für diesen Ansatz unbrauchbar macht.
+Wang et al. (\cite{wangLi}) entwickelten einen Algorithmus, welcher einen Subgraph vom Unit Disk Graphen $U $ produziert.
+Dieser Graph ist streng lokal und terminiert in konstanter Zeit.
+Anstelle des Delaunay Graphen wird der Wang-Li Graph $W $ genutzt.
+%Der Modified Yao Step terminiert ebenfalls in konstanter Zeit, da alle Teilschritte in konstanter Zeit erledigt werden können.
+Damit der Delaunay Graph ersetzt werden darf, wird von den Autoren von \cite{kanj} folgender Beweis geführt:
+Gegeben sind die Kanten $CA $ und $CB $ des neuen Graphen.
+Es wird gezeigt, dass das Teilstück $T $ des Kreises $\bigcirc{ABC} $ abgeschnitten von der Sehne $CA $ von B weg, leer sein muss.
+Zuerst definieren sie $W $ so, dass eine Kante $XY $ genau dann in $W $ enthalten ist, wenn es einen Kreis durch $X $ und $Y $ gibt, der kein 2-Hop-Nachbar von $X $ oder $Y $ in $U $ ist.
+Das Gebiet $T $ liegt vollständig in diesem Kreis $\bigcirc{ABC} $.
+Deswegen und weil dieser Kreis keinen 2-Hop-Nachbar enthält, kann $T $ auch keinen enthalten.
+Dies gilt ebenfalls für das Teilgebiet $T' $ des Kreises, eingegrenzt von der Sehne $CB $ von A weg.
+
 
 \section{Fazit}
-Der Modified Yao Step - Algorithmus ist durch seine geringe Spanning-Ratio von $t\approx 2.42$ bei gleichzeitiger Beschränkung des Ausgangsgrad der Knoten gut geeignet, um als Topologie Kontrolle für ad-hoc Netze zu fungieren.
-Des Weiteren sorgt die strenge Lokalität dafür, dass er auf einem beliebig großen Graphen oder nur auf Subgraphen davon konstruiert werden kann.
+Der Modified Yao Step - Algorithmus ist durch seine geringe Spanning-Ratio von $t\approx 2.42$ bei gleichzeitiger Beschränkung des Ausgangsgrad der Knoten auf $k=14 $ gut geeignet, um als Topologiekontrolle für ad-hoc Netze zu fungieren.
+Dadurch bleiben die Energiereserven der Knoten geschont und die Nachrichtenauslieferung wird garantiert.
+Des Weiteren sorgt die strenge Lokalität dafür, dass er auf einem beliebig großen Graphen - oder nur auf Subgraphen davon - ausgeführt werden kann.
+Außerdem ist dieser Algorithmus sehr resistent gegen ausfallende oder hinzukommende Knoten, weil er durch die konstante Laufzeit schnell berechnet werden kann.
 
 
 

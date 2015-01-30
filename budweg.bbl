@@ -30,4 +30,13 @@ H.~Frey and I.~Stojmenovic, ``On delivery guarantees of face and combined
   greedy-face routing in ad hoc and sensor networks,'' \emph{MobiCom 2006}, pp.
   390--401.
 
+\bibitem{strictlyLocal}
+J.~Suomela, ``Survey of local algorithms,'' \emph{ACM Comput. Surv., 2013}, pp.
+  24:1--24:40.
+
+\bibitem{wangLi}
+P.-J.~W. Xiang-Yang~Li., Gruia~Calinescu., ``Distributed construction of a
+  planar spanner and routing for ad hoc wireless networks,'' \emph{INFOCOM},
+  2002.
+
 \end{thebibliography}
