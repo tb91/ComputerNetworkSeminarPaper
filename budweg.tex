@@ -23,7 +23,7 @@
 
 
 \newcommand{\seminarteilnehmer}{Tim Budweg}
-\newcommand{\seminartitel}{Erklärung zum Modified Yao Step angewandt auf den Delaunay Graphen}
+\newcommand{\seminartitel}{Erklärung zum Modified-Yao-Step angewandt auf den Delaunay-Graphen}
 
 \begin{document}
 
@@ -37,11 +37,11 @@
 \maketitle
 
 \begin{abstract}
-\space Diese Arbeit erläutert die Spannerbildung mithilfe der Delaunay-Triangulation und dem modified Yao-Step aus \cite{kanj}. Der \emph{stretch-factor} liegt bei 3.54 in Bezug zum Euklidischen Graphen und beschränkt den Ausgangsgrad der Knoten auf 14.
+\space Diese Arbeit erläutert die Spannerbildung mithilfe der Delaunay-Triangulation und dem modified-Yao-Step aus \cite{kanj}. Der \emph{stretch-factor} liegt bei 3.54 in Bezug zum euklidischen Graphen und beschränkt den Ausgangsgrad der Knoten auf 14.
 \end{abstract}
 
 \begin{IEEEkeywords}
-\space Spanner, ad-hoc Netze, Delaunay Graph, Modified Yao-Step
+\space Spanner, ad-hoc Netze, Delaunay-Graph, Modified-Yao-Step
 \end{IEEEkeywords}
 
 
@@ -57,14 +57,22 @@ Diese Planarität zu erreichen ist ein wichtiges Ziel von \emph{Topologiekontrol
 Ein weiterer Punkt ist, dass diese Netze willkürlich groß werden können.
 Deshalb führt ein \emph{zentralisierter} Algorithmus zu einer sehr langen Laufzeit mit hohem Energieverbrauch, weil die Menge der versendeten Nachrichten in Abhängigkeit zu der globalen Netzgröße steht.
 
-Damit die Nachrichten nicht über beliebig lange Pfade geroutet werden müssen, wird eine Beschränkung der Pfadverlängerung gewünscht. 
+Damit die Nachrichten nicht über beliebig lange Pfade geroutet werden, wird eine Beschränkung der Pfadverlängerung gewünscht. 
 Pfadverlängerungen entstehen, wenn (spezielle) kantenlöschende Algorithmen auf Graphen angewendet werden.
 Der hier behandelte Algorithmus ist streng lokal, was die Anzahl der gesendeten Nachrichten minimiert.
 Außerdem produziert dieser einen \emph{t-Spanner} des euklidischen Graphen.
 %\textit{t-Spanner} geben den größtmöglichen Umweg an, der entsteht, wenn man einen (speziellen) kantenlöschenden Algorithmus auf einen Graphen anwendet.
 Diese Thematik wird im Folgenden anhand des Artikels von \cite{kanj} erläutert.
-Dort wurde ein streng lokaler Algorithmus aufbauend auf den \emph{Delaunay Graphen} angewandt.
-Das Ergebnis ist ein Graph, welcher im Bezug zum euklidischen Graphen einen stretch-factor von $t=3.54 $ und zusätzlich eine Beschränkung des Ausgangsgrad eines Knoten von $k=14 $ hat. % TODO: HIER MUSS NOCH REIN WIE DAS PAPER AUFGEBAUT IST
+Dort wurde ein streng lokaler Algorithmus aufbauend auf den \emph{Delaunay-Graphen} angewandt.
+Das Ergebnis ist ein Graph, welcher im Bezug zum euklidischen Graphen einen stretch-factor von $t=3.54 $ und zusätzlich eine Beschränkung des Ausgangsgrad eines Knoten von $k=14 $ hat.
+In diesem Paper werden zunächst Grundlagen geklärt.
+Im Anschluss wird der Algorithmus anhand eines Beispiels beleuchtet.
+Danach folgen zwei zentrale Prinzipien, welche im Beweis für die Korrektheit der o. g. Eigenschaften benötigt werden.
+Diese Prinzipien werden anschließend in den Kontext eingeordnet.
+Als Nächstes wird der Modified-Yao-Step auf das Unit-Disk-Modell erweitert und zum Schluss wird ein Fazit für den Algorithmus gezogen.
+
+
+
 
 \section{Begriffe und Notationen}
 Im Folgenden werden die zum Verständnis der Arbeit nötigen Grundbegriffe und abkürzende Notationen erklärt.
@@ -84,9 +92,9 @@ Ein Beispiel finden Sie in Abbildung \ref{fig:Graph}.
 \caption{Ein euklidischer Graph}
 \label{fig:Graph}
 \end{figure}
-\subsubsection{Unit Disk Graph}
-Der Unit Disk Graph ist ein euklidischer Graph ohne alle Kanten, die länger als ein konstantes $c \in \mathds{R} $ sind.
-In Abbildung \ref{fig:UnitGraph} sehen Sie den euklidischen Graph aus Abbildung \ref{fig:Graph} als Unit Disk Graph mit $c = 1 $.
+\subsubsection{Unit-Disk-Graph}
+Der Unit-Disk-Graph ist ein euklidischer Graph ohne alle Kanten, die länger als ein konstantes $c \in \mathds{R} $ sind.
+In Abbildung \ref{fig:UnitGraph} sehen Sie den euklidischen Graph aus Abbildung \ref{fig:Graph} als Unit-Disk-Graph mit $c = 1 $.
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.99\linewidth]{UnitGraph.eps}
@@ -134,10 +142,10 @@ Ein Beispiel ist in Abbildung \ref{fig:YaoStep2} gegeben.
 
 %Dadurch entsteht Graph $G' $. 
 
-\subsection{Delaunay Triangulation}
-Die Delaunay Triangulation erzeugt aus einem beliebigen zusammenhängenden Graphen einen geometrischen (= euklidischen) Spanner mit dem Streckungsfaktor $c_{del} \approx 2.42 $ und einem beliebig hohen Ausgangsgrad eines Knotens. 
-Dazu werden alle Dreiecke betrachtet.
-Wenn der Kreis durch alle Eckpunkte des Dreiecks keine weiteren Punkte des Graphen enthält, sind diese drei Kanten auch im Delaunay Graphen. 
+\subsection{Delaunay-Triangulation}
+Die Delaunay-Triangulation erzeugt aus einem beliebigen zusammenhängenden Graphen einen geometrischen (= euklidischen) Spanner mit dem Streckungsfaktor $c_{del} \approx 2.42 $ und einem beliebig hohen Ausgangsgrad eines Knotens. 
+Für die Konstruktion werden alle Dreiecke betrachtet.
+Wenn der Kreis durch alle Eckpunkte des Dreiecks keine weiteren Punkte des Graphen enthält, sind diese drei Kanten auch im Delaunay-Graphen. 
 Um Fallunterscheidungen zu vermeiden, wird angenommen, dass keine vier Punkte auf einem Kreis liegen. 
 
 
@@ -154,29 +162,29 @@ Hier ist zu beachten, dass alle gesendeten Nachrichten zu Beginn der Folgerunde 
 
 %Algorithmus, definieren, dass es sich hier um Algorithmen auf Graphen handelt?
 \subsection{Lokale Algorithmen} \label{lokal}
-Ein Algorithmus ist genau dann lokal, wenn jeder Knoten ausschließlich mit seiner \emph{k-Hop} Nachbarschaft kommuniziert. ($k \in \mathds{N}$)
+Ein Algorithmus ist genau dann lokal, wenn jeder Knoten ausschließlich mit seiner \emph{k-Hop} Nachbarschaft kommuniziert ($k \in \mathds{N}$).
 Formal reicht dies aus, um einen Algorithmus lokal zu nennen.
 Das Problem, dass der Algorithmus eine lange Laufzeit hat (siehe Einleitung), ist dadurch jedoch nicht gelöst.
 Anhand des \emph{Maximal Independent Set (Fortan: MIS)} Algorithmus lässt sich ein Beispiel konstruieren, welches dieses Problem veranschaulicht.
 Ein Independent Set, ist eine Menge $K $ von Knoten über einem Graphen $G $, sodass keine zwei Knoten nebeneinander liegen, bzw. keine Kante zwei Knoten von $K $ verbindet.
-$K $ ist genau dann ein Maximal Independent Set, wenn kein Knoten zu $K $ hinzugefügt werden kann ohne die Independent Set Eigenschaft zu verletzen.
-Dieser Vorgang wird jetzt exemplarisch erläutert.
-Betrachten Sie dazu Abbildung \ref{fig:MIS}.
+$K $ ist genau dann ein Maximal Independent Set, wenn kein Knoten zu $K $ hinzugefügt werden kann, ohne die Independent Set Eigenschaft zu verletzen.
+Dieser Vorgang wird jetzt exemplarisch erläutert
+(vgl.: dazu Abbildung \ref{fig:MIS}.
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.99\linewidth]{MIS.eps}
-\caption{$\times $ sind Knoten im Maximal Independent Set, $\bullet $ sind keine Knoten des MIS, Die Kreise um die Knoten sind die jeweiligen Sendebereiche.}
+\caption{$\times $ sind Knoten im Maximal Independent Set, $\bullet $ sind keine Knoten des MIS; die Kreise um die Knoten sind die jeweiligen Sendebereiche.}
 \label{fig:MIS}
 \end{figure}
 
 
 \begin{itemize}
-\item \textbf{Runde 1}: Knoten 1 wird MIS-Knoten, da er von allen seinen Nachbarn, welche noch keine Rolle haben, derjenige mit der kleinsten ID ist. Knoten 2 und 3 warten, da es Knoten gibt, welche noch keine Rolle und eine kleinere ID haben.
+\item \textbf{Runde 1}: Knoten $1 $ wird MIS-Knoten, da er von allen seinen Nachbarn, welche noch keine Rolle haben, derjenige mit der kleinsten ID ist. Knoten 2 und 3 warten, da es Knoten gibt, welche noch keine Rolle und eine kleinere ID haben.
 
-\item \textbf{Runde 2}: Knoten 2 entscheidet, dass er kein MIS-Knoten ist, da er in seiner Nachbarschaft Knoten 1 kennt, der schon MIS-Knoten ist. Knoten 3 wartet.
+\item \textbf{Runde 2}: Knoten $2 $ entscheidet, dass er kein MIS-Knoten ist, da er in seiner Nachbarschaft Knoten 1 kennt, der schon MIS-Knoten ist. Knoten 3 wartet.
 
-\item \textbf{Runde 3}: Knoten 3 wird MIS-Knoten, da Knoten 2 kein MIS-Knoten ist und somit 3 die kleinste ID hat. 
+\item \textbf{Runde 3}: Knoten $3 $ wird MIS-Knoten, da Knoten 2 kein MIS-Knoten ist und somit 3 die kleinste ID hat. 
 \end{itemize}
 
 Diese Schritte lassen sich durch den gesamten Graphen sukzessiv durchführen. 
@@ -201,7 +209,7 @@ Strenge Lokalität ist gegeben, wenn ein \emph{synchroner} Algorithmus unabhäng
 
 
 %\section{was erreicht diese Arbeit} %bearbeiten
-\section{Modified Yao Step}
+\section{Modified-Yao-Step}
 Im Folgenden wird der Algorithmus anhand eines Beispiels verfolgt.
 Der Graph $E $, welchen wir für dieses Beispiel verwenden, ist in Abbildung \ref{fig:beispielgraph} zu sehen.
 
@@ -212,21 +220,21 @@ Der Graph $E $, welchen wir für dieses Beispiel verwenden, ist in Abbildung \re
 \label{fig:beispielgraph}
 \end{figure}
 
-Daraus wird zuerst der Delaunay Graph gebildet, indem durch die Eckpunkte aller Dreiecke ein Kreis gebildet wird.
-Wenn in einem Umkreis $\bigcirc{XYZ} $ kein (weiterer) Punkt des Graphen enthalten ist, sind die drei Kanten, welche $XYZ $ verbinden, im Delaunay Graphen vorhanden.
+Daraus wird zuerst der Delaunay-Graph gebildet, indem durch die Eckpunkte aller Dreiecke ein Kreis gebildet wird.
+Wenn in einem Umkreis $\bigcirc{XYZ} $ kein (weiterer) Punkt des Graphen enthalten ist, sind die drei Kanten, welche $XYZ $ verbinden, im Delaunay-Graphen vorhanden.
 Das Ergebnis ist in Abbildung \ref{fig:delaunay} zu sehen.
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.7\linewidth]{Delaunay_Graph.eps}
-\caption{Ein Delaunaygraph mit den Umkreisen, welche keinen weiteren Punkt beinhalten.}
+\caption{Ein Delaunay-Graph mit den Umkreisen, welche keinen weiteren Punkt beinhalten.}
 \label{fig:delaunay}
 \end{figure}
 
 Der Umkreis durch $\triangle{ABC} $ beinhaltet beispielsweise den Punkt $D $ und deshalb werden die drei Kanten $AB, BC $ und $AC $ vorerst nicht in den Delaunay-Graphen übernommen.
-Für die Kanten $AB $ und $BC $ gibt es jedoch einen anderen Umkreis, der keine weiteren Punkte enthält und deshalb sind diese Kanten im Delaunay-Graphen enthalten (Umkreis durch die drei Punkte $BCD $ für die Kante $BC $ und  $\bigcirc{ABD} $ für die Kante $AB $.)
+Für die Kanten $AB $ und $BC $ gibt es jedoch einen anderen Umkreis, der keine weiteren Punkte enthält und deshalb sind diese Kanten im Delaunay-Graphen enthalten (Umkreis durch die drei Punkte $BCD $ für die Kante $BC $ und  $\bigcirc{ABD} $ für die Kante $AB $).
 
-Des Weiteren legen wir einen Integer Parameter $k=8 $ fest.
+Des Weiteren legen wir einen ganzzahligen Parameter $k=8 $ fest.
 Um die Spannereigenschaften zu gewährleisten, muss $k \geq 14 $ gelten, aber wir ignorieren diese Bedingung, da sie für das Verständnis des Algorithmus keine Rolle spielt.
 Der Vorteil, den wir durch diese Vereinfachung erhalten, ist, dass die Übersichtlichkeit der Abbildungen verbessert wird.
 
@@ -259,14 +267,14 @@ Kante $1 $ und Kegel $1 $ sind somit eindeutig durch die 1 definiert.
 Im nächsten Schritt iteriert der Algorithmus über alle Kegel, welche keinen Knoten enthalten.
 Zwei oder mehr aufeinander folgende leere Kegel, werden nur einmal behandelt.
 
-Kegel 1 und 8 sind leer.
+Kegel $1 $ und $8 $ sind leer.
 Da beide Kegel aneinander liegen, werden diese zusammengefasst und als ein Iterationsschritt interpretiert.
 Für die Anzahl der aufeinander folgenden leeren Kegel $l $ werden zwei unterschiedliche Fälle unterschieden:
 Fall 1 wird behandelt, wenn $l>1 $ und sonst Fall 2 ($l=1 $).
-Da momentan $l=2 $ ist (Kegel 1 und 8), wird Fall 1 ausgeführt.
+Da momentan $l=2 $ ist (Kegel $1 $ und $8 $), wird Fall 1 ausgeführt.
 Jetzt werden diejenigen Kanten betrachtet, welche von $A $ ausgehen und noch nicht ausgewählt wurden.
-Das sind die Kanten $AD $, $AE$ und $AJ $ (, denn die anderen von $A $ ausgehenden Kanten, wurde bereits im Schritt zuvor ausgewählt.)
-Von dem durch Kegel 1 und Kegel 2 bestimmten Segment wählt der Algorithmus die im Uhrzeigersinn ersten $\frac{l}{2} $, noch nicht selektierten Kanten ausgehend von $A $ aus.
+Das sind die Kanten $AD $, $AE$ und $AJ $ (, denn die anderen von $A $ ausgehenden Kanten, wurde bereits im Schritt zuvor ausgewählt).
+Von dem durch Kegel $1 $ und Kegel $2 $ bestimmten Segment wählt der Algorithmus die im Uhrzeigersinn ersten $\frac{l}{2} $, noch nicht selektierten Kanten ausgehend von $A $ aus.
 In diesem Fall wird \emph{eine} nächste Kante ausgewählt (, da $\frac{l}{2} = 1$ ist).
 Dies ist die Kante $AD $ (,da $AB $ bereits ausgewählt wurde).
 
@@ -315,7 +323,7 @@ Hier ist die Liste aller anderen Punkte mit ihrer Auswahlliste:
 \end{itemize}
 
 Der fertige Graph enthält alle Kanten, welche von beiden Endpunkten gewählt wurden.
-Hier in diesem Beispiel sind der Delaunay Graph und der Graph nach Ausführung des Modified Yao Steps identisch, weil zu wenige Kanten um $A $ oder um andere Knoten existieren.
+Hier in diesem Beispiel sind der Delaunay-Graph und der Graph nach Ausführung des Modified-Yao-Steps identisch, weil zu wenige Kanten um $A $ oder um andere Knoten existieren.
 Dies wurde bewusst vermieden, weil die Übersichtlichkeit stark abnimmt, je mehr Kanten existieren.
 
 \begin{figure}[h!]
@@ -332,7 +340,7 @@ Es gilt folgendes Theorem zu beweisen:
 \begin{boundedSpannerTheorem}
 Für jedes $k \geq 14 $ existiert ein Subgraph $G' $ vom Delaunay-Graph $G $, sodass $G' $ einen maximalen Ausgangsgrad von k und einen stretch-factor $t $ von $1+2\pi(k \cos{\frac{\pi}{k}})^{-1} $ hat.
 \end{boundedSpannerTheorem}
-Gegeben sind zwei Kanten $CA $ und $CB $ im Delaunay-Graph $G $ vom Euklidischen Graph $E $.
+Gegeben sind zwei Kanten $CA $ und $CB $ im Delaunay-Graph $G $ vom euklidischen Graph $E $.
 %$\bigcirc _{ABC}$ ist der Kreis durch die drei Punkte $A, B, C $
 Ohne Beschränkung der Allgemeinheit sei $CA $ die kürzeste Kante.
 Der Aufbau ist wie in Abbildung \ref{fig:YaoStep2}.
@@ -345,17 +353,17 @@ Des Weiteren muss folgende Bedingung für $p $ gelten:
 \end{equation*}
 Außerdem darf der Ausgangsgrad eines jeden Knotens nicht größer als $k $ sein.
 
-Die Autoren von \cite{kanj} beweisen diese Eigenschaften mithilfe des \emph{outward} und des \emph{inward} Path. %, welche in 10 stehen...
-Der outward Path kann gebildet werden, wenn kein Knoten von $G $ innerhalb von $\triangle {ABC} $ liegt.
-Der inward Path verbindet die Knoten A und B, wenn Knoten innerhalb von $\triangle {ABC} $ liegen.
+Die Autoren von \cite{kanj} beweisen diese Eigenschaften mithilfe des \emph{outward}- und des \emph{inward}-Path. %, welche in 10 stehen...
+Der outward-Path kann gebildet werden, wenn kein Knoten von $G $ innerhalb von $\triangle {ABC} $ liegt.
+Der inward-Path verbindet die Knoten A und B, wenn Knoten innerhalb von $\triangle {ABC} $ liegen.
 Im Folgenden wird auf diese beiden Pfade eingegangen.
 
-\subsection{Der outward Path}
-Die Autoren von \cite{kanj} benutzen eine rekursive Definition um den Pfad von A nach B zu definieren. 
+\subsection{Der outward-Path}
+In \cite{kanj} wird eine rekursive Definition für den Pfad von A nach B definiert. 
 Diese Definition lautet:
 
 \begin{itemize}
-\item \textbf{Basisfall}: Die Rekursion endet, wenn $AB \in G $. (vgl. Abbildung \ref{fig:YaoStep2}: AB müssen verbunden sein, weil B der einzige Knoten in einem Kegel von A  und A der einzige Knoten in einem Kegel von B ist.)
+\item \textbf{Basisfall}: Die Rekursion endet, wenn $AB \in G $. (vgl. Abbildung \ref{fig:YaoStep2}: AB müssen verbunden sein, weil B der einzige Knoten in einem Kegel von A  und A der einzige Knoten in einem Kegel von B ist).
 \item \textbf{Rekursionsfall}: $AB \notin G $
 \end{itemize}
 
@@ -373,7 +381,7 @@ Dieser Rekursionsfall kann öfter eintreten, da es bezüglich A und T oder B und
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.8\linewidth]{rekursion.eps}
-\caption{Rekursionsidee des Outward Path. Punkt $T' $ liegt zwischen A und T.}
+\caption{Rekursionsidee des outward-Path. Punkt $T' $ liegt zwischen A und T.}
 \label{fig:rekursion}
 \end{figure}
 Der Rekursionsfall bewahrt immer folgende Eigenschaften:
@@ -383,7 +391,7 @@ Der Rekursionsfall bewahrt immer folgende Eigenschaften:
 \item Alle drei Winkel sind kleiner als $\frac{4\pi}{k} $
 \end{itemize}
 $O_A $ und $O_B $ erhält man, indem man den Kreis durch A (bzw. B) und T zieht, sodass der Mittelpunkt dieses Kreises auf der Strecke $AO $ bzw. $BO $ liegt.
-Zum Abschluss zeigt Abbildung \ref{fig:outward_path_fertig} ein Beispiel eines kompletten Outward Path.
+Zum Abschluss zeigt Abbildung \ref{fig:outward_path_fertig} ein Beispiel eines kompletten outward-Path.
 
 
 \begin{figure}[h!]
@@ -403,7 +411,7 @@ Zum Abschluss zeigt Abbildung \ref{fig:outward_path_fertig} ein Beispiel eines k
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1\linewidth]{outward_path_fertig.eps}
-\caption{Zwischen $A $ und $B $ ist ein fertiger Outward Path mit den Intermediate Points $M_1 $ und $M_2 $}
+\caption{Zwischen $A $ und $B $ ist ein fertiger outward-Path mit den Intermediate Points $M_1 $ und $M_2 $}
 \label{fig:outward_path_fertig}
 \end{figure}
 
@@ -441,8 +449,8 @@ Zum Abschluss zeigt Abbildung \ref{fig:outward_path_fertig} ein Beispiel eines k
 
 
 
-\subsection{Der inward Path}
-Wenn innerhalb des Dreiecks $\triangle{ABC} $ Punkte liegen, dann wird der Inward Path gebildet.
+\subsection{Der inward-Path}
+Wenn innerhalb des Dreiecks $\triangle{ABC} $ Punkte liegen, dann wird der inward-Path gebildet.
 Die Menge S besteht aus allen Punkten innerhalb von $\triangle {ABC} $, Punkt A und Punkt B.
 $CH(S) $ sind alle Punkte der konvexen Hülle von $S $. %erklärung der konvexen hülle
 Die konvexe Hülle wird hier verwendet, damit in $S $ die Punkte enthalten sind, welche den geringsten euklidischen Abstand zu $C $ haben.
@@ -459,47 +467,47 @@ Abbildung \ref{fig:inward_path_prop} zeigt, dass alle Winkel $\angle{N_{i-1}N_iN
 Außerdem ist jede Kante $CN_i $ kürzer als $CN_{i+1}$. 
 Da CA ($= CN_0 $) die kürzeste Kante in diesem Kegel ist, muss $CN_1 $ länger sein. 
 Für $CN_1 $ gilt dieselbe Bedingung. 
-Folglich muss $CN_2 $ länger sein, etc.
+Folglich muss $CN_2 $ länger sein.
 
 Hinzu kommt die Voraussetzung $\angle{N_iCN_{i+1}} \leq \angle{BCA} $.
-Zwischen jedem Paar $N_iN_{i+1} $ gibt es einen outward Path, der dieses Paar verbindet.
-Diese gesamte Konstruktion, der Pfad von A nach B, wird inward Path genannt.
+Zwischen jedem Paar $N_iN_{i+1} $ gibt es einen outward-Path, der dieses Paar verbindet.
+Diese gesamte Konstruktion, der Pfad von A nach B, wird inward-Path genannt.
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1\linewidth]{inward_path_prop.eps}
-\caption{Voraussetzungen für den inward Path und Beispiel eines inward Path $N_0N_1N_2N_3N_4 $}
+\caption{Voraussetzungen für den inward-Path und Beispiel eines inward-Path $N_0N_1N_2N_3N_4 $}
 \label{fig:inward_path_prop}
 \end{figure}
 
-In Abbildung \ref{fig:inward_path_prop} ist ein Beispiel eines Inward Path zu sehen.
+In Abbildung \ref{fig:inward_path_prop} ist ein Beispiel eines inward-Path zu sehen.
 
 \section{Folgerung}
-Die Knoten $A $ und $B $ sind durch einen Pfad $p $ verbunden, welcher durch den Inward Path definiert ist.
-Dieser Inward Path enthält beliebig viele Outward Paths.
-Abbildung \ref{fig:complete} zeigt einen Beispielgraphen, welcher nach dem Inward und Outward Path Prinzip verbunden ist.
-Die Knoten $A $ ,$N_1 $ $N_2 $ und $N_3 $ sind jeweils direkt durch ein Kante aus dem Ausgangsgraphen verbunden.
-$N_3 $ und $B $ sind durch einen Outward Path über die beiden Intermediate Points $M_1 $ und $M_2 $ verbunden.
-Der gesamte Pfad von $A $ nach $B $ folgt dem Prinzip des Inward Paths.
+Die Knoten $A $ und $B $ sind durch einen Pfad $p $ verbunden, welcher durch den inward-Path definiert ist.
+Dieser inward-Path enthält beliebig viele outward-Paths.
+Abbildung \ref{fig:complete} zeigt einen Beispielgraphen, welcher nach dem inward- und outward-Path-Prinzip verbunden ist.
+Die Knoten $A $, $N_1 $, $N_2 $ und $N_3 $ sind jeweils direkt durch eine Kante aus dem Ausgangsgraphen verbunden.
+$N_3 $ und $B $ sind durch einen outward-Path über die beiden intermediate Points $M_1 $ und $M_2 $ verbunden.
+Der gesamte Pfad von $A $ nach $B $ folgt dem Prinzip des inward-Paths.
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1.0\linewidth]{complete_path.eps}
-\caption{Fertiger Pfad zwischen A und B. Dieser Pfad folgt den Eigenschaften des Inward und Outward Paths.}
+\caption{Fertiger Pfad zwischen A und B. Dieser Pfad folgt den Eigenschaften des inward- und outward-Paths.}
 \label{fig:complete}
 \end{figure}
 
-\section{Modified Yao Step im UDG}
+\section{Modified-Yao-Step im UDG}
 Bisher wurde der Algorithmus ausschließlich im euklidischen Graphen Modell betrachtet.
 Dieses Modell findet in der Wirklichkeit jedoch keine Anwendung, da Knoten nicht beliebig weit kommunizieren können und es zusätzlich Hindernisse geben kann, welche die Sendereichweite weiter einschränken.
-Das Unit Disk Modell findet eher eine Anwendung in der Wirklichkeit.
+Das Unit-Disk-Modell findet eher eine Anwendung in der Wirklichkeit.
 Die Autoren von \cite{kanj} erweitern ihre Ausarbeitung um den Beweis, dass der Algorithmus den Forderungen dieses Modells ebenfalls standhält.
-Bisher kann der Delaunay Graph nicht streng lokal berechnet werden, was ihn für diesen Ansatz unbrauchbar macht.
-Wang et al. (\cite{wangLi}) entwickelten einen Algorithmus, welcher einen Subgraph vom Unit Disk Graphen $U $ produziert.
+Bisher kann der Delaunay-Graph nicht streng lokal berechnet werden, was ihn für diesen Ansatz unbrauchbar macht.
+Wang et al. (siehe \cite{wangLi}) entwickelten einen Algorithmus, welcher einen Subgraph vom Unit-Disk-Graphen $U $ produziert.
 Dieser Graph ist streng lokal und terminiert in konstanter Zeit.
-Anstelle des Delaunay Graphen wird der Wang-Li Graph $W $ genutzt.
+Anstelle des Delaunay-Graphen wird der Wang-Li-Graph $W $ genutzt.
 %Der Modified Yao Step terminiert ebenfalls in konstanter Zeit, da alle Teilschritte in konstanter Zeit erledigt werden können.
-Damit der Delaunay Graph ersetzt werden darf, wird von den Autoren von \cite{kanj} folgender Beweis geführt:
+Damit der Delaunay-Graph ersetzt werden darf, wird von den Autoren von \cite{kanj} folgender Beweis geführt:
 Gegeben sind die Kanten $CA $ und $CB $ des neuen Graphen.
 Es wird gezeigt, dass das Teilstück $T $ des Kreises $\bigcirc{ABC} $ abgeschnitten von der Sehne $CA $ von B weg, leer sein muss.
 Zuerst definieren sie $W $ so, dass eine Kante $XY $ genau dann in $W $ enthalten ist, wenn es einen Kreis durch $X $ und $Y $ gibt, der kein 2-Hop-Nachbar von $X $ oder $Y $ in $U $ ist.
@@ -509,7 +517,7 @@ Dies gilt ebenfalls für das Teilgebiet $T' $ des Kreises, eingegrenzt von der S
 
 
 \section{Fazit}
-Der Modified Yao Step - Algorithmus ist durch seine geringe Spanning-Ratio von $t\approx 2.42$ bei gleichzeitiger Beschränkung des Ausgangsgrad der Knoten auf $k=14 $ gut geeignet, um als Topologiekontrolle für ad-hoc Netze zu fungieren.
+Der Modified-Yao-Step-Algorithmus ist durch seine geringe Spanning-Ratio von $t\approx 2.42$ bei gleichzeitiger Beschränkung des Ausgangsgrad der Knoten auf $k=14 $ gut geeignet, um als Topologiekontrolle für ad-hoc Netze zu fungieren.
 Dadurch bleiben die Energiereserven der Knoten geschont und die Nachrichtenauslieferung wird garantiert.
 Des Weiteren sorgt die strenge Lokalität dafür, dass er auf einem beliebig großen Graphen - oder nur auf Subgraphen davon - ausgeführt werden kann.
 Außerdem ist dieser Algorithmus sehr resistent gegen ausfallende oder hinzukommende Knoten, weil er durch die konstante Laufzeit schnell berechnet werden kann.
